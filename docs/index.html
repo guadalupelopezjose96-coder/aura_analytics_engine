@@ -1,289 +1,363 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AuraIntelCore.com — VPP Grafana Telemetry, WORM Ledger & SaaS</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuraIntel VPP & Motor Fiscal Determinista AAUFSA — auraintelcore.com</title>
   <style>
-    :root { --bg: #0b0f19; --panel: #111827; --card: #1e293b; --border: #334155; --accent: #38bdf8; --green: #10b981; --stripe: #635bff; --gold: #f59e0b; }
-    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: #e2e8f0; margin: 0; padding: 1.8rem 1rem; line-height: 1.55; }
+    :root {
+      --bg: #060b16;
+      --card: #0c1527;
+      --border: #1e293b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --cyan: #00d2ff;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --indigo: #6366f1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px 20px 60px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
     .container { max-width: 1180px; margin: 0 auto; }
-    .badge { display: inline-block; background: var(--green); color: #052e16; padding: 0.3rem 0.85rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.04em; }
-    h1 { font-size: 2.2rem; margin: 0.8rem 0 0.4rem; color: #fff; }
-    .subtitle { color: #94a3b8; font-size: 1rem; max-width: 880px; margin-bottom: 1.8rem; }
-    /* GRAFANA + WORM PANEL */
-    .grafana-header { display: flex; justify-content: space-between; align-items: center; background: #161f30; border: 1px solid var(--border); padding: 0.8rem 1.2rem; border-radius: 10px 10px 0 0; }
-    .grafana-title { font-weight: 800; color: #fff; font-size: 0.95rem; display: flex; align-items: center; gap: 0.6rem; }
-    .dot { width: 10px; height: 10px; background: var(--green); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--green); }
-    .grafana-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; background: var(--panel); border: 1px solid var(--border); border-top: none; padding: 1.2rem; border-radius: 0 0 10px 10px; }
-    .g-panel { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 1rem; }
-    .g-label { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
-    .g-value { font-size: 1.75rem; font-weight: 800; color: var(--green); margin: 0.3rem 0; font-family: monospace; }
-    canvas { width: 100%; height: 70px; display: block; margin-top: 0.4rem; }
-    .worm-box { margin-top: 1rem; background: #090d16; border: 1px solid var(--border); border-left: 4px solid var(--green); border-radius: 8px; padding: 0.9rem 1.1rem; font-family: monospace; font-size: 0.8rem; color: #38bdf8; overflow-x: auto; }
-    /* STRIPE CATALOG */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.4rem; margin-top: 2rem; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.6rem; display: flex; flex-direction: column; justify-content: space-between; }
-    .card.featured { border: 2px solid var(--accent); box-shadow: 0 0 25px rgba(56, 189, 248, 0.12); }
-    .card.omni { border: 2px solid var(--gold); box-shadow: 0 0 25px rgba(245, 158, 11, 0.14); }
-    .card h3 { margin-top: 0; color: #fff; font-size: 1.18rem; }
-    .price { font-size: 2.1rem; font-weight: 800; color: var(--accent); margin: 0.7rem 0; }
-    .card.omni .price { color: var(--gold); }
-    .price span { font-size: 0.88rem; color: #94a3b8; font-weight: 500; }
-    ul { padding-left: 1.2rem; color: #cbd5e1; margin-bottom: 1.5rem; font-size: 0.92rem; }
-    li { margin-bottom: 0.4rem; }
-    .btn { display: block; width: 100%; text-align: center; background: var(--stripe); color: #fff; padding: 0.9rem 0; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.96rem; box-sizing: border-box; }
-    .btn:hover { background: #4f46e5; }
-    .audit-banner { margin-top: 2.2rem; background: #0f172a; border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 1.3rem 1.5rem; border-radius: 10px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
-    .footer { margin-top: 2.8rem; padding-top: 1.4rem; border-top: 1px solid var(--border); font-size: 0.84rem; color: #64748b; }
+    .badge-top {
+      display: inline-block;
+      background: #10b981;
+      color: #04130e;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+    h1 { font-size: 36px; margin: 0 0 10px; letter-spacing: -0.02em; }
+    .subtitle { color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 850px; margin-bottom: 26px; }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .metric-box {
+      background: #081020;
+      border: 1px solid #162238;
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .metric-label { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+    .metric-val { font-size: 28px; font-weight: 800; margin: 8px 0 6px; font-family: monospace; }
+    .metric-sub { font-size: 12px; color: #64748b; }
+    .worm-box {
+      background: #050a14;
+      border: 1px solid #0f5132;
+      border-radius: 10px;
+      padding: 16px;
+      font-family: monospace;
+      font-size: 12px;
+      color: #34d399;
+      line-height: 1.65;
+      margin-bottom: 26px;
+      overflow-x: auto;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    .price-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .price-card.featured { border: 1.5px solid var(--cyan); }
+    .price-card.omni { border: 1.5px solid var(--amber); }
+    .price-title { font-size: 18px; font-weight: 700; margin: 0 0 12px; line-height: 1.35; }
+    .price-amount { font-size: 32px; font-weight: 800; color: #38bdf8; margin-bottom: 14px; }
+    .price-card.omni .price-amount { color: var(--amber); }
+    .price-amount span { font-size: 14px; color: var(--muted); font-weight: 500; }
+    .price-list { margin: 0 0 22px; padding-left: 18px; color: #cbd5e1; font-size: 14px; line-height: 1.65; }
+    .price-list li { margin-bottom: 8px; }
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #5850ec;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 13px 18px;
+      border-radius: 8px;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.92; }
+    .audit-banner {
+      background: #0c1527;
+      border: 1.5px solid var(--amber);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 28px;
+    }
+    .btn-amber {
+      display: inline-block;
+      background: var(--amber);
+      color: #060b16;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 11px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 12px;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+    th { border-bottom: 1px solid #334155; color: #38bdf8; padding: 10px 8px; }
+    td { border-bottom: 1px solid #1e293b; padding: 10px 8px; color: #cbd5e1; }
+    code { background: #0f172a; padding: 2px 6px; border-radius: 4px; color: #38bdf8; font-family: monospace; }
   </style>
 </head>
 <body>
   <div class="container">
-    <span class="badge">AURAINTELCORE.COM | DOMAIN ID: 188680247367 | WORM + GRAFANA TELEMETRY</span>
+    <div class="badge-top">AURAINTELCORE.COM | DOMAIN ID: 188680247367 | WORM + GRAFANA TELEMETRY</div>
     <h1>AuraIntel VPP &amp; Motor Fiscal Determinista AAUFSA</h1>
-    <p class="subtitle">Telemetría eléctrica en tiempo real (Grafana VPP Stream), almacenamiento inmutable WORM (Write-Once-Read-Many) en PostgreSQL SERIALIZABLE y catálogo oficial de licenciamiento SaaS (Org ID: 320717657398).</p>
+    <p class="subtitle">
+      Telemetría eléctrica en tiempo real (Grafana VPP Stream), almacenamiento inmutable WORM (Write-Once-Read-Many) en PostgreSQL SERIALIZABLE y catálogo oficial de licenciamiento SaaS (Org ID: 320717657398).
+    </p>
 
-    <!-- PANEL GRAFANA + WORM EN VIVO -->
-    <div class="grafana-header">
-      <div class="grafana-title"><span class="dot"></span> GRAFANA LIVE TELEMETRY &amp; WORM IMMUTABLE STORAGE — BUS #1 (ORG: 320717657398)</div>
-      <div style="font-size: 0.78rem; color: #94a3b8; font-family: monospace;">REFRESH: 1s | WORM LOCK: ACTIVE</div>
-    </div>
-    <div class="grafana-grid">
-      <div class="g-panel">
-        <div class="g-label">Capacidad Activa Bus VPP (mW)</div>
-        <div class="g-value" id="mw-val">120,000 mW</div>
-        <div style="font-size:0.75rem; color:#64748b;">Máximo Nominal: 250,000 mW | Estado: NominalGridOperation</div>
-        <canvas id="chart-mw" width="280" height="70"></canvas>
+    <!-- TELEMETRIA BUS #1 -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>🟢 GRAFANA LIVE TELEMETRY &amp; WORM IMMUTABLE STORAGE — BUS #1 (ORG: 320717657398)</span>
+        <span style="color: var(--muted); font-weight: 500;">REFRESH: 1s | WORM LOCK: ACTIVE</span>
       </div>
-      <div class="g-panel">
-        <div class="g-label">Frecuencia de Red Síncrona (Hz)</div>
-        <div class="g-value" id="hz-val" style="color:#38bdf8;">60.00 Hz</div>
-        <div style="font-size:0.75rem; color:#64748b;">Rango Seguro: 59.50 - 60.50 Hz (6000 cHz)</div>
-        <canvas id="chart-hz" width="280" height="70"></canvas>
-      </div>
-      <div class="g-panel">
-        <div class="g-label">Corriente Inyectada DER (mA)</div>
-        <div class="g-value" id="ma-val" style="color:#f59e0b;">270,000 mA</div>
-        <div style="font-size:0.75rem; color:#64748b;">Límite Térmico Bus: 900,000 mA | Punto Fijo 100%</div>
-        <canvas id="chart-ma" width="280" height="70"></canvas>
+      <div class="metrics-grid">
+        <div class="metric-box">
+          <div class="metric-label">CAPACIDAD ACTIVA BUS VPP (MW)</div>
+          <div class="metric-val" style="color: #10b981;">120,000 mW</div>
+          <div class="metric-sub">Máximo Nominal: 250,000 mW | Estado: NominalGridOperation</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">FRECUENCIA DE RED SÍNCRONA (HZ)</div>
+          <div class="metric-val" style="color: #38bdf8;">60.00 Hz</div>
+          <div class="metric-sub">Rango Seguro: 59.50 - 60.50 Hz (6000 cHz)</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">CORRIENTE INYECTADA DER (MA)</div>
+          <div class="metric-val" style="color: #f59e0b;">270,000 mA</div>
+          <div class="metric-sub">Límite Térmico Bus: 900,000 mA | Punto Fijo 100%</div>
+        </div>
       </div>
     </div>
 
+    <!-- SELLO WORM -->
     <div class="worm-box">
-      <strong style="color:#10b981;">[WORM STORAGE SEAL — WRITE-ONCE-READ-MANY POSTGRESQL LEDGER]</strong><br>
+      <strong>[WORM STORAGE SEAL — WRITE-ONCE-READ-MANY POSTGRESQL LEDGER]</strong><br>
       PREV_HASH: 0000000000000000000000000000000000000000000000000000000000000000<br>
-      CURR_HASH: <span id="worm-hash">15cfeda08a37085a515d710979a6355e811ff9d4dd9db226ae99a39569bbf0a2</span><br>
-      SQL_POLICY: BEGIN ISOLATION LEVEL SERIALIZABLE; SET LOCAL app.current_domain_id = '877771073297'; INSERT INTO aaufsa_vpp_operational_ledger ... COMMIT; (UPDATE/DELETE REJECTED BY WORM TRIGGER)
+      CURR_HASH: 15cfeda08a37085a515d710979a6355e811ff9d4dd9db226ae99a39569bbf0a2<br>
+      SQL_POLICY: BEGIN ISOLATION LEVEL SERIALIZABLE; SET LOCAL app.current_domain_id = '188680247367'; INSERT INTO aaufsa_vpp_operational_ledger ... COMMIT; (UPDATE/DELETE REJECTED BY WORM TRIGGER)
     </div>
 
-    <!-- CATALOGO DE 5 NIVELES DE AURAINTELCORE.COM -->
-    <!-- AURA-TETRAX-ELITE-CORE MICROSERVICES & MONETIZATION -->
-    <div style="margin: 28px 0; padding: 24px; background: #0b1325; border: 1px solid #1e293b; border-radius: 12px; font-family: system-ui, -apple-system, sans-serif; color: #f8fafc;">
-      <div style="display: inline-block; background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 12px;">
+    <!-- ARQUITECTURA DE MICROSERVICIOS AURA-TETRAX-ELITE-CORE -->
+    <div class="panel">
+      <div style="display: inline-block; background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 12px;">
         ⚡ AURA-TETRAX-ELITE-CORE — IEC 61850 + AI FORECASTING + LP OPTIMIZER + KUBERNETES
       </div>
-      <h2 style="margin: 0 0 10px 0; font-size: 22px; color: #ffffff;">Arquitectura Industrial de Microservicios VPP & Monetización Dual (Nodos 1.5 MW)</h2>
-      <p style="margin: 0 0 18px 0; color: #94a3b8; font-size: 14px; line-height: 1.6;">
+      <h2 style="margin: 0 0 8px; font-size: 22px;">Arquitectura Industrial de Microservicios VPP &amp; Monetización Dual (Nodos 1.5 MW)</h2>
+      <p style="margin: 0 0 18px; color: var(--muted); font-size: 14px;">
         Orquestación en tiempo real de Recursos Energéticos Distribuidos (<strong>INV-SOLAR-01</strong>, <strong>BESS-01</strong>, <strong>EV-CHARGER-01</strong>) validada en GitLab CI/CD (<code>termux-arm64</code> runner) y Grafana Cloud.
       </p>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+      <div class="metrics-grid" style="margin-bottom: 20px;">
         <div style="background: #111c33; padding: 16px; border-radius: 8px; border-left: 4px solid #00d2ff;">
           <div style="font-size: 12px; color: #00d2ff; font-weight: 700;">1. B2B INDUSTRIAL SAAS (BEHIND-THE-METER)</div>
-          <div style="font-size: 22px; font-weight: 800; color: #ffffff; margin: 6px 0;">$80.90 – $278.33 USD / hora</div>
-          <div style="font-size: 13px; color: #94a3b8;">Reducción de costos eléctricos en horario punta (<em>Peak Shaving</em>) y optimización LCOE comprobada por nodo industrial de 1.5 MW.</div>
+          <div style="font-size: 22px; font-weight: 800; margin: 6px 0;">$80.90 – $278.33 USD / hora</div>
+          <div style="font-size: 13px; color: var(--muted);">Reducción de costos eléctricos en horario punta (<em>Peak Shaving</em>) y optimización LCOE comprobada por nodo industrial de 1.5 MW.</div>
         </div>
-
-<div class="grid">
-      <div class="card">
-        <div>
-          <h3>1. AuraIntel VPP Pro — Suscripción Mensual (SaaS)</h3>
-          <div class="price">$49.99 USD <span>/ mes</span></div>
-          <ul>
-            <li>Despacho VPP en tiempo real y monitoreo Grafana (60.00 Hz)</li>
-            <li>Evaluación de exención PyME Sec. 5000G(b) (&le; $5M USD)</li>
-            <li>Telemetría JSON dinámica y sellado WORM SHA-256 por ciclo</li>
-          </ul>
-        </div>
-        <a class="btn" href="https://buy.stripe.com/5kQ14n1zcgKQ96v0UGcjS00" target="_blank" rel="noopener">Suscribirse — $49.99 / mes</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <h3>2. Expansión Nodo DER Adicional (+25,000 mW)</h3>
-          <div class="price">$99.00 USD <span>/ mes</span></div>
-          <ul>
-            <li>Capacidad adicional de inyección (+25,000 mW / +50,000 mA)</li>
-            <li>Guardas automáticas de sobrecarga y Frequency Droop</li>
-            <li>Registro contable WORM PostgreSQL ACID encadenado</li>
-          </ul>
-        </div>
-        <a class="btn" href="https://buy.stripe.com/5kQaEX4LocuAaazdHscjS02" target="_blank" rel="noopener">Añadir Nodo DER — $99.00 / mes</a>
-      </div>
-
-      <div class="card featured">
-        <div>
-          <h3>3. AuraIntel Enterprise Core — Licencia B2B Multi-Dominio</h3>
-          <div class="price">$499.00 USD <span>/ mes</span></div>
-          <ul>
-            <li>Aislamiento RLS completo para los 6 Dominios Corporativos</li>
-            <li>Liquidación fiscal exacta 15.30% Sec. 5000F + Clawback 2.00%</li>
-            <li>Bifurcación fiduciaria (75% OASI / 25% Recalificación)</li>
-          </ul>
-        </div>
-        <a class="btn" href="https://buy.stripe.com/5kQ28r91E9io1E30UGcjS01" target="_blank" rel="noopener">Suscribirse — $499.00 / mes</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <h3>4. Despliegue Cloud Dedicado Multi-Región (OpenTofu IaC)</h3>
-          <div class="price">$2,500.00 USD <span>/ implementación</span></div>
-          <ul>
-            <li>Aprovisionamiento automatizado de infraestructura dedicada</li>
-            <li>Clúster PostgreSQL WORM SERIALIZABLE con políticas RLS</li>
-            <li>Paneles Grafana dedicados para los 6 dominios corporativos</li>
-          </ul>
-        </div>
-        <a class="btn" href="https://buy.stripe.com/3cIdR9fq266cfuT5aWcjS03" target="_blank" rel="noopener">Contratar Despliegue — $2,500.00</a>
-      </div>
-
-      <div class="card omni">
-        <div>
-          <h3>5. AuraIntel Omni — Licencia Grupo Controlado (IRC 414/1563)</h3>
-          <div class="price">$10,000.00 USD <span>/ licencia corporativa</span></div>
-          <ul>
-            <li>Consolidación ilimitada de ingresos brutos (IRC Sec. 414/1563)</li>
-            <li>Binarios nativos optimizados y bus VPP hasta 250,000 mW</li>
-            <li>Soporte prioritario 24/7 y exención Cloud SaaS Sec. 5000H(d)</li>
-          </ul>
-        </div>
-        <a class="btn" href="https://buy.stripe.com/9B614n7XA66cfuTgTEcjS04" target="_blank" rel="noopener">Adquirir Licencia Omni — $10,000.00</a>
-      </div>
-    </div>
-
-    <div class="audit-banner">
-      <div>
-        <strong style="color: #fff; font-size: 1.05rem;">¿Requiere Certificación Forense WORM, Telemetría Grafana de Auditoría &amp; Dictamen Clawback Sec. 5000G(c)?</strong>
-        <div style="color: #94a3b8; font-size: 0.9rem;">Acceda al portal oficial de nuestra autoridad auditora Standard 1979 (Domain ID: 282230018778) con gráficas de liquidación fiduciaria en vivo ($1,500.00 USD).</div>
-      </div>
-      <a href="https://standard1979.com" style="background: #f59e0b; color: #000; padding: 0.75rem 1.3rem; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.92rem;">Abrir Portal Standard1979.com &rarr;</a>
-    </div>
-
-    <div class="footer">
-      Autor Exclusivo (Cláusula 3): Jose Emanuel Guadalupe Lopez | Org ID: 320717657398 | AuraIntelCore.com (ID: 188680247367).
-    </div>
-  </div>
-
-  <script>
-    function startGrafanaChart(canvasId, color, baseVal, variance) {
-      const canvas = document.getElementById(canvasId);
-      const ctx = canvas.getContext('2d');
-      const data = Array.from({length: 36}, () => baseVal + (Math.random() - 0.5) * variance);
-      function draw() {
-        data.shift();
-        data.push(baseVal + (Math.random() - 0.5) * variance);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.beginPath();
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 2;
-        const min = baseVal - variance * 1.4;
-        const max = baseVal + variance * 1.4;
-        data.forEach((v, i) => {
-          const x = (i / (data.length - 1)) * canvas.width;
-          const y = canvas.height - ((v - min) / (max - min)) * (canvas.height - 12) - 6;
-          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-        });
-        ctx.stroke();
-      }
-      draw();
-      setInterval(draw, 1200);
-    }
-    startGrafanaChart('chart-mw', '#10b981', 120000, 3500);
-    startGrafanaChart('chart-hz', '#38bdf8', 6000, 6);
-    startGrafanaChart('chart-ma', '#f59e0b', 270000, 5000);
-  </script>
-
-    
         <div style="background: #111c33; padding: 16px; border-radius: 8px; border-left: 4px solid #f59e0b;">
           <div style="font-size: 12px; color: #f59e0b; font-weight: 700;">2. MERCADO ELÉCTRICO MAYORISTA (FRONT-OF-THE-METER)</div>
-          <div style="font-size: 22px; font-weight: 800; color: #ffffff; margin: 6px 0;">$45.30 – $289.02 USD / hora</div>
-          <div style="font-size: 13px; color: #94a3b8;">Arbitraje de energía según Precio Marginal Local (LMP) y venta de reserva rodante rápida por nodo de 1.5 MW.</div>
+          <div style="font-size: 22px; font-weight: 800; margin: 6px 0;">$45.30 – $289.02 USD / hora</div>
+          <div style="font-size: 13px; color: var(--muted);">Arbitraje de energía según Precio Marginal Local (LMP) y venta de reserva rodante rápida por nodo de 1.5 MW.</div>
         </div>
       </div>
 
-      <div style="overflow-x: auto; margin-bottom: 18px;">
-        <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left;">
+      <div style="overflow-x: auto; margin-bottom: 16px;">
+        <table>
           <thead>
-            <tr style="border-bottom: 1px solid #334155; color: #38bdf8;">
-              <th style="padding: 10px 8px;">Servicio</th>
-              <th style="padding: 10px 8px;">Ruta</th>
-              <th style="padding: 10px 8px;">Tecnología</th>
-              <th style="padding: 10px 8px;">Función Principal</th>
+            <tr>
+              <th>Servicio</th>
+              <th>Ruta</th>
+              <th>Tecnología</th>
+              <th>Función Principal</th>
             </tr>
           </thead>
-          <tbody style="color: #cbd5e1;">
-            <tr style="border-bottom: 1px solid #1e293b;">
-              <td style="padding: 8px; font-weight: 600;">IEC 61850 OT Simulator</td>
-              <td style="padding: 8px;"><code>services/iec61850-simulator/</code></td>
-              <td style="padding: 8px;">Python Socket TCP (<code>:10102</code>)</td>
-              <td style="padding: 8px;">Emulación de IED <code>AURA_SUBSTATION</code> (<code>MMXU1</code>, <code>XCBR1</code>, <code>CSWI</code> con maniobra <code>TRIP/CLOSE</code>).</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #1e293b;">
-              <td style="padding: 8px; font-weight: 600;">AI Solar Forecasting</td>
-              <td style="padding: 8px;"><code>services/vpp-forecasting/</code></td>
-              <td style="padding: 8px;">FastAPI / Pydantic</td>
-              <td style="padding: 8px;">Inferencia de generación solar fotovoltaica (kW) según irradiancia (W/m²), temperatura y nubosidad.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #1e293b;">
-              <td style="padding: 8px; font-weight: 600;">Economic LP Optimizer</td>
-              <td style="padding: 8px;"><code>services/vpp-optimizer/</code></td>
-              <td style="padding: 8px;"><code>scipy.optimize.linprog</code></td>
-              <td style="padding: 8px;">Despacho económico óptimo entre generación solar, descarga BESS y consigna del TSO.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #1e293b;">
-              <td style="padding: 8px; font-weight: 600;">Edge Telemetry & Exporter</td>
-              <td style="padding: 8px;"><code>services/edge-adapter/</code></td>
-              <td style="padding: 8px;">HTTP Prometheus (<code>:8000</code>) + MQTT</td>
-              <td style="padding: 8px;">Unificación de telemetría OT, inferencia IA y cálculo financiero en vivo hacia Grafana Cloud.</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #1e293b;">
-              <td style="padding: 8px; font-weight: 600;">VPP API Gateway & Simulator</td>
-              <td style="padding: 8px;"><code>services/vpp-api-gateway/</code></td>
-              <td style="padding: 8px;">FastAPI + JWT + M2M</td>
-              <td style="padding: 8px;">Pasarela de control seguro para activos distribuidos (<code>INV-SOLAR-01</code>, <code>BESS-01</code>, <code>EV-CHARGER-01</code>).</td>
+          <tbody>
+            <tr>
+              <td><strong>IEC 61850 OT Simulator</strong></td>
+              <td><code>services/iec61850-simulator/</code></td>
+              <td>Python Socket TCP (<code>:10102</code>)</td>
+              <td>Emulación de IED <code>AURA_SUBSTATION</code> (<code>MMXU1</code>, <code>XCBR1</code>, <code>CSWI</code> con maniobra <code>TRIP/CLOSE</code>).</td>
             </tr>
             <tr>
-              <td style="padding: 8px; font-weight: 600;">Kubernetes Manifests</td>
-              <td style="padding: 8px;"><code>deploy/k8s/</code></td>
-              <td style="padding: 8px;">19 Manifiestos YAML</td>
-              <td style="padding: 8px;">Despliegue cloud-native validado automáticamente en GitLab CI/CD (<code>termux-arm64</code> runner).</td>
+              <td><strong>AI Solar Forecasting</strong></td>
+              <td><code>services/vpp-forecasting/</code></td>
+              <td>FastAPI / Pydantic</td>
+              <td>Inferencia de generación solar fotovoltaica (kW) según irradiancia (W/m²), temperatura y nubosidad.</td>
+            </tr>
+            <tr>
+              <td><strong>Economic LP Optimizer</strong></td>
+              <td><code>services/vpp-optimizer/</code></td>
+              <td><code>scipy.optimize.linprog</code></td>
+              <td>Despacho económico óptimo entre generación solar, descarga BESS y consigna del TSO.</td>
+            </tr>
+            <tr>
+              <td><strong>Edge Telemetry &amp; Exporter</strong></td>
+              <td><code>services/edge-adapter/</code></td>
+              <td>HTTP Prometheus (<code>:8000</code>) + MQTT</td>
+              <td>Unificación de telemetría OT, inferencia IA y cálculo financiero en vivo hacia Grafana Cloud.</td>
+            </tr>
+            <tr>
+              <td><strong>VPP API Gateway &amp; Simulator</strong></td>
+              <td><code>services/vpp-api-gateway/</code></td>
+              <td>FastAPI + JWT + M2M</td>
+              <td>Pasarela de control seguro para activos distribuidos (<code>INV-SOLAR-01</code>, <code>BESS-01</code>, <code>EV-CHARGER-01</code>).</td>
+            </tr>
+            <tr>
+              <td><strong>Kubernetes Manifests</strong></td>
+              <td><code>deploy/k8s/</code></td>
+              <td>19 Manifiestos YAML</td>
+              <td>Despliegue cloud-native validado automáticamente en GitLab CI/CD (<code>termux-arm64</code> runner).</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <div style="background: #070d19; padding: 14px; border-radius: 8px; border: 1px solid #1e293b; font-family: monospace; font-size: 12px; color: #34d399; line-height: 1.7;">
-        <strong style="color: #38bdf8;">[PROMETHEUS & GRAFANA CLOUD LIVE METRICS — PORT :8000]</strong><br>
-        • <code>vpp_bess_discharge_headroom_kw</code> (0–500 kW) | • <code>vpp_active_power_kw</code> | • <code>vpp_predicted_solar_kw</code> | • <code>vpp_weather_irradiance_wm2</code> (W/m²)<br>
-        • <code>vpp_breaker_status</code> (XCBR1: 1=CLOSED, 0=OPEN) | • <code>vpp_market_price_usd_mwh</code> (LMP) | • <code>vpp_wholesale_revenue_usd_h</code> | • <code>vpp_saas_client_savings_usd_h</code>
+        <strong style="color: #38bdf8;">[PROMETHEUS &amp; GRAFANA CLOUD LIVE METRICS — PORT :8000]</strong><br>
+        • vpp_bess_discharge_headroom_kw (0–500 kW) | • vpp_active_power_kw | • vpp_predicted_solar_kw | • vpp_weather_irradiance_wm2 (W/m²)<br>
+        • vpp_breaker_status (XCBR1: 1=CLOSED, 0=OPEN) | • vpp_market_price_usd_mwh (LMP) | • vpp_wholesale_revenue_usd_h | • vpp_saas_client_savings_usd_h
       </div>
     </div>
-    
 
-    <!-- SOVEREIGN CORE v2.6.0 SLSA v1.0 & LEGAL EULA CHARTER -->
-    <div style="margin: 24px 0; padding: 20px; background: #070d19; border: 1px solid #10b981; border-radius: 12px; font-family: monospace; font-size: 12px; color: #cbd5e1; line-height: 1.7;">
+    <!-- CATALOGO STRIPE 5 NIVELES (ANCHO COMPLETO 3 COLUMNAS) -->
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div>
+          <h3 class="price-title">1. AuraIntel VPP Pro — Suscripción Mensual (SaaS)</h3>
+          <div class="price-amount">$49.99 USD <span>/ mes</span></div>
+          <ul class="price-list">
+            <li>Despacho VPP en tiempo real y monitoreo Grafana (60.00 Hz)</li>
+            <li>Evaluación de exención PyME Sec. 5000G(b) (&le; $5M USD)</li>
+            <li>Telemetría JSON dinámica y sellado WORM SHA-256 por ciclo</li>
+          </ul>
+        </div>
+        <a class="btn" href="https://buy.stripe.com/test_ec00000000000000000000">Suscribirse — $49.99 / mes</a>
+      </div>
+
+      <div class="price-card">
+        <div>
+          <h3 class="price-title">2. Expansión Nodo DER Adicional (+25,000 mW)</h3>
+          <div class="price-amount">$99.00 USD <span>/ mes</span></div>
+          <ul class="price-list">
+            <li>Capacidad adicional de inyección (+25,000 mW / +50,000 mA)</li>
+            <li>Guardas automáticas de sobrecarga y Frequency Droop</li>
+            <li>Registro contable WORM PostgreSQL ACID encadenado</li>
+          </ul>
+        </div>
+        <a class="btn" href="https://buy.stripe.com/test_ec00000000000000000000">Añadir Nodo DER — $99.00 / mes</a>
+      </div>
+
+      <div class="price-card featured">
+        <div>
+          <h3 class="price-title">3. AuraIntel Enterprise Core — Licencia B2B Multi-Dominio</h3>
+          <div class="price-amount">$499.00 USD <span>/ mes</span></div>
+          <ul class="price-list">
+            <li>Aislamiento RLS completo para los 6 Dominios Corporativos</li>
+            <li>Liquidación fiscal exacta 15.30% Sec. 5000F + Clawback 2.00%</li>
+            <li>Bifurcación fiduciaria (75% OASI / 25% Recalificación)</li>
+          </ul>
+        </div>
+        <a class="btn" href="https://buy.stripe.com/test_ec00000000000000000000">Suscribirse — $499.00 / mes</a>
+      </div>
+
+      <div class="price-card">
+        <div>
+          <h3 class="price-title">4. Despliegue Cloud Dedicado Multi-Región (OpenTofu IaC)</h3>
+          <div class="price-amount">$2,500.00 USD <span>/ implementación</span></div>
+          <ul class="price-list">
+            <li>Aprovisionamiento automatizado de infraestructura dedicada</li>
+            <li>Clúster PostgreSQL WORM SERIALIZABLE con políticas RLS</li>
+            <li>Paneles Grafana dedicados para los 6 dominios corporativos</li>
+          </ul>
+        </div>
+        <a class="btn" href="https://buy.stripe.com/test_ec00000000000000000000">Contratar Despliegue — $2,500.00</a>
+      </div>
+
+      <div class="price-card omni">
+        <div>
+          <h3 class="price-title">5. AuraIntel Omni — Licencia Grupo Controlado (IRC 414/1563)</h3>
+          <div class="price-amount">$10,000.00 USD <span>/ licencia corporativa</span></div>
+          <ul class="price-list">
+            <li>Consolidación ilimitada de ingresos brutos (IRC Sec. 414/1563)</li>
+            <li>Binarios nativos optimizados y bus VPP hasta 250,000 mW</li>
+            <li>Soporte prioritario 24/7 y exención Cloud SaaS Sec. 5000H(d)</li>
+          </ul>
+        </div>
+        <a class="btn" href="https://buy.stripe.com/test_ec00000000000000000000">Adquirir Licencia Omni — $10,000.00</a>
+      </div>
+    </div>
+
+    <!-- BANNER DE AUDITORIA FORENSE STANDARD 1979 -->
+    <div class="audit-banner">
+      <h3 style="margin: 0 0 6px; font-size: 16px;">¿Requiere Certificación Forense WORM, Telemetría Grafana de Auditoría &amp; Dictamen Clawback Sec. 5000G(c)?</h3>
+      <p style="margin: 0; font-size: 13px; color: var(--muted);">
+        Acceda al portal oficial de nuestra autoridad auditora Standard 1979 (Domain ID: 282230018778) con gráficas de liquidación fiduciaria en vivo ($1,500.00 USD).
+      </p>
+      <a class="btn-amber" href="https://standard1979.com">Abrir Portal Standard1979.com &rarr;</a>
+    </div>
+
+    <!-- AUDITORIA SOBERANA v2.6.0 SLSA v1.0 & CONTRATO B2B EULA -->
+    <div style="margin: 24px 0; padding: 20px; background: #070d19; border: 1px solid #10b981; border-radius: 12px; font-family: monospace; font-size: 12px; color: #cbd5e1; line-height: 1.75;">
       <div style="color: #10b981; font-weight: 700; font-size: 13px; margin-bottom: 8px;">
         ✅ AUDITORÍA SOBERANA POLICY-AS-CODE &amp; SLSA v1.0 PROVENANCE (auraintelcore-sovereign-core v2.6.0)
       </div>
       <div>• <strong>Power-On Self-Test:</strong> <code>{"status":"OPERATIONAL","domain_id":"188680247367","org_id":"320717657398","store":false,"sec_5000h_d_saas_exempt":true}</code></div>
       <div>• <strong>Binary SHA-256:</strong> <code>373ef555d802bbe8e011f0f74b4274f7cee3f6841b311b3e4a609ca5d5d74a39</code></div>
       <div>• <strong>SLSA v1.0 Provenance:</strong> <code>c9cfb1f7a2bc347069cb46fde9adaba9083e175c96cb7d80c7b998c1e600a1f1</code> | <strong>CycloneDX v1.5 SBOM:</strong> Verified (0 Secrets / 0 Unsafe / 0 Float)</div>
-      <div style="margin-top: 10px; font-family: system-ui, sans-serif;">
-        <a href="TERMS_SLA_EULA_B2B.md" style="color: #38bdf8; text-decoration: underline; font-weight: 600; margin-right: 16px;">📄 Master B2B EULA, SLA 99.99% &amp; Regulatory Charter</a>
+      <div style="margin-top: 12px; font-family: system-ui, sans-serif;">
+        <a href="TERMS_SLA_EULA_B2B.md" style="color: #38bdf8; text-decoration: underline; font-weight: 600; margin-right: 18px;">📄 Master B2B EULA, SLA 99.99% &amp; Regulatory Charter</a>
         <a href="auraintelcore_sovereign_manifest.sha256" style="color: #10b981; text-decoration: underline; font-weight: 600;">🔒 Sovereign SHA-256 Manifest</a>
       </div>
     </div>
 
+    <div style="border-top: 1px solid var(--border); padding-top: 16px; color: #64748b; font-size: 12px;">
+      Autor Exclusivo (Cláusula 3): Jose Emanuel Guadalupe Lopez | Org ID: 320717657398 | AuraIntelCore.com (ID: 188680247367).
+    </div>
+  </div>
 </body>
 </html>
