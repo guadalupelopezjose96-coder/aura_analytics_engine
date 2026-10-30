@@ -1,5 +1,5 @@
 AVISOS DE SOFTWARE DE CODIGO ABIERTO DE TERCEROS (POL-SEC-OSS-001)
-Fecha: 2026-10-30T14:16:43Z
+Fecha: 2026-10-30T14:18:44Z
 -----------------------------------------------------------------
 Paquete: Cargo.lock (null)
 PURL: N/A
