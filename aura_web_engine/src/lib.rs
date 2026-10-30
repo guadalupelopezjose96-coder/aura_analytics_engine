@@ -7,6 +7,7 @@
     clippy::float_arithmetic
 )]
 
+pub mod static_handler;
 use axum::{
     body::Body,
     http::{header, HeaderMap, HeaderName, HeaderValue, Request, Response, StatusCode},
