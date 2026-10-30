@@ -1,0 +1,28 @@
+[package]
+name = "aura_web_engine"
+version = "2026.1.0"
+edition = "2021"
+authors = ["Jose Emanuel Guadalupe Lopez <guadalupelopezjose96@auraintelcore.com>"]
+description = "Deterministic Web Edge Server, CSP Nonce Engine & AAUFSA IRC Chapter 56 Settlement Ledger"
+license = "Apache-2.0"
+
+[dependencies]
+axum = { version = "0.7", default-features = false, features = ["tokio", "http1", "http2", "json"] }
+tokio = { version = "1.38", features = ["macros", "rt-multi-thread", "net"] }
+tower = { version = "0.4", features = ["util"] }
+tower-http = { version = "0.5", features = ["set-header", "trace"] }
+rand = { version = "0.8", default-features = false, features = ["std", "std_rng"] }
+base64 = "0.22"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sqlx = { version = "0.7", default-features = false, features = ["runtime-tokio-rustls", "postgres", "macros"] }
+
+[dev-dependencies]
+tokio-test = "0.4"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

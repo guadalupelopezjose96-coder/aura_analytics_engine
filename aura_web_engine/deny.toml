@@ -1,0 +1,41 @@
+[graph]
+targets = [
+    { triple = "x86_64-unknown-linux-musl" },
+    { triple = "wasm32-unknown-unknown" },
+]
+
+[licenses]
+version = 2
+unlicensed = "deny"
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "BSD-3-Clause",
+    "MPL-2.0",
+]
+deny = [
+    "GPL-1.0-only", "GPL-1.0-or-later",
+    "GPL-2.0-only", "GPL-2.0-or-later",
+    "GPL-3.0-only", "GPL-3.0-or-later",
+    "AGPL-1.0-only", "AGPL-1.0-or-later",
+    "AGPL-3.0-only", "AGPL-3.0-or-later",
+    "SSPL-1.0",
+    "BUSL-1.1",
+    "CC-BY-NC-1.0", "CC-BY-NC-2.0", "CC-BY-NC-3.0", "CC-BY-NC-4.0",
+]
+copyleft = "deny"
+default = "deny"
+
+[licenses.private]
+ignore = false
+registries = []
+
+[bans]
+multiple-versions = "deny"
+wildcards = "deny"
+highlight = "all"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
