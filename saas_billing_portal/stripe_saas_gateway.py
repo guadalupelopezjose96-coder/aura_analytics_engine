@@ -6,26 +6,33 @@ import subprocess
 
 PORT = int(os.environ.get("AURA_SAAS_PORT", "8080"))
 CATALOG = {
-    "vpp_pro_49_99": "https://buy.stripe.com/5kQ14n1zcgKQ96v0UGcjS00",
-    "der_node_addon_99": "https://buy.stripe.com/5kQaEX4LocuAaazdHscjS02",
-    "enterprise_core_499": "https://buy.stripe.com/5kQ28r91E9io1E30UGcjS01",
-    "dedicated_cloud_2500": "https://buy.stripe.com/3cIdR9fq266cfuT5aWcjS03",
-    "omni_group_10000": "https://buy.stripe.com/9B614n7XA66cfuTgTEcjS04",
-    "audit_authority_domain": "https://standard1979.com (Domain ID: 282230018778)"
+    "1_vpp_pro_49_99": "https://buy.stripe.com/5kQ14n1zcgKQ96v0UGcjS00",
+    "2_der_node_addon_99": "https://buy.stripe.com/5kQaEX4LocuAaazdHscjS02",
+    "3_enterprise_core_499": "https://buy.stripe.com/5kQ28r91E9io1E30UGcjS01",
+    "4_standard1979_audit_1500": "https://buy.stripe.com/8x28wPcdQ3Y44Qf9rccjS05",
+    "5_dedicated_cloud_2500": "https://buy.stripe.com/3cIdR9fq266cfuT5aWcjS03",
+    "6_omni_group_10000": "https://buy.stripe.com/9B614n7XA66cfuTgTEcjS04"
 }
 ENGINE_BIN = os.path.expanduser("~/aura_analytics_engine/target/release/aura_analytics_engine")
 SUBS_DB = os.path.expanduser("~/aura_analytics_engine/audit_logs/active_subscriptions.json")
-HTML_PATH = os.path.expanduser("~/aura_analytics_engine/docs/index.html")
+DOCS_DIR = os.path.expanduser("~/aura_analytics_engine/docs")
 
 os.makedirs(os.path.dirname(SUBS_DB), exist_ok=True)
 if not os.path.exists(SUBS_DB):
     with open(SUBS_DB, "w") as f:
-        json.dump({"AURA_LIVE_SUB_KEY_2026": {"plan": "omni_group_10000", "active": True}}, f, indent=2)
+        json.dump({"AURA_LIVE_SUB_KEY_2026": {"plan": "6_omni_group_10000", "active": True}}, f, indent=2)
 
 class AuraSaaSHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path in ("/", "/index.html"):
-            with open(HTML_PATH, "rb") as f:
+            with open(os.path.join(DOCS_DIR, "index.html"), "rb") as f:
+                content = f.read()
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(content)
+        elif self.path in ("/standard1979", "/standard1979.html"):
+            with open(os.path.join(DOCS_DIR, "standard1979.html"), "rb") as f:
                 content = f.read()
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
@@ -36,11 +43,13 @@ class AuraSaaSHandler(http.server.BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(json.dumps({
-                "status": "ONLINE",
-                "portal": "auraintelcore.com",
-                "domain_id": 188680247367,
+                "status": "ONLINE_100_PERCENT_MONETIZED",
                 "org_id": 320717657398,
-                "stripe_catalog": CATALOG
+                "portals": {
+                    "auraintelcore.com": 188680247367,
+                    "standard1979.com": 282230018778
+                },
+                "stripe_live_links": CATALOG
             }, indent=2).encode())
         else:
             self.send_response(404)
@@ -59,7 +68,7 @@ class AuraSaaSHandler(http.server.BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps({
                     "error": "402 Payment Required",
-                    "stripe_catalog": CATALOG
+                    "stripe_live_links": CATALOG
                 }).encode())
                 return
             proc = subprocess.run([ENGINE_BIN, "--ingest-json", body], capture_output=True, text=True)
