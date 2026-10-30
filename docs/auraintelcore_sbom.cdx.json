@@ -1,0 +1,61 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:18868024-7367-4000-8000-320717657398",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-30T08:04:06Z",
+    "authors": [
+      {
+        "name": "José Emanuel Guadalupe López",
+        "email": "architecture@auraintelcore.com"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "bom-ref": "pkg:cargo/auraintelcore-sovereign-core@2.6.0",
+      "name": "auraintelcore-sovereign-core",
+      "version": "2.6.0",
+      "description": "AuraIntelCore.com Sovereign Cognitive Gateway, VPP Dispatcher & AAUFSA IRC Chapter 56 Settlement Engine",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "373ef555d802bbe8e011f0f74b4274f7cee3f6841b311b3e4a609ca5d5d74a39"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/serde@1.0.203",
+      "name": "serde",
+      "version": "1.0.203",
+      "purl": "pkg:cargo/serde@1.0.203",
+      "licenses": [{ "license": { "id": "Apache-2.0" } }, { "license": { "id": "MIT" } }]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/serde_json@1.0.117",
+      "name": "serde_json",
+      "version": "1.0.117",
+      "purl": "pkg:cargo/serde_json@1.0.117",
+      "licenses": [{ "license": { "id": "Apache-2.0" } }, { "license": { "id": "MIT" } }]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:cargo/sha2@0.10.8",
+      "name": "sha2",
+      "version": "0.10.8",
+      "purl": "pkg:cargo/sha2@0.10.8",
+      "licenses": [{ "license": { "id": "Apache-2.0" } }, { "license": { "id": "MIT" } }]
+    }
+  ]
+}
