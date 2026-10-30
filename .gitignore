@@ -8,3 +8,6 @@ audit_logs/vpp_sql_ledger_queue.sql
 audit_logs/*.log
 audit_logs/*.pid
 audit_logs/active_subscriptions.json
+target/
+**/target/
+*.sha256
