@@ -1,0 +1,20 @@
+[package]
+name = "aura_analytics_engine"
+version = "2026.1.0"
+edition = "2021"
+authors = ["guadalupelopezjose96-org <governance@tech-architecture-pro-elite.internal>"]
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+serde = { version = "1.0", default-features = false, features = ["alloc", "derive"] }
+serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
+sha2 = { version = "0.10", default-features = false }
+hex = { version = "0.4", default-features = false, features = ["alloc"] }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+overflow-checks = true
