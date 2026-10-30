@@ -5,8 +5,14 @@ import os
 import subprocess
 
 PORT = int(os.environ.get("AURA_SAAS_PORT", "8080"))
-STRIPE_LINK_PRO = "https://buy.stripe.com/5kQ14n1zcgKQ96v0UGcjS00"
-STRIPE_LINK_ENT = "https://buy.stripe.com/5kQ28r91E9io1E30UGcjS01"
+CATALOG = {
+    "vpp_pro_49_99": "https://buy.stripe.com/5kQ14n1zcgKQ96v0UGcjS00",
+    "der_node_addon_99": "https://buy.stripe.com/5kQaEX4LocuAaazdHscjS02",
+    "enterprise_core_499": "https://buy.stripe.com/5kQ28r91E9io1E30UGcjS01",
+    "dedicated_cloud_2500": "https://buy.stripe.com/3cIdR9fq266cfuT5aWcjS03",
+    "omni_group_10000": "https://buy.stripe.com/9B614n7XA66cfuTgTEcjS04",
+    "audit_authority_domain": "https://standard1979.com (Domain ID: 282230018778)"
+}
 ENGINE_BIN = os.path.expanduser("~/aura_analytics_engine/target/release/aura_analytics_engine")
 SUBS_DB = os.path.expanduser("~/aura_analytics_engine/audit_logs/active_subscriptions.json")
 HTML_PATH = os.path.expanduser("~/aura_analytics_engine/docs/index.html")
@@ -14,7 +20,7 @@ HTML_PATH = os.path.expanduser("~/aura_analytics_engine/docs/index.html")
 os.makedirs(os.path.dirname(SUBS_DB), exist_ok=True)
 if not os.path.exists(SUBS_DB):
     with open(SUBS_DB, "w") as f:
-        json.dump({"AURA_LIVE_SUB_KEY_2026": {"plan": "enterprise_499", "active": True}}, f, indent=2)
+        json.dump({"AURA_LIVE_SUB_KEY_2026": {"plan": "omni_group_10000", "active": True}}, f, indent=2)
 
 class AuraSaaSHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
@@ -31,9 +37,10 @@ class AuraSaaSHandler(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({
                 "status": "ONLINE",
+                "portal": "auraintelcore.com",
+                "domain_id": 188680247367,
                 "org_id": 320717657398,
-                "stripe_vpp_pro_49_99": STRIPE_LINK_PRO,
-                "stripe_enterprise_499": STRIPE_LINK_ENT
+                "stripe_catalog": CATALOG
             }, indent=2).encode())
         else:
             self.send_response(404)
@@ -52,8 +59,7 @@ class AuraSaaSHandler(http.server.BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps({
                     "error": "402 Payment Required",
-                    "subscribe_pro_url": STRIPE_LINK_PRO,
-                    "subscribe_enterprise_url": STRIPE_LINK_ENT
+                    "stripe_catalog": CATALOG
                 }).encode())
                 return
             proc = subprocess.run([ENGINE_BIN, "--ingest-json", body], capture_output=True, text=True)
