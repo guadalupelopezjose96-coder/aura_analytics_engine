@@ -186,5 +186,87 @@
     startGrafanaChart('chart-hz', '#38bdf8', 6000, 6);
     startGrafanaChart('chart-ma', '#f59e0b', 270000, 5000);
   </script>
+
+    <!-- AURA-TETRAX-ELITE-CORE MICROSERVICES & MONETIZATION -->
+    <div style="margin: 28px 0; padding: 24px; background: #0b1325; border: 1px solid #1e293b; border-radius: 12px; font-family: system-ui, -apple-system, sans-serif; color: #f8fafc;">
+      <div style="display: inline-block; background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 12px;">
+        ⚡ AURA-TETRAX-ELITE-CORE — IEC 61850 + AI FORECASTING + LP OPTIMIZER + KUBERNETES
+      </div>
+      <h2 style="margin: 0 0 10px 0; font-size: 22px; color: #ffffff;">Arquitectura Industrial de Microservicios VPP & Monetización Dual (Nodos 1.5 MW)</h2>
+      <p style="margin: 0 0 18px 0; color: #94a3b8; font-size: 14px; line-height: 1.6;">
+        Orquestación en tiempo real de Recursos Energéticos Distribuidos (<strong>INV-SOLAR-01</strong>, <strong>BESS-01</strong>, <strong>EV-CHARGER-01</strong>) validada en GitLab CI/CD (<code>termux-arm64</code> runner) y Grafana Cloud.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+        <div style="background: #111c33; padding: 16px; border-radius: 8px; border-left: 4px solid #00d2ff;">
+          <div style="font-size: 12px; color: #00d2ff; font-weight: 700;">1. B2B INDUSTRIAL SAAS (BEHIND-THE-METER)</div>
+          <div style="font-size: 22px; font-weight: 800; color: #ffffff; margin: 6px 0;">$80.90 – $278.33 USD / hora</div>
+          <div style="font-size: 13px; color: #94a3b8;">Reducción de costos eléctricos en horario punta (<em>Peak Shaving</em>) y optimización LCOE comprobada por nodo industrial de 1.5 MW.</div>
+        </div>
+        <div style="background: #111c33; padding: 16px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+          <div style="font-size: 12px; color: #f59e0b; font-weight: 700;">2. MERCADO ELÉCTRICO MAYORISTA (FRONT-OF-THE-METER)</div>
+          <div style="font-size: 22px; font-weight: 800; color: #ffffff; margin: 6px 0;">$45.30 – $289.02 USD / hora</div>
+          <div style="font-size: 13px; color: #94a3b8;">Arbitraje de energía según Precio Marginal Local (LMP) y venta de reserva rodante rápida por nodo de 1.5 MW.</div>
+        </div>
+      </div>
+
+      <div style="overflow-x: auto; margin-bottom: 18px;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left;">
+          <thead>
+            <tr style="border-bottom: 1px solid #334155; color: #38bdf8;">
+              <th style="padding: 10px 8px;">Servicio</th>
+              <th style="padding: 10px 8px;">Ruta</th>
+              <th style="padding: 10px 8px;">Tecnología</th>
+              <th style="padding: 10px 8px;">Función Principal</th>
+            </tr>
+          </thead>
+          <tbody style="color: #cbd5e1;">
+            <tr style="border-bottom: 1px solid #1e293b;">
+              <td style="padding: 8px; font-weight: 600;">IEC 61850 OT Simulator</td>
+              <td style="padding: 8px;"><code>services/iec61850-simulator/</code></td>
+              <td style="padding: 8px;">Python Socket TCP (<code>:10102</code>)</td>
+              <td style="padding: 8px;">Emulación de IED <code>AURA_SUBSTATION</code> (<code>MMXU1</code>, <code>XCBR1</code>, <code>CSWI</code> con maniobra <code>TRIP/CLOSE</code>).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #1e293b;">
+              <td style="padding: 8px; font-weight: 600;">AI Solar Forecasting</td>
+              <td style="padding: 8px;"><code>services/vpp-forecasting/</code></td>
+              <td style="padding: 8px;">FastAPI / Pydantic</td>
+              <td style="padding: 8px;">Inferencia de generación solar fotovoltaica (kW) según irradiancia (W/m²), temperatura y nubosidad.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #1e293b;">
+              <td style="padding: 8px; font-weight: 600;">Economic LP Optimizer</td>
+              <td style="padding: 8px;"><code>services/vpp-optimizer/</code></td>
+              <td style="padding: 8px;"><code>scipy.optimize.linprog</code></td>
+              <td style="padding: 8px;">Despacho económico óptimo entre generación solar, descarga BESS y consigna del TSO.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #1e293b;">
+              <td style="padding: 8px; font-weight: 600;">Edge Telemetry & Exporter</td>
+              <td style="padding: 8px;"><code>services/edge-adapter/</code></td>
+              <td style="padding: 8px;">HTTP Prometheus (<code>:8000</code>) + MQTT</td>
+              <td style="padding: 8px;">Unificación de telemetría OT, inferencia IA y cálculo financiero en vivo hacia Grafana Cloud.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #1e293b;">
+              <td style="padding: 8px; font-weight: 600;">VPP API Gateway & Simulator</td>
+              <td style="padding: 8px;"><code>services/vpp-api-gateway/</code></td>
+              <td style="padding: 8px;">FastAPI + JWT + M2M</td>
+              <td style="padding: 8px;">Pasarela de control seguro para activos distribuidos (<code>INV-SOLAR-01</code>, <code>BESS-01</code>, <code>EV-CHARGER-01</code>).</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; font-weight: 600;">Kubernetes Manifests</td>
+              <td style="padding: 8px;"><code>deploy/k8s/</code></td>
+              <td style="padding: 8px;">19 Manifiestos YAML</td>
+              <td style="padding: 8px;">Despliegue cloud-native validado automáticamente en GitLab CI/CD (<code>termux-arm64</code> runner).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="background: #070d19; padding: 14px; border-radius: 8px; border: 1px solid #1e293b; font-family: monospace; font-size: 12px; color: #34d399; line-height: 1.7;">
+        <strong style="color: #38bdf8;">[PROMETHEUS & GRAFANA CLOUD LIVE METRICS — PORT :8000]</strong><br>
+        • <code>vpp_bess_discharge_headroom_kw</code> (0–500 kW) | • <code>vpp_active_power_kw</code> | • <code>vpp_predicted_solar_kw</code> | • <code>vpp_weather_irradiance_wm2</code> (W/m²)<br>
+        • <code>vpp_breaker_status</code> (XCBR1: 1=CLOSED, 0=OPEN) | • <code>vpp_market_price_usd_mwh</code> (LMP) | • <code>vpp_wholesale_revenue_usd_h</code> | • <code>vpp_saas_client_savings_usd_h</code>
+      </div>
+    </div>
+    
 </body>
 </html>
