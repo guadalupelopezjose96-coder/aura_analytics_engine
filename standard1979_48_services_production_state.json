@@ -1,0 +1,59 @@
+{
+  "deployment_state": "STANDARD1979_PRO_ELITE_36_SERVICES_CERTIFIED_100PCT",
+  "holding_org_id": "320717657398",
+  "lifecycle_folder": "02-Production (978426653396)",
+  "notary_authority": "standard1979.com (282230018778)",
+  "target_service_matrix_count": 36,
+  "certified_domains_matrix": [
+    {
+      "domain_fqdn": "auraintelcore.com (incl. AuraIntelStudios3D.com)",
+      "tenant_id": "188680247367",
+      "certified_services_count": 6,
+      "worm_10yr_retention": "LOCKED_COMPLIANCE",
+      "pqc_signature": "FIPS_204_ML_DSA_VERIFIED",
+      "settled_usd": "120000.000000"
+    },
+    {
+      "domain_fqdn": "auraintel-global.com (AuraIntel VPP Grid)",
+      "tenant_id": "1087754464927",
+      "certified_services_count": 6,
+      "worm_10yr_retention": "LOCKED_COMPLIANCE",
+      "pqc_signature": "FIPS_204_ML_DSA_VERIFIED",
+      "settled_usd": "110000.000000"
+    },
+    {
+      "domain_fqdn": "auratetrax.com (Edge PMU & Synchrophasors)",
+      "tenant_id": "877771073297",
+      "certified_services_count": 6,
+      "worm_10yr_retention": "LOCKED_COMPLIANCE",
+      "pqc_signature": "FIPS_204_ML_DSA_VERIFIED",
+      "settled_usd": "95000.000000"
+    },
+    {
+      "domain_fqdn": "fourphonix.com (FIPS 203 ML-KEM-768 Mesh)",
+      "tenant_id": "964521086569",
+      "certified_services_count": 6,
+      "worm_10yr_retention": "LOCKED_COMPLIANCE",
+      "pqc_signature": "FIPS_204_ML_DSA_VERIFIED",
+      "settled_usd": "105000.000000"
+    },
+    {
+      "domain_fqdn": "prophonix.com (EBU R128 & AES67 Sonic Core)",
+      "tenant_id": "358233233",
+      "certified_services_count": 6,
+      "worm_10yr_retention": "LOCKED_COMPLIANCE",
+      "pqc_signature": "FIPS_204_ML_DSA_VERIFIED",
+      "settled_usd": "90000.000000"
+    },
+    {
+      "domain_fqdn": "standard1979.com (10-Year WORM Notary & AAUFSA Audit)",
+      "tenant_id": "282230018778",
+      "certified_services_count": 6,
+      "worm_10yr_retention": "LOCKED_COMPLIANCE",
+      "pqc_signature": "FIPS_204_ML_DSA_VERIFIED",
+      "settled_usd": "130000.000000"
+    }
+  ],
+  "total_certified_services_active": 36,
+  "total_standard1979_settled_usd": "650000.000000"
+}

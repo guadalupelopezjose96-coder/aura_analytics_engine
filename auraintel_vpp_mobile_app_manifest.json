@@ -1,0 +1,17 @@
+{
+  "name": "AuraIntel VPP & Motor Fiscal Determinista AAUFSA",
+  "short_name": "AuraIntel VPP",
+  "start_url": "https://auraintelcore.com/?source=pwa_pro_elite_36",
+  "display": "standalone",
+  "background_color": "#050B14",
+  "theme_color": "#00E5FF",
+  "holding_org_id": "320717657398",
+  "domain_tenant_id": "188680247367",
+  "governed_services_count": 36,
+  "live_bus1_telemetry": {
+    "active_capacity_mw": 120000,
+    "grid_frequency_hz": "60.000000",
+    "der_injected_current_ma": 270000,
+    "worm_ledger_lock": "ACTIVE_SERIALIZABLE"
+  }
+}

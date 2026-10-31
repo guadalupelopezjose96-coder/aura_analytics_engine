@@ -1,0 +1,33 @@
+{
+  "deployment_state": "AURATETRAX_PRO_ELITE_PRODUCTION_ACTIVE_100PCT",
+  "holding_org_id": "320717657398",
+  "lifecycle_folder": "02-Production (978426653396)",
+  "primary_domain": "auratetrax.com (877771073297)",
+  "edge_pmu_clusters": [
+    {
+      "cluster_id": "TETRAX-PMU-01-IEEE-C37-118",
+      "protocol": "IEEE C37.118.2 Synchrophasor Telemetry (60.000 Hz)",
+      "status": "ATTESTED_SAFE_HARBOR_36M_SETTLED",
+      "settled_usd": "265000.000000"
+    },
+    {
+      "cluster_id": "TETRAX-PMU-02-IEC-61850-GOOSE",
+      "protocol": "IEC 61850-8-1 GOOSE Fast Trip Protection (< 3 ms)",
+      "status": "ATTESTED_SAFE_HARBOR_36M_SETTLED",
+      "settled_usd": "215000.000000"
+    },
+    {
+      "cluster_id": "TETRAX-PMU-03-DNP3-SECURE-AUTH",
+      "protocol": "IEEE 1815 DNP3-SAv5 Edge RTU Aggregation",
+      "status": "ATTESTED_SAFE_HARBOR_36M_SETTLED",
+      "settled_usd": "340000.000000"
+    },
+    {
+      "cluster_id": "TETRAX-PMU-04-ISLANDING-FAULT-TEST",
+      "protocol": "Fail-Closed Guard Test (Disarmed Anti-Islanding Relay)",
+      "status": "BLOCKED_FAIL_CLOSED",
+      "rejection_reason": "VppAntiIslandingDisarmed"
+    }
+  ],
+  "total_auratetrax_settled_usd": "820000.000000"
+}

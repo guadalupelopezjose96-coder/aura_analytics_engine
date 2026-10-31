@@ -1,0 +1,42 @@
+{
+  "deployment_state": "PROPHONIX_SONIC_PRODUCTION_ACTIVE_100PCT",
+  "holding_org_id": "320717657398",
+  "lifecycle_folder": "02-Production (978426653396)",
+  "primary_domain": "prophonix.com (358233233)",
+  "true_peak_ceiling_dbtp": "-1.000000",
+  "sonic_streams": [
+    {
+      "stream_id": "PROPHONIX-CH01-EBU-R128-BROADCAST",
+      "profile": "ITU-R BS.1770-5 / EBU R128 (-23.0 LUFS)",
+      "integrated_lufs": "-23.000000",
+      "true_peak_dbtp": "-1.500000",
+      "status": "NORMALIZED_AND_SETTLED",
+      "settled_usd": "185000.000000"
+    },
+    {
+      "stream_id": "PROPHONIX-CH02-ATSC-A85-CALM-ACT",
+      "profile": "ATSC A/85 / FCC CALM Act (-24.0 LKFS)",
+      "integrated_lufs": "-24.000000",
+      "true_peak_dbtp": "-2.000000",
+      "status": "NORMALIZED_AND_SETTLED",
+      "settled_usd": "210000.000000"
+    },
+    {
+      "stream_id": "PROPHONIX-CH03-AES77-STREAMING",
+      "profile": "AES TD1004 / AES77 Spatial (-14.0 LUFS)",
+      "integrated_lufs": "-14.000000",
+      "true_peak_dbtp": "-1.000000",
+      "status": "NORMALIZED_AND_SETTLED",
+      "settled_usd": "165000.000000"
+    },
+    {
+      "stream_id": "PROPHONIX-CH04-OVERMODULATED-TEST",
+      "profile": "Fail-Closed Guard Test (-0.2 dBTP Violation)",
+      "integrated_lufs": "-12.000000",
+      "true_peak_dbtp": "-0.200000",
+      "status": "BLOCKED_FAIL_CLOSED",
+      "rejection_reason": "LoudnessTruePeakExceeded"
+    }
+  ],
+  "total_prophonix_settled_usd": "560000.000000"
+}

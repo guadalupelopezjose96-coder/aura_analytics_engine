@@ -1,0 +1,54 @@
+{
+  "introspection_engine": "SOVEREIGN_RUNTIME_INTROSPECTION_AND_POST_ACTIVE_100PCT",
+  "holding_org_id": "320717657398",
+  "lifecycle_folder": "02-Production (978426653396)",
+  "binary_sha256": "373ef555d802bbe8e011f0f74b4274f7cee3f6841b311b3e4a609ca5d5d74a39",
+  "slsa_v1_provenance": "c9cfb1f7a2bc347069cb46fde9adaba9083e175c96cb7d80c7b998c1e600a1f1",
+  "sbom_verification": "CycloneDX v1.5 Verified (0 Secrets / 0 Unsafe / 0 Float)",
+  "synchronized_github_repositories": 20,
+  "power_on_self_test_domains": [
+    {
+      "domain_fqdn": "auraintelcore.com (incl. auraintelstudios3d.com)",
+      "tenant_id": "188680247367",
+      "post_status": "OPERATIONAL_VERIFIED",
+      "verified_services": 6
+    },
+    {
+      "domain_fqdn": "auratetrax.com",
+      "tenant_id": "877771073297",
+      "post_status": "OPERATIONAL_VERIFIED",
+      "verified_services": 6
+    },
+    {
+      "domain_fqdn": "fourphonix.com",
+      "tenant_id": "964521086569",
+      "post_status": "OPERATIONAL_VERIFIED",
+      "verified_services": 6
+    },
+    {
+      "domain_fqdn": "prophonix.com",
+      "tenant_id": "358233233",
+      "post_status": "OPERATIONAL_VERIFIED",
+      "verified_services": 6
+    },
+    {
+      "domain_fqdn": "auraintel-global.com",
+      "tenant_id": "1087754464927",
+      "post_status": "OPERATIONAL_VERIFIED",
+      "verified_services": 6
+    },
+    {
+      "domain_fqdn": "standard1979.com",
+      "tenant_id": "282230018778",
+      "post_status": "OPERATIONAL_VERIFIED",
+      "verified_services": 6
+    },
+    {
+      "domain_fqdn": "unauthenticated-graphql-reflection-probe",
+      "tenant_id": "188680247367",
+      "post_status": "BLOCKED_FAIL_CLOSED",
+      "rejection_reason": "PublicDebugEndpointExposed"
+    }
+  ],
+  "total_verified_pro_elite_services": 36
+}

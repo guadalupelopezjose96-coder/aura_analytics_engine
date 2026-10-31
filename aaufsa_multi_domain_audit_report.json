@@ -1,0 +1,76 @@
+{
+  "holding_organization_id": "320717657398",
+  "tax_rate_bps": 1530,
+  "safe_harbor_months": 36,
+  "small_business_threshold_usd": "5000000.000000",
+  "domains": [
+    {
+      "code": "SCN-01-SAAS-IMMUNITY",
+      "domain": "AuraIntelCore-com",
+      "tenant_id": "188680247367",
+      "status": "COMMITTED_SERIALIZABLE",
+      "cloud_saas_exempt": true,
+      "safe_harbor_applied": false,
+      "clawback_triggered": false,
+      "tax_usd": "0.000000",
+      "oasi_75_usd": "0.000000",
+      "reskilling_25_usd": "0.000000"
+    },
+    {
+      "code": "SCN-02-SAFE-HARBOR-36M",
+      "domain": "AuraTetrax-com",
+      "tenant_id": "877771073297",
+      "status": "COMMITTED_SERIALIZABLE",
+      "cloud_saas_exempt": false,
+      "safe_harbor_applied": true,
+      "clawback_triggered": false,
+      "tax_usd": "0.000000",
+      "oasi_75_usd": "0.000000",
+      "reskilling_25_usd": "0.000000"
+    },
+    {
+      "code": "SCN-03-TAXABLE-1530BPS",
+      "domain": "Prophonix-com",
+      "tenant_id": "358233233",
+      "status": "COMMITTED_SERIALIZABLE",
+      "cloud_saas_exempt": false,
+      "safe_harbor_applied": false,
+      "clawback_triggered": false,
+      "tax_usd": "45900.000000",
+      "oasi_75_usd": "34425.000000",
+      "reskilling_25_usd": "11475.000000"
+    },
+    {
+      "code": "SCN-04-CLAWBACK-SETTLED",
+      "domain": "Fourphonix-com",
+      "tenant_id": "964521086569",
+      "status": "COMMITTED_SERIALIZABLE",
+      "cloud_saas_exempt": false,
+      "safe_harbor_applied": false,
+      "clawback_triggered": true,
+      "tax_usd": "30600.000000",
+      "oasi_75_usd": "22950.000000",
+      "reskilling_25_usd": "7650.000000"
+    },
+    {
+      "code": "SCN-05-SMALL-BIZ-EXEMPT",
+      "domain": "AuraIntel-Global-com",
+      "tenant_id": "1087754464927",
+      "status": "COMMITTED_SERIALIZABLE",
+      "cloud_saas_exempt": false,
+      "safe_harbor_applied": false,
+      "clawback_triggered": false,
+      "tax_usd": "0.000000",
+      "oasi_75_usd": "0.000000",
+      "reskilling_25_usd": "0.000000"
+    },
+    {
+      "code": "SCN-06-FAIL-CLOSED-GUARD",
+      "domain": "Standard1979-com",
+      "tenant_id": "282230018778",
+      "status": "BLOCKED_FAIL_CLOSED",
+      "reason": "ClawbackEscrowUnderfunded"
+    }
+  ],
+  "sha256_seal": "0e38ec828e28b0fa3f68d1cfadd66efb00ee0e3de563ac0fb740a1199d98d62a"
+}

@@ -1,0 +1,42 @@
+{
+  "domain_fqdn": "auraintelstudios3d.com",
+  "parent_division": "DIV-01-AURAINTELCORE (auraintelcore.com)",
+  "holding_org_id": "320717657398",
+  "tenant_id": "188680247367",
+  "lifecycle_folder": "02-Production (978426653396)",
+  "engine_state": "AURAINTEL_STUDIOS3D_DETERMINISTIC_SPATIAL_ACTIVE_100PCT",
+  "target_framerate_fps": 120,
+  "spatial_arithmetic": "FIXED_POINT_I128_MICROMETERS_ZERO_FLOAT",
+  "sec_5000h_d_cloud_saas_exempt": true,
+  "digital_twin_scenes": [
+    {
+      "scene_id": "S3D-TWIN-01-SUBSTATION-BUS1",
+      "linked_vpp_asset": "IED AURA_SUBSTATION (:10102) MMXU1/CSWI",
+      "frame_time_ms": "6.450000",
+      "status": "C2PA_WORM_VERIFIED_AND_SETTLED",
+      "settled_usd": "195000.000000"
+    },
+    {
+      "scene_id": "S3D-TWIN-02-INV-SOLAR-ARRAY",
+      "linked_vpp_asset": "INV-SOLAR-01 (950.0 kW / 905.5 W/m2)",
+      "frame_time_ms": "7.120000",
+      "status": "C2PA_WORM_VERIFIED_AND_SETTLED",
+      "settled_usd": "160000.000000"
+    },
+    {
+      "scene_id": "S3D-TWIN-03-BESS-THERMAL-CORE",
+      "linked_vpp_asset": "BESS-01 (1426.5 kW / 458.4 kW Headroom)",
+      "frame_time_ms": "5.890000",
+      "status": "C2PA_WORM_VERIFIED_AND_SETTLED",
+      "settled_usd": "125000.000000"
+    },
+    {
+      "scene_id": "S3D-TWIN-04-UNVERIFIED-MESH-GUARD",
+      "linked_vpp_asset": "EXTERNAL-UNTRUSTED-GLTF",
+      "frame_time_ms": "6.000000",
+      "status": "BLOCKED_FAIL_CLOSED",
+      "rejection_reason": "UntrustedAssetSignature"
+    }
+  ],
+  "total_studios3d_settled_usd": "480000.000000"
+}

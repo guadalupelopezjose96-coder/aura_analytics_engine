@@ -1,0 +1,80 @@
+{
+  "gateway_state": "GEMINI_ENTERPRISE_GATEWAY_PRO_ELITE_36_SERVICES_ACTIVE_100PCT",
+  "holding_org_id": "320717657398",
+  "lifecycle_folder": "02-Production (978426653396)",
+  "optimal_service_architecture": "36 Pro-Elite Services (6 Domains x 6 Core Layers)",
+  "live_web_telemetry_sync": {
+    "auraintelcore_bus1_active_mw": 120000,
+    "auraintelcore_bus1_freq_hz": "60.000000",
+    "auraintelcore_bus1_current_ma": 270000,
+    "standard1979_clawback_total_usd": "18727.200000",
+    "standard1979_oasi_75_usd": "14045.400000",
+    "standard1979_reskilling_25_usd": "4681.800000"
+  },
+  "gemini_channels": [
+    {
+      "channel_id": "GEMINI-GW-01-AURAINTELCORE-VPP-BUS1",
+      "domain_fqdn": "auraintelcore.com",
+      "tenant_id": "188680247367",
+      "github_repo": "guadalupelopezjose96-coder/gemini-enterprise-gateway",
+      "status": "ZERO_RETENTION_VERIFIED_AND_SETTLED",
+      "tokens_consumed": 12400000,
+      "settled_usd": "420000.000000"
+    },
+    {
+      "channel_id": "GEMINI-GW-02-AURATETRAX-CORE",
+      "domain_fqdn": "auratetrax.com",
+      "tenant_id": "877771073297",
+      "github_repo": "guadalupelopezjose96-coder/aura-tetrax-core",
+      "status": "ZERO_RETENTION_VERIFIED_AND_SETTLED",
+      "tokens_consumed": 9100000,
+      "settled_usd": "310000.000000"
+    },
+    {
+      "channel_id": "GEMINI-GW-03-FOURPHONIX-CORE-JEGL",
+      "domain_fqdn": "fourphonix.com",
+      "tenant_id": "964521086569",
+      "github_repo": "guadalupelopezjose96-coder/fourphonix-core-jegl",
+      "status": "ZERO_RETENTION_VERIFIED_AND_SETTLED",
+      "tokens_consumed": 7800000,
+      "settled_usd": "265000.000000"
+    },
+    {
+      "channel_id": "GEMINI-GW-04-PROPHONIX-SONIC",
+      "domain_fqdn": "prophonix.com",
+      "tenant_id": "358233233",
+      "github_repo": "guadalupelopezjose96-coder/auraintel-deterministic-logic-core",
+      "status": "ZERO_RETENTION_VERIFIED_AND_SETTLED",
+      "tokens_consumed": 6500000,
+      "settled_usd": "195000.000000"
+    },
+    {
+      "channel_id": "GEMINI-GW-05-AURAINTEL-GLOBAL-ELITE",
+      "domain_fqdn": "auraintel-global.com",
+      "tenant_id": "1087754464927",
+      "github_repo": "guadalupelopezjose96-coder/Aura-Intel-Elite-Core",
+      "status": "ZERO_RETENTION_VERIFIED_AND_SETTLED",
+      "tokens_consumed": 8200000,
+      "settled_usd": "290000.000000"
+    },
+    {
+      "channel_id": "GEMINI-GW-06-STANDARD1979-SHIELD",
+      "domain_fqdn": "standard1979.com",
+      "tenant_id": "282230018778",
+      "github_repo": "guadalupelopezjose96-coder/aaufsa-logical-shield",
+      "status": "ZERO_RETENTION_VERIFIED_AND_SETTLED",
+      "tokens_consumed": 5400000,
+      "settled_usd": "185000.000000"
+    },
+    {
+      "channel_id": "GEMINI-GW-07-PROMPT-INJECTION-GUARD",
+      "domain_fqdn": "auraintelcore.com",
+      "tenant_id": "188680247367",
+      "github_repo": "guadalupelopezjose96-coder/auraintel-improvement-gatekeeper",
+      "status": "BLOCKED_FAIL_CLOSED",
+      "rejection_reason": "PromptInjectionDetected"
+    }
+  ],
+  "total_gemini_tokens_processed": 49400000,
+  "total_gemini_gateway_settled_usd": "1665000.000000"
+}

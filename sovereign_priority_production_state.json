@@ -1,0 +1,71 @@
+{
+  "deployment_state": "SOVEREIGN_PRIORITY_ARBITRATION_ACTIVE_100PCT",
+  "holding_org_id": "320717657398",
+  "lifecycle_folder": "02-Production (978426653396)",
+  "domain_priority_slots": [
+    {
+      "slot_code": "PRIO-01-AURAINTELCORE-TIER0",
+      "domain_fqdn": "auraintelcore.com",
+      "tenant_id": "188680247367",
+      "priority_tier": 0,
+      "dscp_class": "CS7 (SIL-4 Override & VPP Core)",
+      "status": "PREEMPTIVELY_DISPATCHED_AND_SETTLED",
+      "settled_usd": "340000.000000"
+    },
+    {
+      "slot_code": "PRIO-02-AURATETRAX-TIER1",
+      "domain_fqdn": "auratetrax.com",
+      "tenant_id": "877771073297",
+      "priority_tier": 1,
+      "dscp_class": "CS6 (IEC 61850 GOOSE / PMU)",
+      "status": "PREEMPTIVELY_DISPATCHED_AND_SETTLED",
+      "settled_usd": "280000.000000"
+    },
+    {
+      "slot_code": "PRIO-03-FOURPHONIX-TIER1",
+      "domain_fqdn": "fourphonix.com",
+      "tenant_id": "964521086569",
+      "priority_tier": 1,
+      "dscp_class": "CS6 (IEEE 802.1Qbv TSN + ML-KEM-768)",
+      "status": "PREEMPTIVELY_DISPATCHED_AND_SETTLED",
+      "settled_usd": "260000.000000"
+    },
+    {
+      "slot_code": "PRIO-04-PROPHONIX-TIER2",
+      "domain_fqdn": "prophonix.com",
+      "tenant_id": "358233233",
+      "priority_tier": 2,
+      "dscp_class": "EF (AES67 / EBU R128 Real-Time)",
+      "status": "PREEMPTIVELY_DISPATCHED_AND_SETTLED",
+      "settled_usd": "195000.000000"
+    },
+    {
+      "slot_code": "PRIO-05-STUDIOS3D-TIER2",
+      "domain_fqdn": "auraintelstudios3d.com",
+      "tenant_id": "188680247367",
+      "priority_tier": 2,
+      "dscp_class": "AF41 (Spatial 3D & Binaural HRTF)",
+      "status": "PREEMPTIVELY_DISPATCHED_AND_SETTLED",
+      "settled_usd": "220000.000000"
+    },
+    {
+      "slot_code": "PRIO-06-STANDARD1979-TIER0",
+      "domain_fqdn": "standard1979.com",
+      "tenant_id": "282230018778",
+      "priority_tier": 0,
+      "dscp_class": "CS7 (IRC Sec. 7501 First Lien & WORM)",
+      "status": "PREEMPTIVELY_DISPATCHED_AND_SETTLED",
+      "settled_usd": "180000.000000"
+    },
+    {
+      "slot_code": "PRIO-07-INVERSION-GUARD-TEST",
+      "domain_fqdn": "sandbox-inversion-test.internal",
+      "tenant_id": "282230018778",
+      "priority_tier": 0,
+      "dscp_class": "BE (Unprivileged Sandbox)",
+      "status": "BLOCKED_FAIL_CLOSED",
+      "rejection_reason": "SandboxOrNonProdPreemptionAttempt"
+    }
+  ],
+  "total_priority_arbitrated_usd": "1475000.000000"
+}

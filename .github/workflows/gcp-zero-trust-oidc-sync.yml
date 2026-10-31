@@ -1,0 +1,35 @@
+name: GCP Zero-Trust OIDC Sync
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  keyless-gcp-oidc-sync:
+    name: GCP Zero-Trust OIDC Sync
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Sovereign Repository
+        uses: actions/checkout@v4
+
+      - name: Enforce Keyless Policy (Block Static GCP Service Account Keys)
+        run: |
+          if grep -rnE "PRIVATE KEY|\"type\":\s*\"service_account\"" src/ sql/ iac/; then
+            echo "[FATAL] Credencial estática detectada. Violación de constraints/iam.disableServiceAccountKeyCreation"
+            exit 1
+          fi
+          echo "[OK] Cero llaves estáticas confirmadas (Org 320717657398)."
+
+      - name: Verify OpenTofu Keyless OIDC & API Restriction Policies
+        run: |
+          grep -q "disableServiceAccountKeyCreation" iac/main.tf
+          grep -q "generativelanguage.googleapis.com" iac/main.tf
+          echo "[OK] Políticas declarativas GCP Zero-Trust OIDC verificadas."
+
+      - name: Verify WORM SHA-256 Cryptographic Manifest
+        run: sha256sum -c SOVEREIGN_COMPLIANCE_MANIFEST.sha256

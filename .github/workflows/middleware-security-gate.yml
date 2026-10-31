@@ -1,0 +1,34 @@
+name: Middleware Legal, Regulatory & Security Gate
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  legal-regulatory-security-gate:
+    name: Middleware Legal, Regulatory & Security Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Sovereign Repository
+        uses: actions/checkout@v4
+
+      - name: Install Deterministic Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Verify Zero Unsafe Code, Zero Float & AAUFSA Statutory Invariants
+        run: |
+          chmod +x verify_all_entities_master_compliance.sh
+          ./verify_all_entities_master_compliance.sh
+
+      - name: Run All Typestate & Middleware Unit Tests
+        run: cargo test --release
+
+      - name: Execute Middleware Compliance Gate Engine
+        run: cargo run --release --bin middleware-compliance-prod

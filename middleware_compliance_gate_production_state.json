@@ -1,0 +1,72 @@
+{
+  "middleware_state": "PRO_ELITE_ZERO_TRUST_OIDC_MIDDLEWARE_ACTIVE_100PCT",
+  "holding_org_id": "320717657398",
+  "lifecycle_folder": "02-Production (978426653396)",
+  "governed_services_matrix": 36,
+  "standard1979_clawback_audit": {
+    "base_tax_15_30_pct_usd": "18360.000000",
+    "surcharge_sec_5000g_c_usd": "367.200000",
+    "total_clawback_settled_usd": "18727.200000",
+    "oasi_trust_fund_75pct_usd": "14045.400000",
+    "workforce_reskilling_25pct_usd": "4681.800000"
+  },
+  "middleware_gates": [
+    {
+      "gate_id": "MW-GATE-01-AURAINTELCORE-VPP",
+      "workflow": "GCP Zero-Trust OIDC Sync",
+      "domain_fqdn": "auraintelcore.com",
+      "tenant_id": "188680247367",
+      "status": "KEYLESS_OIDC_AND_RLS_VERIFIED",
+      "settled_usd": "320000.000000"
+    },
+    {
+      "gate_id": "MW-GATE-02-AURATETRAX-PMU",
+      "workflow": "GCP Zero-Trust OIDC Sync",
+      "domain_fqdn": "auratetrax.com",
+      "tenant_id": "877771073297",
+      "status": "KEYLESS_OIDC_AND_RLS_VERIFIED",
+      "settled_usd": "245000.000000"
+    },
+    {
+      "gate_id": "MW-GATE-03-FOURPHONIX-PQC",
+      "workflow": "Middleware Legal, Regulatory & Security Gate",
+      "domain_fqdn": "fourphonix.com",
+      "tenant_id": "964521086569",
+      "status": "KEYLESS_OIDC_AND_RLS_VERIFIED",
+      "settled_usd": "210000.000000"
+    },
+    {
+      "gate_id": "MW-GATE-04-PROPHONIX-SONIC",
+      "workflow": "Middleware Legal, Regulatory & Security Gate",
+      "domain_fqdn": "prophonix.com",
+      "tenant_id": "358233233",
+      "status": "KEYLESS_OIDC_AND_RLS_VERIFIED",
+      "settled_usd": "175000.000000"
+    },
+    {
+      "gate_id": "MW-GATE-05-AURAINTEL-GLOBAL",
+      "workflow": "GCP Zero-Trust OIDC Sync",
+      "domain_fqdn": "auraintel-global.com",
+      "tenant_id": "1087754464927",
+      "status": "KEYLESS_OIDC_AND_RLS_VERIFIED",
+      "settled_usd": "230000.000000"
+    },
+    {
+      "gate_id": "MW-GATE-06-STANDARD1979-CLAWBACK-WORM",
+      "workflow": "Middleware Legal, Regulatory & Security Gate",
+      "domain_fqdn": "standard1979.com",
+      "tenant_id": "282230018778",
+      "status": "KEYLESS_OIDC_AND_RLS_VERIFIED",
+      "settled_usd": "18727.200000"
+    },
+    {
+      "gate_id": "MW-GATE-07-STATIC-KEY-VIOLATION-TEST",
+      "workflow": "GCP Zero-Trust OIDC Sync",
+      "domain_fqdn": "auraintelcore.com",
+      "tenant_id": "188680247367",
+      "status": "BLOCKED_FAIL_CLOSED",
+      "rejection_reason": "StaticServiceAccountKeyForbidden"
+    }
+  ],
+  "total_middleware_settled_usd": "1198727.200000"
+}

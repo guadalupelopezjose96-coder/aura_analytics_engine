@@ -1,0 +1,46 @@
+{
+  "deployment_state": "FOURPHONIX_PQC_PRODUCTION_ACTIVE_100PCT",
+  "holding_org_id": "320717657398",
+  "lifecycle_folder": "02-Production (978426653396)",
+  "primary_domain": "fourphonix.com (964521086569)",
+  "pqc_standard": "NIST FIPS 203 ML-KEM-768 + IEEE 802.1AE MACsec",
+  "backbone_tunnels": [
+    {
+      "tunnel_id": "FOURPHONIX-PQC-TUNNEL-01-VPP-CORE",
+      "corridor": "fourphonix.com <-> auraintelcore.com (FIPS 203 ML-KEM-768 + MACsec)",
+      "ml_kem_768_active": true,
+      "macsec_active": true,
+      "status": "PQC_ENCRYPTED_AND_SETTLED",
+      "bytes_transferred": 85000000000000,
+      "settled_usd": "240000.000000"
+    },
+    {
+      "tunnel_id": "FOURPHONIX-PQC-TUNNEL-02-TETRAX-EDGE",
+      "corridor": "fourphonix.com <-> auratetrax.com (Zero-Trust WireGuard PQC)",
+      "ml_kem_768_active": true,
+      "macsec_active": true,
+      "status": "PQC_ENCRYPTED_AND_SETTLED",
+      "bytes_transferred": 62000000000000,
+      "settled_usd": "175000.000000"
+    },
+    {
+      "tunnel_id": "FOURPHONIX-PQC-TUNNEL-03-PROPHONIX-AES67",
+      "corridor": "fourphonix.com <-> prophonix.com (Low-Latency Sonic Mesh)",
+      "ml_kem_768_active": true,
+      "macsec_active": true,
+      "status": "PQC_ENCRYPTED_AND_SETTLED",
+      "bytes_transferred": 48000000000000,
+      "settled_usd": "115000.000000"
+    },
+    {
+      "tunnel_id": "FOURPHONIX-PQC-TUNNEL-04-DOWNGRADE-TEST",
+      "corridor": "Fail-Closed Guard Test (Classical TLS Without ML-KEM-768)",
+      "ml_kem_768_active": false,
+      "macsec_active": true,
+      "status": "BLOCKED_FAIL_CLOSED",
+      "rejection_reason": "UnencryptedNetworkLink"
+    }
+  ],
+  "total_verified_bytes_transferred": 195000000000000,
+  "total_fourphonix_settled_usd": "530000.000000"
+}

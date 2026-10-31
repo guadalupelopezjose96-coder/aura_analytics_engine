@@ -1,0 +1,62 @@
+{
+  "deployment_state": "SOVEREIGN_PROSCRIPTION_ENFORCEMENT_ACTIVE_100PCT",
+  "holding_org_id": "320717657398",
+  "enforcement_doctrine": "Make Illegal States Unrepresentable + Fail-Closed",
+  "proscribed_cases_verified": [
+    {
+      "case_id": "ILLEGAL-01-GEMINI-RETENTION",
+      "domain_fqdn": "auraintelcore.com",
+      "tenant_id": "188680247367",
+      "proscribed_act": "Attempted Gemini API Invocation with store:true Data Retention",
+      "statutory_basis": "EU AI Act Art. 15 / GDPR Art. 25 Zero-Retention Mandate",
+      "enforcement_status": "ILLEGALIZED_AND_BLOCKED_100PCT",
+      "deterministic_error": "GeminiDataRetentionViolation"
+    },
+    {
+      "case_id": "ILLEGAL-02-GRID-OVERFREQUENCY",
+      "domain_fqdn": "auratetrax.com",
+      "tenant_id": "877771073297",
+      "proscribed_act": "Attempted VPP Dispatch at 62.50 Hz Outside IEEE 1547 Envelope",
+      "statutory_basis": "FERC Order 2222 / NERC PRC-024 / IEEE 1547-2018",
+      "enforcement_status": "ILLEGALIZED_AND_BLOCKED_100PCT",
+      "deterministic_error": "VppFrequencyOutOfEnvelope"
+    },
+    {
+      "case_id": "ILLEGAL-03-PQC-DOWNGRADE",
+      "domain_fqdn": "fourphonix.com",
+      "tenant_id": "964521086569",
+      "proscribed_act": "Attempted Backbone Transmission Without FIPS 203 ML-KEM-768",
+      "statutory_basis": "NIST FIPS 203 / NIST SP 800-53 SC-8 & CM-7",
+      "enforcement_status": "ILLEGALIZED_AND_BLOCKED_100PCT",
+      "deterministic_error": "UnencryptedNetworkLink"
+    },
+    {
+      "case_id": "ILLEGAL-04-ACOUSTIC-CLIPPING",
+      "domain_fqdn": "prophonix.com",
+      "tenant_id": "358233233",
+      "proscribed_act": "Attempted Audio Broadcast at -0.1 dBTP Exceeding -1.0 dBTP Ceiling",
+      "statutory_basis": "FCC CALM Act 47 U.S.C. 621 / ITU-R BS.1770-5 / EBU R128",
+      "enforcement_status": "ILLEGALIZED_AND_BLOCKED_100PCT",
+      "deterministic_error": "LoudnessTruePeakExceeded"
+    },
+    {
+      "case_id": "ILLEGAL-05-SINGLE-CUSTODIAN-PROD",
+      "domain_fqdn": "auraintelstudios3d.com",
+      "tenant_id": "188680247367",
+      "proscribed_act": "Attempted Production Execution with Only 1 Custodian Signature",
+      "statutory_basis": "SOC 2 Type II / ISO 27001 SoD Four-Eyes Principle",
+      "enforcement_status": "ILLEGALIZED_AND_BLOCKED_100PCT",
+      "deterministic_error": "DualSignatureMissingInProduction"
+    },
+    {
+      "case_id": "ILLEGAL-06-UNFUNDED-AAUFSA-CLAWBACK",
+      "domain_fqdn": "standard1979.com",
+      "tenant_id": "282230018778",
+      "proscribed_act": "Attempted Early Termination at Month 12 Without Clawback Escrow",
+      "statutory_basis": "AAUFSA IRC Chapter 56 Sec. 5000G(c) & IRC Sec. 7701(o)",
+      "enforcement_status": "ILLEGALIZED_AND_BLOCKED_100PCT",
+      "deterministic_error": "ClawbackEscrowUnderfunded"
+    }
+  ],
+  "total_illegal_states_neutralized": 6
+}

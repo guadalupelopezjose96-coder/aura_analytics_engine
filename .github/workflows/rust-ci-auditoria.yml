@@ -1,0 +1,33 @@
+name: Rust CI & Auditoria Legal/Seguridad
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  calidad-y-seguridad:
+    name: calidad-y-seguridad
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Instalar Rust estable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Verificar formato (rustfmt)
+        run: cargo fmt --all -- --check
+
+      - name: Análisis estático estricto (Clippy)
+        run: cargo clippy --all-targets
+
+      - name: Ejecutar pruebas
+        run: cargo test --release

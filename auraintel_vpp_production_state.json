@@ -1,0 +1,40 @@
+{
+  "engine": "auraintelcore-sovereign-core v2.6.0 (Pro-Elite 36 Services)",
+  "lifecycle_folder": "02-Production (978426653396)",
+  "power_on_self_test": {
+    "status": "OPERATIONAL",
+    "domain_id": "188680247367",
+    "org_id": "320717657398",
+    "store": false,
+    "sec_5000h_d_saas_exempt": true,
+    "binary_sha256": "373ef555d802bbe8e011f0f74b4274f7cee3f6841b311b3e4a609ca5d5d74a39",
+    "slsa_v1_provenance": "c9cfb1f7a2bc347069cb46fde9adaba9083e175c96cb7d80c7b998c1e600a1f1"
+  },
+  "bus1_live_telemetry": {
+    "active_capacity_mw": 120000,
+    "nominal_max_mw": 250000,
+    "grid_frequency_hz": "60.000000",
+    "der_injected_current_ma": 270000,
+    "thermal_limit_ma": 900000
+  },
+  "prometheus_iec61850_suite": {
+    "vpp_active_power_kw": "1426.500000",
+    "vpp_bess_discharge_headroom_kw": "458.400000",
+    "vpp_predicted_solar_kw": "950.000000",
+    "vpp_weather_irradiance_wm2": "905.500000",
+    "vpp_breaker_status_xcbr1": "1 = CLOSED (SYNC) IED AURA_SUBSTATION (:10102) MMXU1/CSWI",
+    "vpp_market_price_usd_mwh": "146.640000",
+    "vpp_saas_client_savings_usd_h": "222.040000",
+    "vpp_wholesale_revenue_usd_h": "228.220000",
+    "combined_node_value_usd_h": "450.260000"
+  },
+  "commercial_saas_catalog_usd": {
+    "tier1_vpp_pro_monthly": "49.990000",
+    "tier2_der_node_expansion_monthly": "99.000000",
+    "tier3_enterprise_core_monthly": "499.000000",
+    "tier4_dedicated_cloud_opentofu": "2500.000000",
+    "tier5_omni_controlled_group_license": "10000.000000",
+    "standard1979_worm_audit_portal_fee": "1500.000000"
+  },
+  "total_vpp_settled_usd": "1236500.000000"
+}

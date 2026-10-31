@@ -1,0 +1,77 @@
+{
+  "orchestrator_state": "PRO_ELITE_MASTER_HOLDING_CONSOLIDATED_100PCT",
+  "holding_org_id": "320717657398",
+  "holding_name": "guadalupelopezjose96-org (Tech Arquitecture Pro-Elite)",
+  "production_folder_id": "978426653396",
+  "consolidated_divisions": [
+    {
+      "division_code": "DIV-01-AURAINTELCORE",
+      "domain_fqdn": "auraintelcore.com (incl. AuraIntel VPP & Studios3D)",
+      "tenant_id": "188680247367",
+      "primary_engine": "auraintel-vpp-prod / sovereign-priority-prod",
+      "active_services": 6,
+      "gross_settled_usd": "2366500.000000",
+      "aaufsa_tax_usd": "0.000000",
+      "net_retained_usd": "2366500.000000"
+    },
+    {
+      "division_code": "DIV-02-AURATETRAX",
+      "domain_fqdn": "auratetrax.com (Edge PMU & Synchrophasor Grid)",
+      "tenant_id": "877771073297",
+      "primary_engine": "auratetrax-edge-prod",
+      "active_services": 6,
+      "gross_settled_usd": "2015000.000000",
+      "aaufsa_tax_usd": "0.000000",
+      "net_retained_usd": "2015000.000000"
+    },
+    {
+      "division_code": "DIV-03-FOURPHONIX",
+      "domain_fqdn": "fourphonix.com (FIPS 203 ML-KEM-768 + MACsec)",
+      "tenant_id": "964521086569",
+      "primary_engine": "fourphonix-pqc-prod",
+      "active_services": 6,
+      "gross_settled_usd": "1425000.000000",
+      "aaufsa_tax_usd": "30600.000000",
+      "net_retained_usd": "1394400.000000"
+    },
+    {
+      "division_code": "DIV-04-PROPHONIX",
+      "domain_fqdn": "prophonix.com (EBU R128 & AES67 Sonic Core)",
+      "tenant_id": "358233233",
+      "primary_engine": "prophonix-sonic-prod",
+      "active_services": 6,
+      "gross_settled_usd": "1455000.000000",
+      "aaufsa_tax_usd": "45900.000000",
+      "net_retained_usd": "1409100.000000"
+    },
+    {
+      "division_code": "DIV-05-AURAINTEL-GLOBAL",
+      "domain_fqdn": "auraintel-global.com (Global Operations)",
+      "tenant_id": "1087754464927",
+      "primary_engine": "aaufsa-simulator / standard1979-notary-prod",
+      "active_services": 6,
+      "gross_settled_usd": "500000.000000",
+      "aaufsa_tax_usd": "0.000000",
+      "net_retained_usd": "500000.000000"
+    },
+    {
+      "division_code": "DIV-06-STANDARD1979",
+      "domain_fqdn": "standard1979.com (10-Year WORM & Statutory Audit)",
+      "tenant_id": "282230018778",
+      "primary_engine": "standard1979-notary-prod / aaufsa-irs-form8999",
+      "active_services": 6,
+      "gross_settled_usd": "310000.000000",
+      "aaufsa_tax_usd": "0.000000",
+      "net_retained_usd": "310000.000000"
+    }
+  ],
+  "holding_master_balance_sheet": {
+    "total_active_pro_elite_services": 36,
+    "total_gross_volume_settled_usd": "8071500.000000",
+    "total_aaufsa_chapter56_tax_usd": "76500.000000",
+    "trust_fund_oasi_di_75pct_usd": "57375.000000",
+    "trust_fund_workforce_reskilling_25pct_usd": "19125.000000",
+    "total_net_holding_equity_usd": "7995000.000000",
+    "double_entry_zero_sum_verified": true
+  }
+}

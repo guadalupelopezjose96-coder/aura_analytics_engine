@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IRSForm8999Return xmlns="urn:us:gov:treasury:irs:aaufsa:ch56" version="2026v1.0">
+  <FilerHeader>
+    <HoldingOrganizationID>320717657398</HoldingOrganizationID>
+    <LegalName>guadalupelopezjose96-org (Tech Arquitecture Pro-Elite)</LegalName>
+    <StatutoryAct>Automated Asset Utilization and Fiscal Solvency Act of 2026 (IRC Chapter 56)</StatutoryAct>
+    <AuthorAttribution>Jose Emanuel Guadalupe Lopez (DMCA 17 U.S.C. 1202 - 0% Alteration)</AuthorAttribution>
+    <CompetitiveNeutralityRateBPS>1530</CompetitiveNeutralityRateBPS>
+    <SafeHarborMonths>36</SafeHarborMonths>
+    <ControlledGroupThresholdUSD>5000000.000000</ControlledGroupThresholdUSD>
+  </FilerHeader>
+  <ControlledGroupSchedules>
+    <ScheduleLine id="SCH-A-01">
+      <DomainName>AuraIntelCore-com (incl. AuraIntel VPP Prod)</DomainName>
+      <TenantID>188680247367</TenantID>
+      <StatutoryProvision>IRC Sec. 5000H(d) Cloud/SaaS Provider Immunity</StatutoryProvision>
+      <GrossReceiptsUSD>1686500.000000</GrossReceiptsUSD>
+      <FilingStatus>ACCEPTED_SERIALIZABLE</FilingStatus>
+      <CloudSaasExemptSec5000Hd>true</CloudSaasExemptSec5000Hd>
+      <SmallBusinessExemptSec5000Gb>false</SmallBusinessExemptSec5000Gb>
+      <SafeHarbor36mSec5000Ga>false</SafeHarbor36mSec5000Ga>
+      <ClawbackTriggeredSec5000Gc>false</ClawbackTriggeredSec5000Gc>
+      <Chapter56TaxLiabilityUSD>0.000000</Chapter56TaxLiabilityUSD>
+      <TrustFundOasiDi75PctUSD>0.000000</TrustFundOasiDi75PctUSD>
+      <TrustFundReskilling25PctUSD>0.000000</TrustFundReskilling25PctUSD>
+    </ScheduleLine>
+    <ScheduleLine id="SCH-A-02">
+      <DomainName>AuraTetrax-com</DomainName>
+      <TenantID>877771073297</TenantID>
+      <StatutoryProvision>IRC Sec. 5000G(a) 36-Month Reassignment Safe Harbor</StatutoryProvision>
+      <GrossReceiptsUSD>820000.000000</GrossReceiptsUSD>
+      <FilingStatus>ACCEPTED_SERIALIZABLE</FilingStatus>
+      <CloudSaasExemptSec5000Hd>false</CloudSaasExemptSec5000Hd>
+      <SmallBusinessExemptSec5000Gb>true</SmallBusinessExemptSec5000Gb>
+      <SafeHarbor36mSec5000Ga>false</SafeHarbor36mSec5000Ga>
+      <ClawbackTriggeredSec5000Gc>false</ClawbackTriggeredSec5000Gc>
+      <Chapter56TaxLiabilityUSD>0.000000</Chapter56TaxLiabilityUSD>
+      <TrustFundOasiDi75PctUSD>0.000000</TrustFundOasiDi75PctUSD>
+      <TrustFundReskilling25PctUSD>0.000000</TrustFundReskilling25PctUSD>
+    </ScheduleLine>
+    <ScheduleLine id="SCH-A-03">
+      <DomainName>Prophonix-com</DomainName>
+      <TenantID>358233233</TenantID>
+      <StatutoryProvision>IRC Sec. 5000F Competitive Neutrality Tax (15.3%)</StatutoryProvision>
+      <GrossReceiptsUSD>610000.000000</GrossReceiptsUSD>
+      <FilingStatus>ACCEPTED_SERIALIZABLE</FilingStatus>
+      <CloudSaasExemptSec5000Hd>false</CloudSaasExemptSec5000Hd>
+      <SmallBusinessExemptSec5000Gb>false</SmallBusinessExemptSec5000Gb>
+      <SafeHarbor36mSec5000Ga>false</SafeHarbor36mSec5000Ga>
+      <ClawbackTriggeredSec5000Gc>false</ClawbackTriggeredSec5000Gc>
+      <Chapter56TaxLiabilityUSD>45900.000000</Chapter56TaxLiabilityUSD>
+      <TrustFundOasiDi75PctUSD>34425.000000</TrustFundOasiDi75PctUSD>
+      <TrustFundReskilling25PctUSD>11475.000000</TrustFundReskilling25PctUSD>
+    </ScheduleLine>
+    <ScheduleLine id="SCH-A-04">
+      <DomainName>Fourphonix-com</DomainName>
+      <TenantID>964521086569</TenantID>
+      <StatutoryProvision>IRC Sec. 5000G(c) Safe Harbor Clawback Recapture</StatutoryProvision>
+      <GrossReceiptsUSD>530000.000000</GrossReceiptsUSD>
+      <FilingStatus>ACCEPTED_SERIALIZABLE</FilingStatus>
+      <CloudSaasExemptSec5000Hd>false</CloudSaasExemptSec5000Hd>
+      <SmallBusinessExemptSec5000Gb>false</SmallBusinessExemptSec5000Gb>
+      <SafeHarbor36mSec5000Ga>false</SafeHarbor36mSec5000Ga>
+      <ClawbackTriggeredSec5000Gc>true</ClawbackTriggeredSec5000Gc>
+      <Chapter56TaxLiabilityUSD>30600.000000</Chapter56TaxLiabilityUSD>
+      <TrustFundOasiDi75PctUSD>22950.000000</TrustFundOasiDi75PctUSD>
+      <TrustFundReskilling25PctUSD>7650.000000</TrustFundReskilling25PctUSD>
+    </ScheduleLine>
+    <ScheduleLine id="SCH-A-05">
+      <DomainName>AuraIntel-Global-com</DomainName>
+      <TenantID>1087754464927</TenantID>
+      <StatutoryProvision>IRC Sec. 5000G(b) Small Business Threshold Exemption</StatutoryProvision>
+      <GrossReceiptsUSD>390000.000000</GrossReceiptsUSD>
+      <FilingStatus>ACCEPTED_SERIALIZABLE</FilingStatus>
+      <CloudSaasExemptSec5000Hd>false</CloudSaasExemptSec5000Hd>
+      <SmallBusinessExemptSec5000Gb>true</SmallBusinessExemptSec5000Gb>
+      <SafeHarbor36mSec5000Ga>false</SafeHarbor36mSec5000Ga>
+      <ClawbackTriggeredSec5000Gc>false</ClawbackTriggeredSec5000Gc>
+      <Chapter56TaxLiabilityUSD>0.000000</Chapter56TaxLiabilityUSD>
+      <TrustFundOasiDi75PctUSD>0.000000</TrustFundOasiDi75PctUSD>
+      <TrustFundReskilling25PctUSD>0.000000</TrustFundReskilling25PctUSD>
+    </ScheduleLine>
+    <ScheduleLine id="SCH-A-06">
+      <DomainName>Standard1979-com</DomainName>
+      <TenantID>282230018778</TenantID>
+      <StatutoryProvision>IRC Sec. 5000G(c) Fail-Closed Pre-Commit Guard</StatutoryProvision>
+      <GrossReceiptsUSD>275000.000000</GrossReceiptsUSD>
+      <FilingStatus>REJECTED_FAIL_CLOSED</FilingStatus>
+      <FailClosedReason>ClawbackEscrowUnderfunded</FailClosedReason>
+    </ScheduleLine>
+  </ControlledGroupSchedules>
+  <PartIIITrustFundSettlementSummary>
+    <TotalAcceptedGrossReceiptsUSD>4036500.000000</TotalAcceptedGrossReceiptsUSD>
+    <TotalChapter56TaxDueUSD>76500.000000</TotalChapter56TaxDueUSD>
+    <AllocationOasiAndDiTrustFund75PctUSD>57375.000000</AllocationOasiAndDiTrustFund75PctUSD>
+    <AllocationWorkforceReskillingTrustFund25PctUSD>19125.000000</AllocationWorkforceReskillingTrustFund25PctUSD>
+  </PartIIITrustFundSettlementSummary>
+  <CryptographicSealFIPS180_4>50058213f3099dcb0f5834faddad1a6e923519debe787118890d11831f0886f0</CryptographicSealFIPS180_4>
+</IRSForm8999Return>
