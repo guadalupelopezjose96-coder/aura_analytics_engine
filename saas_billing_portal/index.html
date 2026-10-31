@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuraIntelCore.com — VPP Grafana Telemetry, WORM Ledger & SaaS</title>
+  <style>
+    :root { --bg: #0b0f19; --panel: #111827; --card: #1e293b; --border: #334155; --accent: #38bdf8; --green: #10b981; --stripe: #635bff; --gold: #f59e0b; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: #e2e8f0; margin: 0; padding: 1.8rem 1rem; line-height: 1.55; }
+    .container { max-width: 1180px; margin: 0 auto; }
+    .badge { display: inline-block; background: var(--green); color: #052e16; padding: 0.3rem 0.85rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.04em; }
+    h1 { font-size: 2.2rem; margin: 0.8rem 0 0.4rem; color: #fff; }
+    .subtitle { color: #94a3b8; font-size: 1rem; max-width: 880px; margin-bottom: 1.8rem; }
+    /* GRAFANA + WORM PANEL */
+    .grafana-header { display: flex; justify-content: space-between; align-items: center; background: #161f30; border: 1px solid var(--border); padding: 0.8rem 1.2rem; border-radius: 10px 10px 0 0; }
+    .grafana-title { font-weight: 800; color: #fff; font-size: 0.95rem; display: flex; align-items: center; gap: 0.6rem; }
+    .dot { width: 10px; height: 10px; background: var(--green); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--green); }
+    .grafana-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; background: var(--panel); border: 1px solid var(--border); border-top: none; padding: 1.2rem; border-radius: 0 0 10px 10px; }
+    .g-panel { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 1rem; }
+    .g-label { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+    .g-value { font-size: 1.75rem; font-weight: 800; color: var(--green); margin: 0.3rem 0; font-family: monospace; }
+    canvas { width: 100%; height: 70px; display: block; margin-top: 0.4rem; }
+    .worm-box { margin-top: 1rem; background: #090d16; border: 1px solid var(--border); border-left: 4px solid var(--green); border-radius: 8px; padding: 0.9rem 1.1rem; font-family: monospace; font-size: 0.8rem; color: #38bdf8; overflow-x: auto; }
+    /* STRIPE CATALOG */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.4rem; margin-top: 2rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.6rem; display: flex; flex-direction: column; justify-content: space-between; }
+    .card.featured { border: 2px solid var(--accent); box-shadow: 0 0 25px rgba(56, 189, 248, 0.12); }
+    .card.omni { border: 2px solid var(--gold); box-shadow: 0 0 25px rgba(245, 158, 11, 0.14); }
+    .card h3 { margin-top: 0; color: #fff; font-size: 1.18rem; }
+    .price { font-size: 2.1rem; font-weight: 800; color: var(--accent); margin: 0.7rem 0; }
+    .card.omni .price { color: var(--gold); }
+    .price span { font-size: 0.88rem; color: #94a3b8; font-weight: 500; }
+    ul { padding-left: 1.2rem; color: #cbd5e1; margin-bottom: 1.5rem; font-size: 0.92rem; }
+    li { margin-bottom: 0.4rem; }
+    .btn { display: block; width: 100%; text-align: center; background: var(--stripe); color: #fff; padding: 0.9rem 0; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.96rem; box-sizing: border-box; }
+    .btn:hover { background: #4f46e5; }
+    .audit-banner { margin-top: 2.2rem; background: #0f172a; border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 1.3rem 1.5rem; border-radius: 10px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
+    .footer { margin-top: 2.8rem; padding-top: 1.4rem; border-top: 1px solid var(--border); font-size: 0.84rem; color: #64748b; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="badge">AURAINTELCORE.COM | DOMAIN ID: 188680247367 | WORM + GRAFANA TELEMETRY</span>
+    <h1>AuraIntel VPP &amp; Motor Fiscal Determinista AAUFSA</h1>
+    <p class="subtitle">Telemetría eléctrica en tiempo real (Grafana VPP Stream), almacenamiento inmutable WORM (Write-Once-Read-Many) en PostgreSQL SERIALIZABLE y catálogo oficial de licenciamiento SaaS (Org ID: 320717657398).</p>
+
+    <!-- PANEL GRAFANA + WORM EN VIVO -->
+    <div class="grafana-header">
+      <div class="grafana-title"><span class="dot"></span> GRAFANA LIVE TELEMETRY &amp; WORM IMMUTABLE STORAGE — BUS #1 (ORG: 320717657398)</div>
+      <div style="font-size: 0.78rem; color: #94a3b8; font-family: monospace;">REFRESH: 1s | WORM LOCK: ACTIVE</div>
+    </div>
+    <div class="grafana-grid">
+      <div class="g-panel">
+        <div class="g-label">Capacidad Activa Bus VPP (mW)</div>
+        <div class="g-value" id="mw-val">120,000 mW</div>
+        <div style="font-size:0.75rem; color:#64748b;">Máximo Nominal: 250,000 mW | Estado: NominalGridOperation</div>
+        <canvas id="chart-mw" width="280" height="70"></canvas>
+      </div>
+      <div class="g-panel">
+        <div class="g-label">Frecuencia de Red Síncrona (Hz)</div>
+        <div class="g-value" id="hz-val" style="color:#38bdf8;">60.00 Hz</div>
+        <div style="font-size:0.75rem; color:#64748b;">Rango Seguro: 59.50 - 60.50 Hz (6000 cHz)</div>
+        <canvas id="chart-hz" width="280" height="70"></canvas>
+      </div>
+      <div class="g-panel">
+        <div class="g-label">Corriente Inyectada DER (mA)</div>
+        <div class="g-value" id="ma-val" style="color:#f59e0b;">270,000 mA</div>
+        <div style="font-size:0.75rem; color:#64748b;">Límite Térmico Bus: 900,000 mA | Punto Fijo 100%</div>
+        <canvas id="chart-ma" width="280" height="70"></canvas>
+      </div>
+    </div>
+
+    <div class="worm-box">
+      <strong style="color:#10b981;">[WORM STORAGE SEAL — WRITE-ONCE-READ-MANY POSTGRESQL LEDGER]</strong><br>
+      PREV_HASH: 0000000000000000000000000000000000000000000000000000000000000000<br>
+      CURR_HASH: <span id="worm-hash">15cfeda08a37085a515d710979a6355e811ff9d4dd9db226ae99a39569bbf0a2</span><br>
+      SQL_POLICY: BEGIN ISOLATION LEVEL SERIALIZABLE; SET LOCAL app.current_domain_id = '877771073297'; INSERT INTO aaufsa_vpp_operational_ledger ... COMMIT; (UPDATE/DELETE REJECTED BY WORM TRIGGER)
+    </div>
+
+    <!-- CATALOGO DE 5 NIVELES DE AURAINTELCORE.COM -->
+    <div class="grid">
+      <div class="card">
+        <div>
+          <h3>1. AuraIntel VPP Pro — Suscripción Mensual (SaaS)</h3>
+          <div class="price">$49.99 USD <span>/ mes</span></div>
+          <ul>
+            <li>Despacho VPP en tiempo real y monitoreo Grafana (60.00 Hz)</li>
+            <li>Evaluación de exención PyME Sec. 5000G(b) (&le; $5M USD)</li>
+            <li>Telemetría JSON dinámica y sellado WORM SHA-256 por ciclo</li>
+          </ul>
+        </div>
+        <a class="btn" href="https://buy.stripe.com/5kQ14n1zcgKQ96v0UGcjS00" target="_blank" rel="noopener">Suscribirse — $49.99 / mes</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>2. Expansión Nodo DER Adicional (+25,000 mW)</h3>
+          <div class="price">$99.00 USD <span>/ mes</span></div>
+          <ul>
+            <li>Capacidad adicional de inyección (+25,000 mW / +50,000 mA)</li>
+            <li>Guardas automáticas de sobrecarga y Frequency Droop</li>
+            <li>Registro contable WORM PostgreSQL ACID encadenado</li>
+          </ul>
+        </div>
+        <a class="btn" href="https://buy.stripe.com/5kQaEX4LocuAaazdHscjS02" target="_blank" rel="noopener">Añadir Nodo DER — $99.00 / mes</a>
+      </div>
+
+      <div class="card featured">
+        <div>
+          <h3>3. AuraIntel Enterprise Core — Licencia B2B Multi-Dominio</h3>
+          <div class="price">$499.00 USD <span>/ mes</span></div>
+          <ul>
+            <li>Aislamiento RLS completo para los 6 Dominios Corporativos</li>
+            <li>Liquidación fiscal exacta 15.30% Sec. 5000F + Clawback 2.00%</li>
+            <li>Bifurcación fiduciaria (75% OASI / 25% Recalificación)</li>
+          </ul>
+        </div>
+        <a class="btn" href="https://buy.stripe.com/5kQ28r91E9io1E30UGcjS01" target="_blank" rel="noopener">Suscribirse — $499.00 / mes</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>4. Despliegue Cloud Dedicado Multi-Región (OpenTofu IaC)</h3>
+          <div class="price">$2,500.00 USD <span>/ implementación</span></div>
+          <ul>
+            <li>Aprovisionamiento automatizado de infraestructura dedicada</li>
+            <li>Clúster PostgreSQL WORM SERIALIZABLE con políticas RLS</li>
+            <li>Paneles Grafana dedicados para los 6 dominios corporativos</li>
+          </ul>
+        </div>
+        <a class="btn" href="https://buy.stripe.com/3cIdR9fq266cfuT5aWcjS03" target="_blank" rel="noopener">Contratar Despliegue — $2,500.00</a>
+      </div>
+
+      <div class="card omni">
+        <div>
+          <h3>5. AuraIntel Omni — Licencia Grupo Controlado (IRC 414/1563)</h3>
+          <div class="price">$10,000.00 USD <span>/ licencia corporativa</span></div>
+          <ul>
+            <li>Consolidación ilimitada de ingresos brutos (IRC Sec. 414/1563)</li>
+            <li>Binarios nativos optimizados y bus VPP hasta 250,000 mW</li>
+            <li>Soporte prioritario 24/7 y exención Cloud SaaS Sec. 5000H(d)</li>
+          </ul>
+        </div>
+        <a class="btn" href="https://buy.stripe.com/9B614n7XA66cfuTgTEcjS04" target="_blank" rel="noopener">Adquirir Licencia Omni — $10,000.00</a>
+      </div>
+    </div>
+
+    <div class="audit-banner">
+      <div>
+        <strong style="color: #fff; font-size: 1.05rem;">¿Requiere Certificación Forense WORM, Telemetría Grafana de Auditoría &amp; Dictamen Clawback Sec. 5000G(c)?</strong>
+        <div style="color: #94a3b8; font-size: 0.9rem;">Acceda al portal oficial de nuestra autoridad auditora Standard 1979 (Domain ID: 282230018778) con gráficas de liquidación fiduciaria en vivo ($1,500.00 USD).</div>
+      </div>
+      <a href="standard1979.html" style="background: #f59e0b; color: #000; padding: 0.75rem 1.3rem; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.92rem;">Abrir Portal Standard1979.com &rarr;</a>
+    </div>
+
+    <div class="footer">
+      Autor Exclusivo (Cláusula 3): Jose Emanuel Guadalupe Lopez | Org ID: 320717657398 | AuraIntelCore.com (ID: 188680247367).
+    </div>
+  </div>
+
+  <script>
+    function startGrafanaChart(canvasId, color, baseVal, variance) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext('2d');
+      const data = Array.from({length: 36}, () => baseVal + (Math.random() - 0.5) * variance);
+      function draw() {
+        data.shift();
+        data.push(baseVal + (Math.random() - 0.5) * variance);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        const min = baseVal - variance * 1.4;
+        const max = baseVal + variance * 1.4;
+        data.forEach((v, i) => {
+          const x = (i / (data.length - 1)) * canvas.width;
+          const y = canvas.height - ((v - min) / (max - min)) * (canvas.height - 12) - 6;
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+      }
+      draw();
+      setInterval(draw, 1200);
+    }
+    startGrafanaChart('chart-mw', '#10b981', 120000, 3500);
+    startGrafanaChart('chart-hz', '#38bdf8', 6000, 6);
+    startGrafanaChart('chart-ma', '#f59e0b', 270000, 5000);
+  </script>
+</body>
+</html>
