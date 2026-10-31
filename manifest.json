@@ -1,0 +1,28 @@
+{
+  "holding_entity": "guadalupelopezjose96-org",
+  "holding_id": "320717657398",
+  "operating_domain": "auraintelcore.com",
+  "domain_id": "188680247367",
+  "author_proponent": "Jose Emanuel Guadalupe Lopez",
+  "scope": "VIRTUAL_POWER_PLANT_OT_IT_AND_WHOLESALE_ENERGY_SETTLEMENT",
+  "core_engine": "AURA-TETRAX-ELITE-CORE / v2026.1.2-termux-edge",
+  "binary_sha256": "373ef555d802bbe8e011f0f74b4274f7cee3f6841b311b3e4a609ca5d5d74a39",
+  "slsa_v1_provenance": "c9cfb1f7a2bc347069cb46fde9adaba9083e175c96cb7d80c7b998c1e600a1f1",
+  "vpp_telemetry_state": {
+    "active_bus_capacity_mw": "120,000 mW (Max Nominal 250.00 MW)",
+    "grid_frequency_hz": "60.00 Hz (6000 cHz)",
+    "der_injected_current_ma": "270,000 mA (Limit 900,000 mA)",
+    "sla_guarantee": "99.999%"
+  },
+  "energy_ledger_settlement": {
+    "settled_invoices": 9,
+    "total_debit_usd": "39,214.06",
+    "total_credit_usd": "39,214.06",
+    "delta_zero_invariant": 0,
+    "latest_worm_backup_sha256": "c8e8dce39fbcd9e6e6757e8aa86a64a93198410ddb35213bf84350a1c48bf918",
+    "peppol_ubl_invoice_sha256": "c7c6287a713675a27729160a4bfb543be267e6194cec36b300df5584fdfd9c6e"
+  },
+  "external_statutory_auditor": "standard1979.com (Domain ID: 282230018778)",
+  "timestamp_utc": "2026-10-31T22:49:17Z",
+  "status": "CERTIFIED_VPP_INDUSTRIAL_OPERATIONAL"
+}
