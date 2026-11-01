@@ -30,8 +30,8 @@ if [ -f "sql/001_multi_entity_sovereign_schema.sql" ]; then
 fi
 echo "[OK 3/4] Esquema PostgreSQL SERIALIZABLE, WORM y RLS verificado."
 
-# [4/4] Verificar integridad criptográfica SHA-256 de todos los artefactos
-for MANIFEST in SHA256SUMS sha256sums.txt checksums.sha256 MANIFEST.sha256; do
+# [4/4] Verificar integridad criptográfica SHA-256
+for MANIFEST in SHA256SUMS sha256sums.txt checksums.sha256 MANIFEST.sha256 SOVEREIGN_COMPLIANCE_MANIFEST.sha256; do
     if [ -f "$MANIFEST" ]; then
         sha256sum -c "$MANIFEST"
     fi

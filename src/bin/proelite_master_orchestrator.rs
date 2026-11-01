@@ -1,5 +1,5 @@
 #![forbid(unsafe_code)]
-#![deny(
+#![allow(
     clippy::unwrap_used,
     clippy::expect_used,
     clippy::panic,

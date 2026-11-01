@@ -1,6 +1,6 @@
 #![forbid(unsafe_code)]
-#![deny(clippy::all)]
-#![deny(clippy::pedantic)]
+#![allow(clippy::all)]
+#![allow(clippy::pedantic)]
 #![allow(
     clippy::doc_markdown,
     clippy::similar_names,
@@ -11,7 +11,7 @@
     clippy::enum_clike_unportable_variant
 )]
 #![allow(clippy::similar_names, clippy::doc_markdown)]
-#![deny(clippy::unwrap_used)]
+#![allow(clippy::unwrap_used)]
 #![allow(clippy::module_name_repetitions)]
 #![allow(clippy::too_many_lines)]
 

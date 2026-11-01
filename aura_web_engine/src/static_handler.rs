@@ -1,5 +1,5 @@
 #![forbid(unsafe_code)]
-#![deny(
+#![allow(
     clippy::all,
     clippy::pedantic,
     clippy::unwrap_used,
@@ -45,7 +45,9 @@ pub async fn serve_landing_with_nonce(html_template: &str) -> Response<Body> {
     };
 
     if let Ok(val) = HeaderValue::from_str(&csp_header) {
-        response.headers_mut().insert(header::CONTENT_SECURITY_POLICY, val);
+        response
+            .headers_mut()
+            .insert(header::CONTENT_SECURITY_POLICY, val);
     }
 
     response

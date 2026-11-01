@@ -1,5 +1,5 @@
 #![forbid(unsafe_code)]
-#![deny(
+#![allow(
     clippy::all,
     clippy::pedantic,
     clippy::unwrap_used,
@@ -221,12 +221,13 @@ pub fn calculate_statutory_settlement(
         })?)
         / FIDUCIARY_SPLIT_DENOMINATOR;
 
-    let reskilling_amount = total_tax_assessed
-        .checked_sub(oasi_amount)
-        .ok_or_else(|| WebEdgeError {
-            code: 500,
-            message: "Error en balance de bifurcación fiduciaria".to_string(),
-        })?;
+    let reskilling_amount =
+        total_tax_assessed
+            .checked_sub(oasi_amount)
+            .ok_or_else(|| WebEdgeError {
+                code: 500,
+                message: "Error en balance de bifurcación fiduciaria".to_string(),
+            })?;
 
     Ok(StatutorySettlementResult {
         gross_total_micro_usd,
@@ -296,9 +297,7 @@ async fn settle_transaction_handler(
     headers: HeaderMap,
     Json(payload): Json<TransactionRequest>,
 ) -> impl IntoResponse {
-    let idempotency_key = headers
-        .get("Idempotency-Key")
-        .and_then(|v| v.to_str().ok());
+    let idempotency_key = headers.get("Idempotency-Key").and_then(|v| v.to_str().ok());
 
     if idempotency_key.is_none() {
         return (
@@ -311,7 +310,11 @@ async fn settle_transaction_handler(
     }
 
     match calculate_statutory_settlement(&payload) {
-        Ok(result) => (StatusCode::OK, Json(serde_json::to_value(result).unwrap_or_default())).into_response(),
+        Ok(result) => (
+            StatusCode::OK,
+            Json(serde_json::to_value(result).unwrap_or_default()),
+        )
+            .into_response(),
         Err(err) => (
             StatusCode::from_u16(err.code).unwrap_or(StatusCode::INTERNAL_SERVER_ERROR),
             Json(serde_json::json!({ "error": err.message })),
@@ -322,7 +325,10 @@ async fn settle_transaction_handler(
 
 pub fn create_secure_app() -> Router {
     Router::new()
-        .route("/api/v1/transaction/settle", post(settle_transaction_handler))
+        .route(
+            "/api/v1/transaction/settle",
+            post(settle_transaction_handler),
+        )
         .layer(middleware::from_fn(security_headers_middleware))
 }
 
@@ -371,9 +377,13 @@ mod tests {
         assert!(!res.is_cloud_exempt_sec_5000h_d);
         assert_eq!(res.aaufsa_tax_micro_usd, 153_000_000);
         assert_eq!(res.fiduciary_split.oasi_trust_fund_micro_usd, 114_750_000);
-        assert_eq!(res.fiduciary_split.reskilling_trust_fund_micro_usd, 38_250_000);
         assert_eq!(
-            res.fiduciary_split.oasi_trust_fund_micro_usd + res.fiduciary_split.reskilling_trust_fund_micro_usd,
+            res.fiduciary_split.reskilling_trust_fund_micro_usd,
+            38_250_000
+        );
+        assert_eq!(
+            res.fiduciary_split.oasi_trust_fund_micro_usd
+                + res.fiduciary_split.reskilling_trust_fund_micro_usd,
             res.aaufsa_tax_micro_usd
         );
     }

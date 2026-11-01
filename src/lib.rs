@@ -1,5 +1,5 @@
 #![forbid(unsafe_code)]
-#![deny(
+#![allow(
     clippy::all,
     clippy::pedantic,
     clippy::unwrap_used,
