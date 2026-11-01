@@ -190,7 +190,7 @@ async fn get_ledger_metrics(
                 "refunds_cents": refunds,
                 "processing_fees_cents": fees,
                 "net_operating_income_cents": net,
-                "net_operating_income_usd": format!("{:.2}", (net as f64) / 100.0)
+                "net_operating_income_usd": format!("{:.2}", (net as fixed_point) / 100.0)
             })
         },
         Ok(None) => json!({}),
