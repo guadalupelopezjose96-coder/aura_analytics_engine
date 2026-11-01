@@ -36,7 +36,7 @@ pub async fn serve_landing_with_nonce(html_template: &str) -> Response<Body> {
         .header(header::X_FRAME_OPTIONS, "DENY")
         .header(
             header::STRICT_TRANSPORT_SECURITY,
-            "max-age=63072000; includeSubDomains; preload",
+            "max-age=63_072_000; includeSubDomains; preload",
         )
         .body(Body::from(processed_html))
     {

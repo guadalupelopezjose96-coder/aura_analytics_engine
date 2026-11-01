@@ -261,7 +261,7 @@ pub async fn security_headers_middleware(req: Request<Body>, next: Next) -> Resp
     }
     headers.insert(
         header::STRICT_TRANSPORT_SECURITY,
-        HeaderValue::from_static("max-age=63072000; includeSubDomains; preload"),
+        HeaderValue::from_static("max-age=63_072_000; includeSubDomains; preload"),
     );
     headers.insert(
         header::X_CONTENT_TYPE_OPTIONS,
