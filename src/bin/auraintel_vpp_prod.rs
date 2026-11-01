@@ -12,7 +12,7 @@ use std::fs::File;
 use std::io::Write;
 use std::process::ExitCode;
 
-use sovereign_multi_entity_governor::{
+use aura_analytics_engine::sovereign_multi_entity_governor::{
     CorporateDomain, LifecycleFolder, MICRO_SCALE, ORG_HOLDING_ID, VPP_MAX_FREQ_MICRO_HZ,
     VPP_MIN_FREQ_MICRO_HZ,
 };

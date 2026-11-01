@@ -13,7 +13,7 @@ use std::fs::File;
 use std::io::Write;
 use std::process::ExitCode;
 
-use sovereign_multi_entity_governor::{
+use aura_analytics_engine::sovereign_multi_entity_governor::{
     AaufsaDeploymentContext, AttestedAndCompliantAction, CorporateDomain, LifecycleFolder,
     PlatformVector, SovereignError, SovereignOperation, StatutorilySettledCommit,
     AAUFSA_SAFE_HARBOR_MONTHS, AAUFSA_SMALL_BUSINESS_THRESHOLD_MICROS, AAUFSA_TAX_RATE_NUMERATOR,

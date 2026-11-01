@@ -12,7 +12,9 @@ use std::fs::File;
 use std::io::Write;
 use std::process::ExitCode;
 
-use sovereign_multi_entity_governor::{CorporateDomain, LifecycleFolder, ORG_HOLDING_ID};
+use aura_analytics_engine::sovereign_multi_entity_governor::{
+    CorporateDomain, LifecycleFolder, ORG_HOLDING_ID,
+};
 
 pub const BINARY_SHA256_ATTESTATION: &str =
     "373ef555d802bbe8e011f0f74b4274f7cee3f6841b311b3e4a609ca5d5d74a39";

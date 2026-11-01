@@ -12,7 +12,9 @@ use std::fs::File;
 use std::io::Write;
 use std::process::ExitCode;
 
-use sovereign_multi_entity_governor::{CorporateDomain, LifecycleFolder, ORG_HOLDING_ID};
+use aura_analytics_engine::sovereign_multi_entity_governor::{
+    CorporateDomain, LifecycleFolder, ORG_HOLDING_ID,
+};
 
 pub const STUDIOS3D_TARGET_FPS: u32 = 120;
 pub const STUDIOS3D_FRAME_BUDGET_MICRO_MS: i128 = 8_333;

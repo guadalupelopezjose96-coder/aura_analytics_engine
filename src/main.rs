@@ -1,6 +1,7 @@
 #![forbid(unsafe_code)]
 #![deny(clippy::all)]
 #![deny(clippy::pedantic)]
+#![allow(clippy::similar_names, clippy::doc_markdown)]
 #![deny(clippy::unwrap_used)]
 #![allow(clippy::module_name_repetitions)]
 #![allow(clippy::too_many_lines)]
@@ -237,7 +238,7 @@ impl CapacityAndFiscalEngine {
         Ok(total)
     }
 
-    /// Evalúa la integración de un nodo DER en el bus de AuraIntel VPP.
+    /// Evalúa la integración de un nodo DER en el bus de `AuraIntel` VPP.
     ///
     /// # Errors
     /// Retorna error si el dominio es inválido, la frecuencia está fuera de rango o se excede capacidad.
@@ -280,7 +281,7 @@ impl CapacityAndFiscalEngine {
         Ok(bus.current_mw)
     }
 
-    /// Determina la orden de despacho activo de AuraIntel VPP según carga y frecuencia.
+    /// Determina la orden de despacho activo de `AuraIntel` VPP según carga y frecuencia.
     #[must_use]
     pub const fn compute_dispatch_command(bus: &VppBusState) -> VppDispatchCommand {
         if bus.grid_frequency_chz < 5_950 || bus.grid_frequency_chz > 6_050 {
