@@ -1,0 +1,12 @@
+{
+  "test_api_key_123": {
+    "active": true,
+    "customer_id": "cus_admin_dev",
+    "updated_at": 1730440000
+  },
+  "aura_live_cliente_premium": {
+    "active": true,
+    "customer_id": "cus_prod_auraclient",
+    "updated_at": 1793520366
+  }
+}

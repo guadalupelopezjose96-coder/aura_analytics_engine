@@ -1,91 +1,151 @@
-#!/usr/bin/env python3
 import http.server
 import json
 import os
 import subprocess
+import hmac
+import hashlib
+import time
+import sqlite3
 
-PORT = int(os.environ.get("AURA_SAAS_PORT", "8080"))
-CATALOG = {
-    "1_vpp_pro_49_99": "https://buy.stripe.com/5kQ14n1zcgKQ96v0UGcjS00",
-    "2_der_node_addon_99": "https://buy.stripe.com/5kQaEX4LocuAaazdHscjS02",
-    "3_enterprise_core_499": "https://buy.stripe.com/5kQ28r91E9io1E30UGcjS01",
-    "4_standard1979_audit_1500": "https://buy.stripe.com/8x28wPcdQ3Y44Qf9rccjS05",
-    "5_dedicated_cloud_2500": "https://buy.stripe.com/3cIdR9fq266cfuT5aWcjS03",
-    "6_omni_group_10000": "https://buy.stripe.com/9B614n7XA66cfuTgTEcjS04"
-}
-ENGINE_BIN = os.path.expanduser("~/aura_analytics_engine/target/release/aura_analytics_engine")
-SUBS_DB = os.path.expanduser("~/aura_analytics_engine/audit_logs/active_subscriptions.json")
-BUS_STATE = os.path.expanduser("~/aura_analytics_engine/audit_logs/vpp_bus_state.json")
-DOCS_DIR = os.path.expanduser("~/aura_analytics_engine/docs")
+PORT = 3000
+SUBS_DB = "/data/data/com.termux/files/home/aura_analytics_engine/saas_billing_portal/subscriptions.json"
+LEDGER_DB = "/data/data/com.termux/files/home/aura_analytics_engine/saas_billing_portal/ledger.db"
+ENGINE_BIN = "/data/data/com.termux/files/home/aura_analytics_engine/target/release/aura_analytics_engine"
+WEBHOOK_SECRET = "whsec_2L8lmTzgWHVV7wrgfya0abFoUllfGMFU"
 
-os.makedirs(os.path.dirname(SUBS_DB), exist_ok=True)
-if not os.path.exists(SUBS_DB):
-    with open(SUBS_DB, "w") as f:
-        json.dump({"AURA_LIVE_SUB_KEY_2026": {"plan": "6_omni_group_10000", "active": True}}, f, indent=2)
+def verify_stripe_signature(payload: bytes, sig_header: str, secret: str, tolerance: int = 300) -> bool:
+    if not sig_header or not secret:
+        return False
+    try:
+        pairs = dict(item.strip().split("=", 1) for item in sig_header.split(","))
+        timestamp = pairs.get("t")
+        expected_sig = pairs.get("v1")
+        if not timestamp or not expected_sig:
+            return False
+        if abs(time.time() - int(timestamp)) > tolerance:
+            return False
+        signed_payload = f"{timestamp}.".encode("utf-8") + payload
+        computed_sig = hmac.new(secret.encode("utf-8"), signed_payload, hashlib.sha256).hexdigest()
+        return hmac.compare_digest(computed_sig, expected_sig)
+    except Exception:
+        return False
+
+def activate_subscription(api_key: str, customer_id: str = ""):
+    try:
+        data = {}
+        if os.path.exists(SUBS_DB):
+            with open(SUBS_DB, "r") as f:
+                data = json.load(f)
+        data[api_key] = {
+            "active": True,
+            "customer_id": customer_id,
+            "updated_at": int(time.time())
+        }
+        with open(SUBS_DB, "w") as f:
+            json.dump(data, f, indent=2)
+        print(f"[SUBSCRIPTION] Activada: {api_key}")
+    except Exception as e:
+        print(f"[ERROR SUBS] {e}")
+
+def record_ledger_receipt(receipt: dict):
+    try:
+        conn = sqlite3.connect(LEDGER_DB)
+        cursor = conn.cursor()
+        assessment = receipt.get("assessment", {})
+        cursor.execute("""
+            INSERT INTO aaufsa_vpp_operational_ledger (
+                cycle_id, org_id, domain_id, bus_mw, grid_freq_chz, dispatch_cmd,
+                displaced_payroll_cents, total_tax_cents, oasi_trust_cents, reskilling_trust_cents,
+                prev_hash, record_hash
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            receipt.get("cycle_id"),
+            receipt.get("organization_id"),
+            receipt.get("domain_id"),
+            receipt.get("updated_bus_mw"),
+            receipt.get("grid_frequency_chz"),
+            receipt.get("dispatch_command"),
+            assessment.get("displaced_payroll_cents", 0),
+            assessment.get("total_tax_amount_cents", 0),
+            assessment.get("social_security_allocation_cents", 0),
+            assessment.get("workforce_reskilling_allocation_cents", 0),
+            receipt.get("previous_ledger_hash"),
+            receipt.get("current_ledger_hash")
+        ))
+        conn.commit()
+        conn.close()
+        print(f"[LEDGER AUTO-INSERT] Ciclo {receipt.get('cycle_id')} registrado en ledger.db")
+    except Exception as e:
+        print(f"[ERROR LEDGER AUTO-INSERT] {e}")
 
 class AuraSaaSHandler(http.server.BaseHTTPRequestHandler):
-    def do_GET(self):
-        if self.path in ("/", "/index.html"):
-            with open(os.path.join(DOCS_DIR, "index.html"), "rb") as f:
-                content = f.read()
-            self.send_response(200)
-            self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.end_headers()
-            self.wfile.write(content)
-        elif self.path in ("/standard1979", "/standard1979.html"):
-            with open(os.path.join(DOCS_DIR, "standard1979.html"), "rb") as f:
-                content = f.read()
-            self.send_response(200)
-            self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.end_headers()
-            self.wfile.write(content)
-        elif self.path in ("/api/status", "/api/worm-grafana-metrics"):
-            bus_data = {"bus_id": 1, "current_mw": 120000, "max_mw": 250000, "current_ma": 270000, "grid_frequency_chz": 6000}
-            if os.path.exists(BUS_STATE):
-                try:
-                    with open(BUS_STATE, "r") as bf:
-                        bus_data = json.load(bf)
-                except Exception:
-                    pass
+    def do_POST(self):
+        length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(length)
+
+        if self.path == "/api/v1/stripe/webhook":
+            sig_header = self.headers.get("Stripe-Signature", "")
+            if not verify_stripe_signature(body, sig_header, WEBHOOK_SECRET):
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(b'{"error": "Invalid signature"}')
+                return
+
+            try:
+                event = json.loads(body.decode("utf-8"))
+                event_type = event.get("type", "")
+                data_obj = event.get("data", {}).get("object", {})
+                if event_type in ("checkout.session.completed", "payment_intent.succeeded"):
+                    api_key = data_obj.get("metadata", {}).get("api_key") or data_obj.get("client_reference_id")
+                    customer_id = data_obj.get("customer", "")
+                    if api_key:
+                        activate_subscription(api_key, customer_id)
+            except Exception as e:
+                print(f"[ERROR STRIPE EVENT] {e}")
+
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            self.wfile.write(json.dumps({
-                "status": "ONLINE_100_PERCENT_MONETIZED",
-                "worm_ledger": "WRITE_ONCE_READ_MANY_ACTIVE",
-                "grafana_telemetry": bus_data,
-                "org_id": 320717657398,
-                "portals": {
-                    "auraintelcore.com": 188680247367,
-                    "standard1979.com": 282230018778
-                },
-                "stripe_live_links": CATALOG
-            }, indent=2).encode())
-        else:
-            self.send_response(404)
-            self.end_headers()
+            self.wfile.write(b'{"status": "processed"}')
+            return
 
-    def do_POST(self):
-        length = int(self.headers.get("Content-Length", 0))
-        body = self.rfile.read(length).decode("utf-8")
         if self.path == "/api/v1/dispatch":
             api_key = self.headers.get("X-API-Key", "")
-            with open(SUBS_DB, "r") as f:
-                subs = json.load(f)
+            try:
+                with open(SUBS_DB, "r") as f:
+                    subs = json.load(f)
+            except Exception:
+                subs = {}
+
             if api_key not in subs or not subs[api_key].get("active"):
                 self.send_response(402)
                 self.send_header("Content-Type", "application/json")
                 self.end_headers()
-                self.wfile.write(json.dumps({
-                    "error": "402 Payment Required",
-                    "stripe_live_links": CATALOG
-                }).encode())
+                self.wfile.write(b'{"error": "402 Payment Required"}')
                 return
-            proc = subprocess.run([ENGINE_BIN, "--ingest-json", body], capture_output=True, text=True)
-            self.send_response(200 if proc.returncode == 0 else 400)
-            self.send_header("Content-Type", "application/json")
-            self.end_headers()
-            self.wfile.write((proc.stdout if proc.returncode == 0 else json.dumps({"error": proc.stderr})).encode())
+
+            proc = subprocess.run([ENGINE_BIN, "--ingest-json", body.decode("utf-8")], capture_output=True, text=True)
+            if proc.returncode == 0:
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(proc.stdout.encode("utf-8"))
+                
+                try:
+                    receipt = json.loads(proc.stdout)
+                    record_ledger_receipt(receipt)
+                except Exception:
+                    pass
+            else:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": proc.stderr}).encode("utf-8"))
+            return
+
+        self.send_response(404)
+        self.end_headers()
 
 if __name__ == "__main__":
     server = http.server.HTTPServer(("0.0.0.0", PORT), AuraSaaSHandler)
