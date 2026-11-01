@@ -1,5 +1,7 @@
 #![forbid(unsafe_code)]
 #![allow(
+#[allow(non_camel_case_types)]
+type fixed_point = i64;
     clippy::all,
     clippy::pedantic,
     clippy::nursery,
@@ -201,7 +203,7 @@ async fn get_ledger_metrics(
                 "refunds_cents": refunds,
                 "processing_fees_cents": fees,
                 "net_operating_income_cents": net,
-                "net_operating_income_usd": format!("{:.2}", (net as fixed_point) / 100.0)
+                "net_operating_income_usd": format!("{:.2}", (net as fixed_point) / 100)
             })
         }
         Ok(None) => json!({}),
