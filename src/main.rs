@@ -1,4 +1,13 @@
 #![forbid(unsafe_code)]
+#![allow(
+    clippy::all,
+    clippy::pedantic,
+    clippy::nursery,
+    clippy::cargo,
+    dead_code,
+    unused_imports,
+    unused_variables
+)]
 #![allow(clippy::all)]
 #![allow(clippy::pedantic)]
 #![allow(

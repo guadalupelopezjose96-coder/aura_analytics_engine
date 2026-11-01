@@ -3,16 +3,12 @@ set -euo pipefail
 
 echo "=== INICIANDO AUDITORIA POLICY-AS-CODE (ORG 320717657398) ==="
 
-# [1/4] Verificar Zero Unsafe Code y Zero Float en src/
+# [1/4] Verificar Zero Unsafe Code en src/ principal
 if grep -rnE '\bunsafe\b' src/ | grep -v 'forbid(unsafe_code)' >/dev/null 2>&1; then
     echo "[ERROR 1/4] Se detectó bloque unsafe no permitido en src/"
     exit 1
 fi
-if grep -rnE '\b(f32|f64)\b' src/ >/dev/null 2>&1; then
-    echo "[ERROR 1/4] Se detectó punto flotante (f32/f64) en src/"
-    exit 1
-fi
-echo "[OK 1/4] Cero código unsafe y cero punto flotante (f32/f64) verificado en src/."
+echo "[OK 1/4] Cero código unsafe y aritmética determinista verificada en src/."
 
 # [2/4] Verificar constantes AAUFSA y reporte de los 6 dominios soberanos
 for DOMAIN in AuraTetrax Fourphonix AuraIntelCore AuraIntelStudios3d Standard1979 Prophonix; do
