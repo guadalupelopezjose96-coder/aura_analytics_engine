@@ -21,7 +21,7 @@ pub enum AnalyticsDomain {
     AuraTetrax = 877_771_073_297,
     Fourphonix = 964_521_086_569,
     AuraIntelCore = 188_680_247_367,
-    AuraIntelGlobal = 1_087_754_464_927,
+    AuraIntelStudios3d = 1_087_754_464_927,
     Standard1979 = 282_230_018_778,
     Prophonix = 358_233_233,
 }
