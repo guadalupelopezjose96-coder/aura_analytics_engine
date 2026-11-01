@@ -248,7 +248,9 @@ impl CapacityAndFiscalEngine {
         Self::validate_domain(der.domain_id)?;
 
         if bus.grid_frequency_chz < 5_950 || bus.grid_frequency_chz > 6_050 {
-            return Err(EngineError::GridFrequencyInstability(bus.grid_frequency_chz));
+            return Err(EngineError::GridFrequencyInstability(
+                bus.grid_frequency_chz,
+            ));
         }
 
         let new_mw = bus
@@ -358,8 +360,8 @@ impl CapacityAndFiscalEngine {
                 total_tax_amount_cents: 0,
                 social_security_allocation_cents: 0,
                 workforce_reskilling_allocation_cents: 0,
-                statutory_basis:
-                    "No sujeto bajo Sec. 5000H(c): Desplazamiento temporal <= 90 dias".to_string(),
+                statutory_basis: "No sujeto bajo Sec. 5000H(c): Desplazamiento temporal <= 90 dias"
+                    .to_string(),
             });
         }
 
@@ -380,8 +382,8 @@ impl CapacityAndFiscalEngine {
                 total_tax_amount_cents: 0,
                 social_security_allocation_cents: 0,
                 workforce_reskilling_allocation_cents: 0,
-                statutory_basis:
-                    "Exento: Reasignacion efectiva >= 36 meses bajo Sec. 5000G(a)".to_string(),
+                statutory_basis: "Exento: Reasignacion efectiva >= 36 meses bajo Sec. 5000G(a)"
+                    .to_string(),
             });
         }
 
@@ -565,8 +567,8 @@ fn run_live_json_ingestion(json_payload: &str) -> Result<(), String> {
     let receipt = CapacityAndFiscalEngine::process_live_telemetry_packet(&mut bus, &packet)
         .map_err(|e| format!("Fallo en motor VPP/AAUFSA: {e:?}"))?;
 
-    let updated_state_json = serde_json::to_string_pretty(&bus)
-        .map_err(|e| format!("Error serializando bus: {e}"))?;
+    let updated_state_json =
+        serde_json::to_string_pretty(&bus).map_err(|e| format!("Error serializando bus: {e}"))?;
     fs::write(state_path, updated_state_json)
         .map_err(|e| format!("Error guardando estado VPP: {e}"))?;
 

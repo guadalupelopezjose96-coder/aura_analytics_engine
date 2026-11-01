@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:d4c1c907-2abf-4a48-a136-7d059d34c8bc",
+  "serialNumber": "urn:uuid:92d9ef0d-1c68-43bb-ae2a-2e6f947b0948",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-01T01:50:12+00:00",
+    "timestamp": "2026-11-01T01:52:58+00:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,7 @@
       ]
     },
     "component": {
-      "bom-ref": "df3d0ea0-6347-4a20-bda8-9514c5f08e54",
+      "bom-ref": "133d72ef-a709-4a0a-92b3-44a0b3898233",
       "type": "application",
       "name": ".",
       "properties": [
@@ -33,7 +33,7 @@
   },
   "components": [
     {
-      "bom-ref": "57531383-7175-468c-abfb-2ebc5588a1eb",
+      "bom-ref": "7be3bb78-e5b2-489f-9b77-4f78543a0e22",
       "type": "application",
       "name": "Cargo.lock",
       "properties": [
@@ -48,22 +48,7 @@
       ]
     },
     {
-      "bom-ref": "77c74896-b90a-419c-a0ea-0bab787fd78f",
-      "type": "library",
-      "name": "",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "aura_analytics_engine@2026.1.0"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "98bf334f-8ab4-441c-99a1-e895a11cddd4",
+      "bom-ref": "b1de6261-9594-4c99-b0bf-49752bc02257",
       "type": "application",
       "name": "aura_web_engine/Cargo.lock",
       "properties": [
@@ -73,6 +58,21 @@
         },
         {
           "name": "aquasecurity:trivy:Type",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "cd0277ea-173c-467a-a73e-774d36f674f2",
+      "type": "library",
+      "name": "",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "aura_analytics_engine@2026.1.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
           "value": "cargo"
         }
       ]
@@ -3752,27 +3752,27 @@
   ],
   "dependencies": [
     {
-      "ref": "57531383-7175-468c-abfb-2ebc5588a1eb",
+      "ref": "133d72ef-a709-4a0a-92b3-44a0b3898233",
       "dependsOn": [
-        "77c74896-b90a-419c-a0ea-0bab787fd78f"
+        "7be3bb78-e5b2-489f-9b77-4f78543a0e22",
+        "b1de6261-9594-4c99-b0bf-49752bc02257"
       ]
     },
     {
-      "ref": "77c74896-b90a-419c-a0ea-0bab787fd78f",
-      "dependsOn": []
+      "ref": "7be3bb78-e5b2-489f-9b77-4f78543a0e22",
+      "dependsOn": [
+        "cd0277ea-173c-467a-a73e-774d36f674f2"
+      ]
     },
     {
-      "ref": "98bf334f-8ab4-441c-99a1-e895a11cddd4",
+      "ref": "b1de6261-9594-4c99-b0bf-49752bc02257",
       "dependsOn": [
         "pkg:cargo/aura_web_engine@2026.1.0"
       ]
     },
     {
-      "ref": "df3d0ea0-6347-4a20-bda8-9514c5f08e54",
-      "dependsOn": [
-        "57531383-7175-468c-abfb-2ebc5588a1eb",
-        "98bf334f-8ab4-441c-99a1-e895a11cddd4"
-      ]
+      "ref": "cd0277ea-173c-467a-a73e-774d36f674f2",
+      "dependsOn": []
     },
     {
       "ref": "pkg:cargo/ahash@0.8.12",

@@ -1,15 +1,15 @@
 AVISOS DE SOFTWARE DE CODIGO ABIERTO DE TERCEROS (POL-SEC-OSS-001)
-Fecha: 2026-11-01T01:50:12Z
+Fecha: 2026-11-01T01:52:59Z
 -----------------------------------------------------------------
 Paquete: Cargo.lock (null)
 PURL: N/A
 Licencia SPDX: Ver repositorio origen
 -----------------------------------------------------------------
-Paquete:  (null)
+Paquete: aura_web_engine/Cargo.lock (null)
 PURL: N/A
 Licencia SPDX: Ver repositorio origen
 -----------------------------------------------------------------
-Paquete: aura_web_engine/Cargo.lock (null)
+Paquete:  (null)
 PURL: N/A
 Licencia SPDX: Ver repositorio origen
 -----------------------------------------------------------------

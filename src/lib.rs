@@ -1,5 +1,10 @@
 #![forbid(unsafe_code)]
-#![deny(clippy::all, clippy::pedantic, clippy::unwrap_used, clippy::expect_used)]
+#![deny(
+    clippy::all,
+    clippy::pedantic,
+    clippy::unwrap_used,
+    clippy::expect_used
+)]
 
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
