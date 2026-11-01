@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:e017e051-f081-4307-9fca-87a9277abbfd",
+  "serialNumber": "urn:uuid:e7f4ae33-bac9-4b9c-b00d-62849680a38e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-01T01:24:43+00:00",
+    "timestamp": "2026-11-01T01:30:22+00:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,7 @@
       ]
     },
     "component": {
-      "bom-ref": "388ad5ea-f754-4174-baa5-460d10b43dab",
+      "bom-ref": "fcc4bf72-ea40-4a49-a56d-01c3b2c62401",
       "type": "application",
       "name": ".",
       "properties": [
@@ -33,22 +33,22 @@
   },
   "components": [
     {
-      "bom-ref": "5d51b3eb-271c-4cd3-8860-fa5e48355e29",
-      "type": "application",
-      "name": "aura_web_engine/Cargo.lock",
+      "bom-ref": "3443deb9-eb16-4e32-b6f9-50c9de668014",
+      "type": "library",
+      "name": "",
       "properties": [
         {
-          "name": "aquasecurity:trivy:Class",
-          "value": "lang-pkgs"
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "aura_analytics_engine@2026.1.0"
         },
         {
-          "name": "aquasecurity:trivy:Type",
+          "name": "aquasecurity:trivy:PkgType",
           "value": "cargo"
         }
       ]
     },
     {
-      "bom-ref": "a82a8170-969e-434a-833e-6751a85ba908",
+      "bom-ref": "a9b317a6-1ee6-4fd1-b8fc-10d107786dd5",
       "type": "application",
       "name": "Cargo.lock",
       "properties": [
@@ -63,16 +63,16 @@
       ]
     },
     {
-      "bom-ref": "efe82140-f835-4934-ac60-8d7acb86867d",
-      "type": "library",
-      "name": "",
+      "bom-ref": "d0c57e1a-dac3-4bb9-9ad2-f1822190e87d",
+      "type": "application",
+      "name": "aura_web_engine/Cargo.lock",
       "properties": [
         {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "aura_analytics_engine@2026.1.0"
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
         },
         {
-          "name": "aquasecurity:trivy:PkgType",
+          "name": "aquasecurity:trivy:Type",
           "value": "cargo"
         }
       ]
@@ -3752,27 +3752,27 @@
   ],
   "dependencies": [
     {
-      "ref": "388ad5ea-f754-4174-baa5-460d10b43dab",
+      "ref": "3443deb9-eb16-4e32-b6f9-50c9de668014",
+      "dependsOn": []
+    },
+    {
+      "ref": "a9b317a6-1ee6-4fd1-b8fc-10d107786dd5",
       "dependsOn": [
-        "5d51b3eb-271c-4cd3-8860-fa5e48355e29",
-        "a82a8170-969e-434a-833e-6751a85ba908"
+        "3443deb9-eb16-4e32-b6f9-50c9de668014"
       ]
     },
     {
-      "ref": "5d51b3eb-271c-4cd3-8860-fa5e48355e29",
+      "ref": "d0c57e1a-dac3-4bb9-9ad2-f1822190e87d",
       "dependsOn": [
         "pkg:cargo/aura_web_engine@2026.1.0"
       ]
     },
     {
-      "ref": "a82a8170-969e-434a-833e-6751a85ba908",
+      "ref": "fcc4bf72-ea40-4a49-a56d-01c3b2c62401",
       "dependsOn": [
-        "efe82140-f835-4934-ac60-8d7acb86867d"
+        "a9b317a6-1ee6-4fd1-b8fc-10d107786dd5",
+        "d0c57e1a-dac3-4bb9-9ad2-f1822190e87d"
       ]
-    },
-    {
-      "ref": "efe82140-f835-4934-ac60-8d7acb86867d",
-      "dependsOn": []
     },
     {
       "ref": "pkg:cargo/ahash@0.8.12",
