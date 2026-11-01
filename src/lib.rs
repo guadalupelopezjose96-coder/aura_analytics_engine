@@ -201,15 +201,8 @@ pub fn assess_aaufsa_compliance(
 /// Módulo de gobernanza multi-entidad para los 6 dominios soberanos.
 #[allow(clippy::all, clippy::pedantic, dead_code, unused_imports)]
 pub mod sovereign_multi_entity_governor {
-        clippy::unwrap_used,
-        clippy::expect_used,
-        clippy::panic,
-        clippy::float_arithmetic,
-        clippy::indexing_slicing
-    )]
-    
     use core::marker::PhantomData;
-    
+
     pub const MICRO_SCALE: i128 = 1_000_000;
     pub const AAUFSA_SMALL_BUSINESS_THRESHOLD_MICROS: i128 = 5_000_000_000_000;
     pub const AAUFSA_TAX_RATE_NUMERATOR: i128 = 1_530;
@@ -222,7 +215,7 @@ pub mod sovereign_multi_entity_governor {
     pub const VPP_MAX_FREQ_MICRO_HZ: i128 = 60_050_000;
     pub const MAX_ALLOWED_TRUE_PEAK_MICRO_DBTP: i128 = -1_000_000;
     pub const ORG_HOLDING_ID: &str = "320717657398";
-    
+
     #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub enum LifecycleFolder {
         SharedServices,
@@ -230,7 +223,7 @@ pub mod sovereign_multi_entity_governor {
         NonProduction,
         Sandbox,
     }
-    
+
     impl LifecycleFolder {
         #[must_use]
         pub const fn folder_id(&self) -> &'static str {
@@ -242,7 +235,7 @@ pub mod sovereign_multi_entity_governor {
             }
         }
     }
-    
+
     #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub enum CorporateDomain {
         AuraTetrax,
@@ -253,7 +246,7 @@ pub mod sovereign_multi_entity_governor {
         Prophonix,
         AuraIntelStudios3D,
     }
-    
+
     impl CorporateDomain {
         #[must_use]
         pub const fn tenant_id(&self) -> &'static str {
@@ -267,7 +260,7 @@ pub mod sovereign_multi_entity_governor {
             }
         }
     }
-    
+
     #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub enum SovereignError {
         ArithmeticOverflow,
@@ -288,7 +281,7 @@ pub mod sovereign_multi_entity_governor {
         UnbalancedDoubleEntryLedger,
         ClawbackEscrowUnderfunded,
     }
-    
+
     #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub enum PlatformVector {
         GeminiCognitive {
@@ -315,7 +308,7 @@ pub mod sovereign_multi_entity_governor {
             ml_dsa_signed: bool,
         },
     }
-    
+
     #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub enum AaufsaDeploymentContext {
         ExternalCloudSaasProvider,
@@ -329,7 +322,7 @@ pub mod sovereign_multi_entity_governor {
             clawback_escrow_balance_micros: i128,
         },
     }
-    
+
     #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     #[allow(clippy::struct_excessive_bools)]
     pub struct AaufsaTaxDetermination {
@@ -341,14 +334,14 @@ pub mod sovereign_multi_entity_governor {
         pub oasi_di_trust_fund_75_micros: i128,
         pub workforce_reskilling_25_micros: i128,
     }
-    
+
     #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub struct UnverifiedDomainAction;
     #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub struct AttestedAndCompliantAction;
     #[derive(Debug, Clone, Copy, PartialEq, Eq)]
     pub struct StatutorilySettledCommit;
-    
+
     #[derive(Debug, Clone, PartialEq, Eq)]
     pub struct SovereignOperation<S> {
         pub idempotency_key: [u8; 32],
@@ -361,7 +354,7 @@ pub mod sovereign_multi_entity_governor {
         pub tax_determination: Option<AaufsaTaxDetermination>,
         _state: PhantomData<S>,
     }
-    
+
     impl SovereignOperation<UnverifiedDomainAction> {
         #[must_use]
         pub const fn new_unverified(
@@ -385,7 +378,7 @@ pub mod sovereign_multi_entity_governor {
                 _state: PhantomData,
             }
         }
-    
+
         /// # Errors
         /// Retorna `SovereignError` en modo Fail-Closed ante cualquier violación de invariantes.
         pub fn verify_safety_and_policy(
@@ -403,7 +396,7 @@ pub mod sovereign_multi_entity_governor {
             if self.folder == LifecycleFolder::Production && self.dual_custodian_signatures < 2 {
                 return Err(SovereignError::DualSignatureMissingInProduction);
             }
-    
+
             match self.vector {
                 PlatformVector::GeminiCognitive {
                     store_false_enforced,
@@ -428,7 +421,9 @@ pub mod sovereign_multi_entity_governor {
                     if !anti_islanding_armed {
                         return Err(SovereignError::VppAntiIslandingDisarmed);
                     }
-                    if !(VPP_MIN_FREQ_MICRO_HZ..=VPP_MAX_FREQ_MICRO_HZ).contains(&frequency_micro_hz) {
+                    if !(VPP_MIN_FREQ_MICRO_HZ..=VPP_MAX_FREQ_MICRO_HZ)
+                        .contains(&frequency_micro_hz)
+                    {
                         return Err(SovereignError::VppFrequencyOutOfEnvelope);
                     }
                     if energy_dispatched_micro_wh <= 0 {
@@ -464,7 +459,7 @@ pub mod sovereign_multi_entity_governor {
                     }
                 }
             }
-    
+
             Ok(SovereignOperation {
                 idempotency_key: self.idempotency_key,
                 folder: self.folder,
@@ -478,7 +473,7 @@ pub mod sovereign_multi_entity_governor {
             })
         }
     }
-    
+
     impl SovereignOperation<AttestedAndCompliantAction> {
         /// # Errors
         /// Retorna `SovereignError` si ocurre desbordamiento o falta de Escrow en Clawback.
@@ -500,7 +495,7 @@ pub mod sovereign_multi_entity_governor {
             })
         }
     }
-    
+
     /// # Errors
     /// Retorna `SovereignError` ante desbordamiento aritmético o Clawback sin provisión suficiente.
     pub fn evaluate_aaufsa_chapter56(
@@ -554,7 +549,7 @@ pub mod sovereign_multi_entity_governor {
                     .ok_or(SovereignError::ArithmeticOverflow)?
                     .checked_div(AAUFSA_TAX_RATE_DENOMINATOR)
                     .ok_or(SovereignError::ArithmeticOverflow)?;
-    
+
                 if reassigned_without_wage_reduction
                     && !early_termination_triggered
                     && reassignment_completed_months >= AAUFSA_SAFE_HARBOR_MONTHS
@@ -581,7 +576,7 @@ pub mod sovereign_multi_entity_governor {
                 let reskilling_25 = base_tax
                     .checked_sub(oasi_75)
                     .ok_or(SovereignError::ArithmeticOverflow)?;
-    
+
                 Ok(AaufsaTaxDetermination {
                     cloud_saas_exempt: false,
                     small_business_exempt: false,
@@ -594,11 +589,11 @@ pub mod sovereign_multi_entity_governor {
             }
         }
     }
-    
+
     #[cfg(test)]
     mod tests {
         use super::*;
-    
+
         #[test]
         fn test_aaufsa_tax_and_75_25_split_calculation() {
             let wage_micros: i128 = 100_000 * MICRO_SCALE;
