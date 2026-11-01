@@ -16,13 +16,14 @@ pub const SOCIAL_SECURITY_SPLIT_PPM: i128 = 750_000;
 pub const WORKFORCE_RESKILLING_SPLIT_PPM: i128 = 250_000;
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Serialize, Deserialize)]
+#[repr(u64)]
 pub enum AnalyticsDomain {
-    AuraTetrax = 877771073297,
-    Fourphonix = 964521086569,
-    AuraIntelCore = 188680247367,
-    AuraIntelGlobal = 1087754464927,
-    Standard1979 = 282230018778,
-    Prophonix = 358233233,
+    AuraTetrax = 877_771_073_297,
+    Fourphonix = 964_521_086_569,
+    AuraIntelCore = 188_680_247_367,
+    AuraIntelGlobal = 1_087_754_464_927,
+    Standard1979 = 282_230_018_778,
+    Prophonix = 358_233_233,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
@@ -69,6 +70,10 @@ pub enum EngineError {
     InvalidScale,
 }
 
+/// Analiza las muestras de telemetría VPP.
+///
+/// # Errors
+/// Devuelve `EngineError` si el slice de muestras está vacío o contiene datos fuera de rango.
 pub fn analyze_vpp_telemetry(
     samples: &mut [VppTelemetrySample],
 ) -> Result<VppStatisticalSummary, EngineError> {
@@ -119,6 +124,10 @@ pub fn analyze_vpp_telemetry(
     })
 }
 
+/// Evalúa el cumplimiento fiscal AAUFSA.
+///
+/// # Errors
+/// Devuelve `EngineError` si los parámetros financieros o registros son inválidos.
 pub fn assess_aaufsa_compliance(
     domain: AnalyticsDomain,
     controlled_group_revenue_micro: i128,
