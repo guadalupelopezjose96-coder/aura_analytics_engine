@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:d0db3006-045d-4377-9a75-1d1a8338a0d7",
+  "serialNumber": "urn:uuid:d4c1c907-2abf-4a48-a136-7d059d34c8bc",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-01T01:39:39+00:00",
+    "timestamp": "2026-11-01T01:50:12+00:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,7 @@
       ]
     },
     "component": {
-      "bom-ref": "4ec86947-0de6-4898-bd2b-b1fb6e656699",
+      "bom-ref": "df3d0ea0-6347-4a20-bda8-9514c5f08e54",
       "type": "application",
       "name": ".",
       "properties": [
@@ -33,9 +33,9 @@
   },
   "components": [
     {
-      "bom-ref": "067f4d8b-d664-4b1e-a4fd-3a86b7fbb91a",
+      "bom-ref": "57531383-7175-468c-abfb-2ebc5588a1eb",
       "type": "application",
-      "name": "aura_web_engine/Cargo.lock",
+      "name": "Cargo.lock",
       "properties": [
         {
           "name": "aquasecurity:trivy:Class",
@@ -48,7 +48,7 @@
       ]
     },
     {
-      "bom-ref": "35594969-43a1-471d-80b1-17f27df8af78",
+      "bom-ref": "77c74896-b90a-419c-a0ea-0bab787fd78f",
       "type": "library",
       "name": "",
       "properties": [
@@ -63,9 +63,9 @@
       ]
     },
     {
-      "bom-ref": "4d71f29d-c043-4fea-abe3-dafa79de55fd",
+      "bom-ref": "98bf334f-8ab4-441c-99a1-e895a11cddd4",
       "type": "application",
-      "name": "Cargo.lock",
+      "name": "aura_web_engine/Cargo.lock",
       "properties": [
         {
           "name": "aquasecurity:trivy:Class",
@@ -3752,26 +3752,26 @@
   ],
   "dependencies": [
     {
-      "ref": "067f4d8b-d664-4b1e-a4fd-3a86b7fbb91a",
+      "ref": "57531383-7175-468c-abfb-2ebc5588a1eb",
+      "dependsOn": [
+        "77c74896-b90a-419c-a0ea-0bab787fd78f"
+      ]
+    },
+    {
+      "ref": "77c74896-b90a-419c-a0ea-0bab787fd78f",
+      "dependsOn": []
+    },
+    {
+      "ref": "98bf334f-8ab4-441c-99a1-e895a11cddd4",
       "dependsOn": [
         "pkg:cargo/aura_web_engine@2026.1.0"
       ]
     },
     {
-      "ref": "35594969-43a1-471d-80b1-17f27df8af78",
-      "dependsOn": []
-    },
-    {
-      "ref": "4d71f29d-c043-4fea-abe3-dafa79de55fd",
+      "ref": "df3d0ea0-6347-4a20-bda8-9514c5f08e54",
       "dependsOn": [
-        "35594969-43a1-471d-80b1-17f27df8af78"
-      ]
-    },
-    {
-      "ref": "4ec86947-0de6-4898-bd2b-b1fb6e656699",
-      "dependsOn": [
-        "067f4d8b-d664-4b1e-a4fd-3a86b7fbb91a",
-        "4d71f29d-c043-4fea-abe3-dafa79de55fd"
+        "57531383-7175-468c-abfb-2ebc5588a1eb",
+        "98bf334f-8ab4-441c-99a1-e895a11cddd4"
       ]
     },
     {
