@@ -33,8 +33,8 @@ Paquete: generic-array (0.14.7)
 PURL: pkg:cargo/generic-array@0.14.7
 Licencia SPDX: Ver repositorio origen
 -----------------------------------------------------------------
-Paquete: syn (3.0.9)
-PURL: pkg:cargo/syn@3.0.9
+Paquete: proc-macro2 (1.0.107)
+PURL: pkg:cargo/proc-macro2@1.0.107
 Licencia SPDX: Ver repositorio origen
 -----------------------------------------------------------------
 Paquete: quote (1.0.47)

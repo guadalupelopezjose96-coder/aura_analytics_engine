@@ -188,13 +188,13 @@
     {
       "bom-ref": "4b856618-f9bb-4715-880c-54d53e2aae20",
       "type": "library",
-      "name": "quote",
-      "version": "1.0.47",
-      "purl": "pkg:cargo/quote@1.0.47",
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "purl": "pkg:cargo/proc-macro2@1.0.107",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "quote@1.0.47"
+          "value": "proc-macro2@1.0.107"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -378,8 +378,8 @@
       "purl": "pkg:cargo/typenum@1.20.1",
       "properties": [
         {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "typenum@1.20.1"
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
