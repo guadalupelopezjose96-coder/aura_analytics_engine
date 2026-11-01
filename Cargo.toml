@@ -18,3 +18,115 @@ codegen-units = 1
 panic = "abort"
 strip = true
 overflow-checks = true
+
+[[bin]]
+name = "aaufsa-irs-form8999"
+path = "src/bin/aaufsa_irs_form8999.rs"
+
+[[bin]]
+name = "aaufsa_irs_form8999"
+path = "src/bin/aaufsa_irs_form8999.rs"
+
+[[bin]]
+name = "aaufsa-simulator"
+path = "src/bin/aaufsa_simulator.rs"
+
+[[bin]]
+name = "aaufsa_simulator"
+path = "src/bin/aaufsa_simulator.rs"
+
+[[bin]]
+name = "auraintel-studios3d-prod"
+path = "src/bin/auraintel_studios3d_prod.rs"
+
+[[bin]]
+name = "auraintel_studios3d_prod"
+path = "src/bin/auraintel_studios3d_prod.rs"
+
+[[bin]]
+name = "auraintel-vpp-prod"
+path = "src/bin/auraintel_vpp_prod.rs"
+
+[[bin]]
+name = "auraintel_vpp_prod"
+path = "src/bin/auraintel_vpp_prod.rs"
+
+[[bin]]
+name = "auratetrax-edge-prod"
+path = "src/bin/auratetrax_edge_prod.rs"
+
+[[bin]]
+name = "auratetrax_edge_prod"
+path = "src/bin/auratetrax_edge_prod.rs"
+
+[[bin]]
+name = "fourphonix-pqc-prod"
+path = "src/bin/fourphonix_pqc_prod.rs"
+
+[[bin]]
+name = "fourphonix_pqc_prod"
+path = "src/bin/fourphonix_pqc_prod.rs"
+
+[[bin]]
+name = "gemini-cognitive-prod"
+path = "src/bin/gemini_cognitive_prod.rs"
+
+[[bin]]
+name = "gemini_cognitive_prod"
+path = "src/bin/gemini_cognitive_prod.rs"
+
+[[bin]]
+name = "middleware-compliance-prod"
+path = "src/bin/middleware_compliance_prod.rs"
+
+[[bin]]
+name = "middleware_compliance_prod"
+path = "src/bin/middleware_compliance_prod.rs"
+
+[[bin]]
+name = "proelite-master-orchestrator"
+path = "src/bin/proelite_master_orchestrator.rs"
+
+[[bin]]
+name = "proelite_master_orchestrator"
+path = "src/bin/proelite_master_orchestrator.rs"
+
+[[bin]]
+name = "prophonix-sonic-prod"
+path = "src/bin/prophonix_sonic_prod.rs"
+
+[[bin]]
+name = "prophonix_sonic_prod"
+path = "src/bin/prophonix_sonic_prod.rs"
+
+[[bin]]
+name = "sovereign-introspection-prod"
+path = "src/bin/sovereign_introspection_prod.rs"
+
+[[bin]]
+name = "sovereign_introspection_prod"
+path = "src/bin/sovereign_introspection_prod.rs"
+
+[[bin]]
+name = "sovereign-priority-prod"
+path = "src/bin/sovereign_priority_prod.rs"
+
+[[bin]]
+name = "sovereign_priority_prod"
+path = "src/bin/sovereign_priority_prod.rs"
+
+[[bin]]
+name = "sovereign-proscription-prod"
+path = "src/bin/sovereign_proscription_prod.rs"
+
+[[bin]]
+name = "sovereign_proscription_prod"
+path = "src/bin/sovereign_proscription_prod.rs"
+
+[[bin]]
+name = "standard1979-notary-prod"
+path = "src/bin/standard1979_notary_prod.rs"
+
+[[bin]]
+name = "standard1979_notary_prod"
+path = "src/bin/standard1979_notary_prod.rs"
