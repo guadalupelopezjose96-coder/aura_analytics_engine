@@ -31,4 +31,4 @@ jobs:
         run: cargo test --release
 
       - name: Execute Middleware Compliance Gate Engine
-        run: cargo run --release --bin middleware-compliance-prod
+        run: cargo run --release --bin middleware_compliance_prod
