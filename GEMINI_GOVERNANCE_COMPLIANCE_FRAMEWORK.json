@@ -1,0 +1,73 @@
+{
+  "framework_id": "AURA-GEMINI-GOV-2026-V1",
+  "version": "1.0.0-IMMUTABLE",
+  "timestamp_utc": "2026-11-01T02:21:00Z",
+  "holding_organization": {
+    "name": "guadalupelopezjose96-org",
+    "org_id": "320717657398",
+    "beneficial_owner": "Jose Emanuel Guadalupe Lopez",
+    "domains": [
+      {
+        "fqdn": "auraintelcore.com",
+        "domain_id": "188680247367",
+        "role": "VPP OT/IT Dispatch & Deterministic Fiscal Engine"
+      },
+      {
+        "fqdn": "standard1979.com",
+        "domain_id": "282230018778",
+        "role": "AAUFSA IRC Cap. 56 Statutory Authority & WORM Forensic Vault"
+      }
+    ]
+  },
+  "lifecycle_coverage_37_pillars": [
+    "uso", "gestion", "diseno", "arquitectura", "ingenieria", "desarrollo",
+    "compilacion", "aprovisionamiento", "despliegue", "integracion", "interconexion",
+    "orquestacion", "operacion", "administracion", "monitoreo", "observabilidad",
+    "telemetria", "aseguramiento", "hardening", "auditoria", "certificacion",
+    "mantenimiento", "actualizacion", "escalamiento", "agregacion", "despacho",
+    "optimizacion", "transaccion", "liquidacion", "facturacion", "tributacion",
+    "monetizacion", "distribucion", "licenciamiento", "comercializacion",
+    "gobernanza", "explotacion"
+  ],
+  "technical_invariants": {
+    "ai_engine": "Google Gemini Ecosystem (Explicit Pinned Model Versions Only)",
+    "schema_validation": "Strict JSON Schema & Rust Typestate Pattern",
+    "supply_chain_security": "SLSA Level 3 + CycloneDX SBOM (sbom-cyclonedx.json) + THIRD-PARTY-NOTICES.txt",
+    "arithmetic_standard": "100% Fixed-Point Integer (micro_usd, uW, mA, cHz) - Zero IEEE-754 Float",
+    "database_isolation": "PostgreSQL SERIALIZABLE ACID + Row-Level Security (RLS)",
+    "accounting_invariant": "Double-Entry Bookkeeping (Sum Debits - Sum Credits = 0 | Delta = 0)",
+    "settled_ledger_baseline": {
+      "entries_count": 9,
+      "total_settled_usd": "39214.06",
+      "total_settled_micro_usd": 39214060000,
+      "delta_micro_usd": 0
+    },
+    "worm_storage": "SHA-256 Hash Chain + PostgreSQL Triggers blocking UPDATE/DELETE",
+    "http_hardening_headers": [
+      "X-Content-Type-Options: nosniff",
+      "X-Frame-Options: DENY",
+      "Referrer-Policy: no-referrer",
+      "Cache-Control: no-store, no-cache, must-revalidate, max-age=0"
+    ]
+  },
+  "regulatory_and_statutory_compliance": {
+    "google_policies": [
+      "Google APIs Terms of Service",
+      "Google Cloud / Vertex AI Enterprise Terms (Zero Data Training Guarantee)",
+      "Generative AI Prohibited Use Policy"
+    ],
+    "international_standards": [
+      "ISO/IEC 42001:2023 (AI Management System)",
+      "ISO/IEC 27001:2022 (Information Security)",
+      "NIST AI Risk Management Framework (AI RMF 1.0)",
+      "SOC 2 Type II",
+      "GDPR / CCPA Data Minimization & Cloud Data Processing Addendum (CDPA)",
+      "EU AI Act Transparency & Technical Documentation"
+    ],
+    "fiscal_and_billing": [
+      "OASIS UBL 2.1 / PEPPOL BIS Billing 3.0 XML",
+      "Stripe Live HMAC Webhook Idempotency",
+      "AAUFSA / IRC Chapter 56 Safe Harbor Statutory Immunity (Sec. 5000H(d))"
+    ]
+  }
+}
