@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:02199912-e325-4384-a247-d5ada0b688a8",
+  "serialNumber": "urn:uuid:8fff6f0e-e3c8-4c3b-8378-6ff3425d76a6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-01T00:48:10+00:00",
+    "timestamp": "2026-11-01T00:49:46+00:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,7 @@
       ]
     },
     "component": {
-      "bom-ref": "5e0853db-145c-4059-89c3-84b1f9116744",
+      "bom-ref": "4e6b50bd-79cb-44b1-bf41-ba3d6674b52b",
       "type": "application",
       "name": ".",
       "properties": [
@@ -33,7 +33,7 @@
   },
   "components": [
     {
-      "bom-ref": "07d2daca-c96f-415f-a15b-40847f567359",
+      "bom-ref": "1fcd6f28-be91-4a7c-bf4b-24089cb0967c",
       "type": "library",
       "name": "",
       "properties": [
@@ -48,7 +48,7 @@
       ]
     },
     {
-      "bom-ref": "1d6f0588-c74d-44de-954f-23eb83776c94",
+      "bom-ref": "8722e5f9-b632-4c23-b042-c2c3111d966b",
       "type": "application",
       "name": "aura_web_engine/Cargo.lock",
       "properties": [
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "bom-ref": "9869935e-1566-4f7e-a28f-d78f153c69b4",
+      "bom-ref": "ba0aa2c2-5b40-4e37-8d54-21b5a41f8409",
       "type": "application",
       "name": "Cargo.lock",
       "properties": [
@@ -3752,26 +3752,26 @@
   ],
   "dependencies": [
     {
-      "ref": "07d2daca-c96f-415f-a15b-40847f567359",
+      "ref": "1fcd6f28-be91-4a7c-bf4b-24089cb0967c",
       "dependsOn": []
     },
     {
-      "ref": "1d6f0588-c74d-44de-954f-23eb83776c94",
+      "ref": "4e6b50bd-79cb-44b1-bf41-ba3d6674b52b",
+      "dependsOn": [
+        "8722e5f9-b632-4c23-b042-c2c3111d966b",
+        "ba0aa2c2-5b40-4e37-8d54-21b5a41f8409"
+      ]
+    },
+    {
+      "ref": "8722e5f9-b632-4c23-b042-c2c3111d966b",
       "dependsOn": [
         "pkg:cargo/aura_web_engine@2026.1.0"
       ]
     },
     {
-      "ref": "5e0853db-145c-4059-89c3-84b1f9116744",
+      "ref": "ba0aa2c2-5b40-4e37-8d54-21b5a41f8409",
       "dependsOn": [
-        "1d6f0588-c74d-44de-954f-23eb83776c94",
-        "9869935e-1566-4f7e-a28f-d78f153c69b4"
-      ]
-    },
-    {
-      "ref": "9869935e-1566-4f7e-a28f-d78f153c69b4",
-      "dependsOn": [
-        "07d2daca-c96f-415f-a15b-40847f567359"
+        "1fcd6f28-be91-4a7c-bf4b-24089cb0967c"
       ]
     },
     {

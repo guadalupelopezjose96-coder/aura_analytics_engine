@@ -1,5 +1,5 @@
 AVISOS DE SOFTWARE DE CODIGO ABIERTO DE TERCEROS (POL-SEC-OSS-001)
-Fecha: 2026-11-01T00:48:11Z
+Fecha: 2026-11-01T00:49:47Z
 -----------------------------------------------------------------
 Paquete:  (null)
 PURL: N/A
