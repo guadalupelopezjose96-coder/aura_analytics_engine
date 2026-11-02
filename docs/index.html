@@ -156,6 +156,7 @@
         <option value="10000|https://buy.stripe.com/8x2bJ1a5IgKQ2I75aWcjS0u|65.0|Habilitado Grupo Controlado Multi-Filial (IRC 414/1563)|AuraIntel Omni Grupo Controlado (Mensual)">14. AuraIntel Omni Grupo Controlado IRC 414/1563 — USD 10,000.00/mes</option>
         <option value="10000|https://buy.stripe.com/3cI7sL91EamsgyX0UGcjS0v|65.0|Habilitado Grupo Controlado Multi-Filial (IRC 414/1563)|AuraIntel Omni Grupo Controlado (Pago Único CAPEX)">15. AuraIntel Omni Grupo Controlado IRC 414/1563 — USD 10,000.00 (Pago Único)</option>
         <option value="29250|https://buy.stripe.com/4gM5kD0v8bqwfuT0UGcjS0w|180.0|Derecho de Reventa / Liquidación Mayorista PEPPOL UBL 3.0|Liquidación Mayorista VPP PEPPOL UBL 3.0">16. Liquidación Mayorista VPP / PEPPOL UBL 3.0 — USD 29,250.00 (Pago Único)</option>
+              <option value="199|https://buy.stripe.com/7sYfZhfq2gKQ96vcDocjS0x|12.0|Contrato ESCO 21% del Ahorro Auditado WORM (Uso Final)|Plan Performance Share 21% Ahorro VPP">17. Plan Performance Share (21% del Ahorro Generado + Base USD 199/mes)</option>
       </select>
     </div>
     <div>
@@ -195,6 +196,11 @@
       <div style="font-size:0.73rem;color:#94a3b8;text-transform:uppercase;">CO₂ Evitado &amp; Créditos REC</div>
       <div id="gf-kpi-co2" style="font-size:1.45rem;font-weight:800;color:#c084fc;font-family:monospace;margin-top:4px;">42.6 Ton</div>
       <div style="font-size:0.7rem;color:#e9d5ff;">Telemetría Auditada WORM SHA-256</div>
+    </div>
+    <div style="background:#111827;border-left:4px solid #ec4899;padding:12px 14px;border-radius:6px;">
+      <div style="font-size:0.73rem;color:#94a3b8;text-transform:uppercase;">Modelo 21% Ahorro Compartido</div>
+      <div id="gf-kpi-21pct" style="font-size:1.35rem;font-weight:800;color:#f472b6;font-family:monospace;margin-top:4px;">USD 1,436.40</div>
+      <div id="gf-kpi-79pct" style="font-size:0.7rem;color:#fbcfe8;">79% Neto Cliente: +USD 5,403.60/mes</div>
     </div>
   </div>
 
@@ -270,6 +276,9 @@
       <a href="https://buy.stripe.com/4gM5kD0v8bqwfuT0UGcjS0w" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#0f766e;border:1px solid #2dd4bf;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
         <strong style="color:#5eead4;">Liquidación Mayorista PEPPOL UBL 3.0</strong><br>USD 29,250.00 Pago Único — Reventa Mayorista B2B
       </a>
+      <a href="https://buy.stripe.com/7sYfZhfq2gKQ96vcDocjS0x" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:linear-gradient(135deg,#064e3b,#0f172a);border:1px solid #10b981;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
+        <strong style="color:#34d399;">Plan Performance Share (21% Ahorro VPP)</strong><br>21% del Ahorro Auditado en Grafana (Base USD 199/mes)
+      </a>
     </div>
   </details>
 </div>
@@ -301,6 +310,14 @@ window.updateGrafanaVppApp = function() {
   document.getElementById('gf-kpi-roi').textContent = 'ROI Mensual Verificado: ' + roi + '%';
   document.getElementById('gf-kpi-mw').textContent = totalMw.toFixed(2) + ' MW';
   document.getElementById('gf-kpi-co2').textContent = co2 + ' Ton';
+  var share21 = (grossSavings * 0.21);
+  var client79 = (grossSavings * 0.79);
+  var el21 = document.getElementById('gf-kpi-21pct');
+  var el79 = document.getElementById('gf-kpi-79pct');
+  if (el21 && el79) {
+    el21.textContent = '21%: USD ' + share21.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+    el79.textContent = '79% Neto Cliente: +USD ' + client79.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+  }
 
   var btn = document.getElementById('grafana-activate-plan-btn');
   btn.href = url;
