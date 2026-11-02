@@ -345,6 +345,15 @@ window.updateGrafanaVppApp = function() {
   document.getElementById('gf-kpi-roi').textContent = 'ROI Mensual Verificado: ' + roi + '%';
   document.getElementById('gf-kpi-mw').textContent = totalMw.toFixed(2) + ' MW';
   document.getElementById('gf-kpi-co2').textContent = co2 + ' Ton';
+  var grossCents = grossSavings * 100;
+  var fee21Cents = Math.floor((grossCents * 2100) / 10000);
+  var net79Cents = grossCents - fee21Cents;
+  var el21 = document.getElementById('gf-kpi-21pct');
+  var el79 = document.getElementById('gf-kpi-79pct');
+  if (el21 && el79) {
+    el21.textContent = '21%: USD ' + (fee21Cents / 100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+    el79.textContent = '79% Neto Cliente: +USD ' + (net79Cents / 100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+  }
   var share21 = (grossSavings * 0.21);
   var client79 = (grossSavings * 0.79);
   var el21 = document.getElementById('gf-kpi-21pct');
