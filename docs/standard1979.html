@@ -319,6 +319,14 @@
 </div>
 
 <script>
+// WORM READ-ONLY CONTRACT CONSTANTS (IMMUTABLE 2100 / 7900 BPS)
+const WORM_CONTRACT_21_79 = Object.freeze({
+  AURAINTEL_FEE_BPS: 2100,
+  CLIENT_NET_BPS: 7900,
+  BPS_DENOM: 10000,
+  READ_ONLY_MODE: true,
+  STANDARD: "FERC-2222-IPMVP-ASC606-WORM"
+});
 window.updateGrafanaVppApp = function() {
   var sel = document.getElementById('vpp-plan-selector');
   var slider = document.getElementById('der-nodes-slider');
