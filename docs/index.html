@@ -447,9 +447,9 @@ setInterval(function() {
   const xs1 = [0, 60, 120, 180, 240, 300, 360, 420, 500];
   const xs2 = [0, 55, 110, 165, 220, 275, 330, 385, 440, 500];
 
-  let ySav = [115, 102, 88, 74, 60, 48, 35, 25, 16];
+  let ySav = [115, 104, 92, 80, 68, 56, 46, 40, 36];
   let yBase = [125, 118, 110, 104, 96, 89, 82, 76, 68];
-  let yDisp = [95, 60, 82, 42, 70, 30, 58, 24, 48, 22];
+  let yDisp = [98, 68, 86, 52, 74, 44, 64, 38, 56, 36];
 
   let tick = 0;
   let blink = true;
@@ -467,7 +467,7 @@ setInterval(function() {
     const lmp = 42.8 + 8.4 * Math.sin(t / 15.0);
 
     ySav.shift();
-    const nextSavY = Math.max(12, Math.min(125, Math.round(42 - 26 * Math.sin(t / 6.0) - (tick % 5) * 1.8)));
+    const nextSavY = Math.max(34, Math.min(122, Math.round(62 - 22 * Math.sin(t / 6.0) - (tick % 5) * 1.5)));
     ySav.push(nextSavY);
 
     yBase.shift();
@@ -486,7 +486,7 @@ setInterval(function() {
     hud1.label.textContent = `LIVE 60.00Hz | BESS Headroom: ${headroomKw.toFixed(2)} kW | LMP: $${lmp.toFixed(2)}/MWh`;
 
     yDisp.shift();
-    const nextDispY = Math.max(16, Math.min(120, Math.round(58 - 32 * Math.sin(t / 3.5) + 12 * Math.cos(t * 0.9))));
+    const nextDispY = Math.max(34, Math.min(120, Math.round(68 - 26 * Math.sin(t / 3.5) + 10 * Math.cos(t * 0.9))));
     yDisp.push(nextDispY);
 
     const ptsDisp = xs2.map((x, i) => `${x},${yDisp[i]}`).join(' ');
