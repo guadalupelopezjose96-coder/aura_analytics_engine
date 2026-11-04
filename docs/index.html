@@ -413,15 +413,23 @@ setInterval(function() {
 
   function createHudOverlay(svg, colorHex, initialText) {
     const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    bg.setAttribute('x', '6');
+    bg.setAttribute('y', '5');
+    bg.setAttribute('width', '488');
+    bg.setAttribute('height', '20');
+    bg.setAttribute('rx', '4');
+    bg.setAttribute('fill', 'rgba(6, 10, 18, 0.85)');
+
     const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    dot.setAttribute('cx', '14');
-    dot.setAttribute('cy', '16');
+    dot.setAttribute('cx', '16');
+    dot.setAttribute('cy', '15');
     dot.setAttribute('r', '4');
     dot.setAttribute('fill', colorHex);
 
     const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    label.setAttribute('x', '24');
-    label.setAttribute('y', '20');
+    label.setAttribute('x', '26');
+    label.setAttribute('y', '19');
     label.setAttribute('fill', '#e2e8f0');
     label.setAttribute('font-family', 'monospace');
     label.setAttribute('font-size', '10.5');
@@ -434,6 +442,7 @@ setInterval(function() {
     pulseDot.setAttribute('stroke', '#060a12');
     pulseDot.setAttribute('stroke-width', '1.5');
 
+    g.appendChild(bg);
     g.appendChild(dot);
     g.appendChild(label);
     svg.appendChild(g);
@@ -441,18 +450,41 @@ setInterval(function() {
     return { dot, label, pulseDot };
   }
 
-  const hud1 = createHudOverlay(svgSavings, '#10b981', 'LIVE STREAM | BESS: 354.2 kW | ROI SYNC 60.00 Hz');
-  const hud2 = createHudOverlay(svgDispatch, '#38bdf8', 'LIVE IED_01 | ACTIVA: 528.4 kW | SOLAR: 356.1 kW | XCBR1: CLOSED');
+  const hud1 = createHudOverlay(svgSavings, '#10b981', 'LIVE 60.00Hz | BESS Headroom: 354.20 kW | LMP: $42.80/MWh');
+  const hud2 = createHudOverlay(svgDispatch, '#38bdf8', 'IED_01 SYNC | Activa: 528.40 kW | Solar IA: 356.10 kW | Irr: 848 W/m2');
 
   const xs1 = [0, 60, 120, 180, 240, 300, 360, 420, 500];
   const xs2 = [0, 55, 110, 165, 220, 275, 330, 385, 440, 500];
 
-  let ySav = [115, 104, 92, 80, 68, 56, 46, 40, 36];
-  let yBase = [125, 118, 110, 104, 96, 89, 82, 76, 68];
-  let yDisp = [98, 68, 86, 52, 74, 44, 64, 38, 56, 36];
+  // Todos los valores de Y inician >= 38px para dejar despejada la barra superior (y=5..25)
+  let ySav = [118, 108, 96, 84, 72, 62, 52, 44, 38];
+  let yBase = [128, 122, 116, 110, 104, 98, 92, 86, 80];
+  let yDisp = [104, 76, 92, 62, 82, 52, 72, 46, 64, 40];
 
   let tick = 0;
   let blink = true;
+
+  function renderCurves() {
+    ySav = ySav.map(v => Math.max(38, Math.min(126, v)));
+    yBase = yBase.map(v => Math.max(72, Math.min(136, v)));
+    yDisp = yDisp.map(v => Math.max(38, Math.min(126, v)));
+
+    const ptsSav = xs1.map((x, i) => `${x},${ySav[i]}`).join(' ');
+    const ptsBase = xs1.map((x, i) => `${x},${yBase[i]}`).join(' ');
+    lineSavings.setAttribute('points', ptsSav);
+    lineBaseline.setAttribute('points', ptsBase);
+    areaSavings.setAttribute('points', `0,145 ${ptsSav} 500,145`);
+
+    hud1.pulseDot.setAttribute('cx', '500');
+    hud1.pulseDot.setAttribute('cy', String(ySav[ySav.length - 1]));
+
+    const ptsDisp = xs2.map((x, i) => `${x},${yDisp[i]}`).join(' ');
+    lineDispatch.setAttribute('points', ptsDisp);
+    areaDispatch.setAttribute('points', `0,145 ${ptsDisp} 500,145`);
+
+    hud2.pulseDot.setAttribute('cx', '500');
+    hud2.pulseDot.setAttribute('cy', String(yDisp[yDisp.length - 1]));
+  }
 
   function stepTelemetry() {
     tick += 1;
@@ -467,37 +499,29 @@ setInterval(function() {
     const lmp = 42.8 + 8.4 * Math.sin(t / 15.0);
 
     ySav.shift();
-    const nextSavY = Math.max(34, Math.min(122, Math.round(62 - 22 * Math.sin(t / 6.0) - (tick % 5) * 1.5)));
+    const nextSavY = Math.max(38, Math.min(118, Math.round(64 - 22 * Math.sin(t / 6.0) - (tick % 4) * 1.2)));
     ySav.push(nextSavY);
 
     yBase.shift();
-    const nextBaseY = Math.max(62, Math.min(132, Math.round(96 + 18 * Math.cos(t / 8.0))));
+    const nextBaseY = Math.max(78, Math.min(134, Math.round(104 + 14 * Math.cos(t / 8.0))));
     yBase.push(nextBaseY);
 
-    const ptsSav = xs1.map((x, i) => `${x},${ySav[i]}`).join(' ');
-    const ptsBase = xs1.map((x, i) => `${x},${yBase[i]}`).join(' ');
-    lineSavings.setAttribute('points', ptsSav);
-    lineBaseline.setAttribute('points', ptsBase);
-    areaSavings.setAttribute('points', `0,145 ${ptsSav} 500,145`);
+    yDisp.shift();
+    const nextDispY = Math.max(38, Math.min(122, Math.round(74 - 28 * Math.sin(t / 3.5) + 9 * Math.cos(t * 0.9))));
+    yDisp.push(nextDispY);
 
-    hud1.pulseDot.setAttribute('cx', '500');
-    hud1.pulseDot.setAttribute('cy', String(ySav[ySav.length - 1]));
+    renderCurves();
+
     hud1.dot.setAttribute('opacity', blink ? '1' : '0.35');
     hud1.label.textContent = `LIVE 60.00Hz | BESS Headroom: ${headroomKw.toFixed(2)} kW | LMP: $${lmp.toFixed(2)}/MWh`;
 
-    yDisp.shift();
-    const nextDispY = Math.max(34, Math.min(120, Math.round(68 - 26 * Math.sin(t / 3.5) + 10 * Math.cos(t * 0.9))));
-    yDisp.push(nextDispY);
-
-    const ptsDisp = xs2.map((x, i) => `${x},${yDisp[i]}`).join(' ');
-    lineDispatch.setAttribute('points', ptsDisp);
-    areaDispatch.setAttribute('points', `0,145 ${ptsDisp} 500,145`);
-
-    hud2.pulseDot.setAttribute('cx', '500');
-    hud2.pulseDot.setAttribute('cy', String(yDisp[yDisp.length - 1]));
     hud2.dot.setAttribute('opacity', blink ? '1' : '0.35');
     hud2.label.textContent = `IED_01 SYNC | Activa: ${activeKw.toFixed(2)} kW | Solar IA: ${solarKw.toFixed(2)} kW | Irr: ${irradiance.toFixed(0)} W/m2`;
   }
+
+  // Si el usuario cambia el plan o mueve el slider de nodos, re-aplicar inmediatamente el limite y>=38px
+  document.addEventListener('input', () => setTimeout(renderCurves, 10));
+  document.addEventListener('change', () => setTimeout(renderCurves, 10));
 
   stepTelemetry();
   setInterval(stepTelemetry, 1500);
