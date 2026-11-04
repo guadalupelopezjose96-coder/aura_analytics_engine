@@ -3,163 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AuraIntelCore.com — VPP Grafana Telemetry, WORM Ledger & SaaS</title>
+  <title>Standard1979.com — Auditoría Forense WORM, Grafana Fiscal & Clawback</title>
   <style>
-    :root { --bg: #0b0f19; --panel: #111827; --card: #1e293b; --border: #334155; --accent: #38bdf8; --green: #10b981; --stripe: #635bff; --gold: #f59e0b; }
-    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: #e2e8f0; margin: 0; padding: 1.8rem 1rem; line-height: 1.55; }
-    .container { max-width: 1180px; margin: 0 auto; }
-    .badge { display: inline-block; background: var(--green); color: #052e16; padding: 0.3rem 0.85rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.04em; }
-    h1 { font-size: 2.2rem; margin: 0.8rem 0 0.4rem; color: #fff; }
-    .subtitle { color: #94a3b8; font-size: 1rem; max-width: 880px; margin-bottom: 1.8rem; }
-    /* GRAFANA + WORM PANEL */
+    :root { --bg: #090d16; --panel: #111827; --border: #374151; --gold: #f59e0b; --green: #10b981; --accent: #38bdf8; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: #f3f4f6; margin: 0; padding: 2rem 1rem; line-height: 1.6; }
+    .container { max-width: 1040px; margin: 0 auto; }
+    .badge { display: inline-block; background: var(--gold); color: #000; padding: 0.35rem 0.9rem; border-radius: 999px; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.05em; }
+    h1 { font-size: 2.2rem; margin: 0.9rem 0 0.4rem; color: #fff; }
+    .subtitle { color: #9ca3af; font-size: 1rem; margin-bottom: 1.8rem; }
     .grafana-header { display: flex; justify-content: space-between; align-items: center; background: #161f30; border: 1px solid var(--border); padding: 0.8rem 1.2rem; border-radius: 10px 10px 0 0; }
-    .grafana-title { font-weight: 800; color: #fff; font-size: 0.95rem; display: flex; align-items: center; gap: 0.6rem; }
-    .dot { width: 10px; height: 10px; background: var(--green); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--green); }
     .grafana-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; background: var(--panel); border: 1px solid var(--border); border-top: none; padding: 1.2rem; border-radius: 0 0 10px 10px; }
-    .g-panel { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 1rem; }
-    .g-label { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
-    .g-value { font-size: 1.75rem; font-weight: 800; color: var(--green); margin: 0.3rem 0; font-family: monospace; }
-    canvas { width: 100%; height: 70px; display: block; margin-top: 0.4rem; }
-    .worm-box { margin-top: 1rem; background: #090d16; border: 1px solid var(--border); border-left: 4px solid var(--green); border-radius: 8px; padding: 0.9rem 1.1rem; font-family: monospace; font-size: 0.8rem; color: #38bdf8; overflow-x: auto; }
-    /* STRIPE CATALOG */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.4rem; margin-top: 2rem; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.6rem; display: flex; flex-direction: column; justify-content: space-between; }
-    .card.featured { border: 2px solid var(--accent); box-shadow: 0 0 25px rgba(56, 189, 248, 0.12); }
-    .card.omni { border: 2px solid var(--gold); box-shadow: 0 0 25px rgba(245, 158, 11, 0.14); }
-    .card h3 { margin-top: 0; color: #fff; font-size: 1.18rem; }
-    .price { font-size: 2.1rem; font-weight: 800; color: var(--accent); margin: 0.7rem 0; }
-    .card.omni .price { color: var(--gold); }
-    .price span { font-size: 0.88rem; color: #94a3b8; font-weight: 500; }
-    ul { padding-left: 1.2rem; color: #cbd5e1; margin-bottom: 1.5rem; font-size: 0.92rem; }
-    li { margin-bottom: 0.4rem; }
-    .btn { display: block; width: 100%; text-align: center; background: var(--stripe); color: #fff; padding: 0.9rem 0; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.96rem; box-sizing: border-box; }
-    .btn:hover { background: #4f46e5; }
-    .audit-banner { margin-top: 2.2rem; background: #0f172a; border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 1.3rem 1.5rem; border-radius: 10px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
-    .footer { margin-top: 2.8rem; padding-top: 1.4rem; border-top: 1px solid var(--border); font-size: 0.84rem; color: #64748b; }
+    .g-panel { background: #0b0f19; border: 1px solid #1f2937; border-radius: 8px; padding: 1rem; }
+    .g-label { font-size: 0.76rem; color: #9ca3af; text-transform: uppercase; }
+    .g-value { font-size: 1.65rem; font-weight: 800; color: var(--gold); margin: 0.3rem 0; font-family: monospace; }
+    canvas { width: 100%; height: 68px; display: block; margin-top: 0.4rem; }
+    .worm-box { margin: 1.2rem 0 2rem; background: #050811; border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 8px; padding: 1rem; font-family: monospace; font-size: 0.8rem; color: #fcd34d; overflow-x: auto; }
+    .audit-box { background: var(--panel); border: 2px solid var(--gold); border-radius: 14px; padding: 2rem; box-shadow: 0 0 30px rgba(245, 158, 11, 0.12); }
+    .price { font-size: 2.5rem; font-weight: 800; color: var(--gold); margin: 0.8rem 0; }
+    .price span { font-size: 1rem; color: #9ca3af; font-weight: 500; }
+    ul { padding-left: 1.3rem; color: #d1d5db; margin-bottom: 1.8rem; }
+    li { margin-bottom: 0.55rem; }
+    .btn { display: block; width: 100%; text-align: center; background: var(--gold); color: #000; padding: 1.05rem 0; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 1.05rem; box-sizing: border-box; }
+    .back-link { display: inline-block; margin-top: 1.6rem; color: var(--accent); text-decoration: none; font-weight: 700; }
+    .footer { margin-top: 2.8rem; padding-top: 1.4rem; border-top: 1px solid var(--border); font-size: 0.84rem; color: #6b7280; }
   </style>
 </head>
 <body>
   <div class="container">
-    <span class="badge">AURAINTELCORE.COM | DOMAIN ID: 188680247367 | WORM + GRAFANA TELEMETRY</span>
-    <h1>AuraIntel VPP &amp; Motor Fiscal Determinista AAUFSA</h1>
-    <p class="subtitle">Telemetría eléctrica en tiempo real (Grafana VPP Stream), almacenamiento inmutable WORM (Write-Once-Read-Many) en PostgreSQL SERIALIZABLE y catálogo oficial de licenciamiento SaaS (Org ID: 320717657398).</p>
+    <span class="badge">STANDARD1979.COM | DOMAIN ID: 282230018778 | WORM FORENSIC AUDIT &amp; GRAFANA</span>
+    <!-- STANDARD 1979 FORENSIC BRANDING -->
+<div id="standard1979-brand-box" style="display: flex; align-items: center; gap: 16px; margin-bottom: 22px; padding: 16px 20px; background: linear-gradient(135deg, #130e06 0%, #1c140a 50%, #0d131f 100%); border: 1px solid #3d2a10; border-left: 4px solid #f59e0b; border-radius: 12px; box-shadow: 0 10px 30px rgba(245, 158, 11, 0.12);">
+  <svg viewBox="0 0 120 120" width="70" height="70" style="flex-shrink: 0; filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.45));">
+    <defs>
+      <linearGradient id="stGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fef08a"/>
+        <stop offset="50%" stop-color="#f59e0b"/>
+        <stop offset="100%" stop-color="#b45309"/>
+      </linearGradient>
+      <linearGradient id="stBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#93c5fd"/>
+        <stop offset="50%" stop-color="#2563eb"/>
+      </linearGradient>
+    </defs>
+    <path d="M60 14 L98 28 L98 64 C98 86 60 106 60 106 C60 106 22 86 22 64 L22 28 Z" fill="none" stroke="url(#stGold)" stroke-width="4"/>
+    <rect x="44" y="54" width="32" height="26" rx="4" fill="url(#stGold)"/>
+    <path d="M49 54 L49 42 C49 35 54 30 60 30 C66 30 71 35 71 42 L71 54" fill="none" stroke="url(#stGold)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="60" cy="65" r="3.5" fill="#0f172a"/>
+    <path d="M60 68.5 L60 74" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="60" cy="20" r="3" fill="url(#stBlue)"/>
+    <circle cx="88" cy="32" r="3" fill="url(#stBlue)"/>
+    <circle cx="32" cy="32" r="3" fill="url(#stBlue)"/>
+  </svg>
+  <div>
+    <div style="display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;">
+      <span style="font-size: 26px; font-weight: 900; letter-spacing: 1.5px; background: linear-gradient(180deg, #ffffff 0%, #fef08a 60%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">STANDARD 1979</span>
+      <span style="font-size: 16px; font-weight: 800; color: #f59e0b; letter-spacing: 1px;">.COM</span>
+    </div>
+    <div style="font-size: 12px; color: #cbd5e1; font-family: monospace; margin-top: 4px;">
+      &#128274; FORENSIC CRYPTOGRAPHIC AUDITOR | DOMAIN ID: 282230018778 | ORG: 320717657398
+    </div>
+  </div>
+</div>
+<h1>Standard 1979 — Autoridad de Auditoría Criptográfica AAUFSA</h1>
+    <p class="subtitle">Monitoreo forense en tiempo real (Grafana Compliance Dashboard), verificación de inmutabilidad WORM (Write-Once-Read-Many) y certificación de recaptura Clawback bajo IRC Capítulo 56 (Sec. 5000F-5000H).</p>
 
-    <!-- PANEL GRAFANA + WORM EN VIVO -->
+    <!-- PANEL GRAFANA FORENSE STANDARD 1979 -->
     <div class="grafana-header">
-      <div class="grafana-title"><span class="dot"></span> GRAFANA LIVE TELEMETRY &amp; WORM IMMUTABLE STORAGE — BUS #1 (ORG: 320717657398)</div>
-      <div style="font-size: 0.78rem; color: #94a3b8; font-family: monospace;">REFRESH: 1s | WORM LOCK: ACTIVE</div>
+      <div style="font-weight:800; color:#fff; font-size:0.92rem;">GRAFANA FORENSIC AUDIT STREAM — DOMAIN 282230018778 (CLAWBACK &amp; FIDUCIARY SPLIT)</div>
+      <div style="font-size:0.76rem; color:#10b981; font-family:monospace;">SBOM CYCLONEDX: 0 FAILURES | WORM: VERIFIED</div>
     </div>
     <div class="grafana-grid">
       <div class="g-panel">
-        <div class="g-label">Capacidad Activa Bus VPP (mW)</div>
-        <div class="g-value" id="mw-val">120,000 mW</div>
-        <div style="font-size:0.75rem; color:#64748b;">Máximo Nominal: 250,000 mW | Estado: NominalGridOperation</div>
-        <canvas id="chart-mw" width="280" height="70"></canvas>
+        <div class="g-label">Gravamen Base + Clawback (15.30% + 2.00%)</div>
+        <div class="g-value">$18,727.20 USD</div>
+        <div style="font-size:0.75rem; color:#9ca3af;">Base: $18,360.00 | Recargo Sec. 5000G(c): $367.20</div>
+        <canvas id="chart-tax" width="280" height="68"></canvas>
       </div>
       <div class="g-panel">
-        <div class="g-label">Frecuencia de Red Síncrona (Hz)</div>
-        <div class="g-value" id="hz-val" style="color:#38bdf8;">60.00 Hz</div>
-        <div style="font-size:0.75rem; color:#64748b;">Rango Seguro: 59.50 - 60.50 Hz (6000 cHz)</div>
-        <canvas id="chart-hz" width="280" height="70"></canvas>
+        <div class="g-label">Fondo Fiduciario OASI Seguro Social (75%)</div>
+        <div class="g-value" style="color:#10b981;">$14,045.40 USD</div>
+        <div style="font-size:0.75rem; color:#9ca3af;">1,404,540 Centavos (Aritmética Entera Exacta)</div>
+        <canvas id="chart-oasi" width="280" height="68"></canvas>
       </div>
       <div class="g-panel">
-        <div class="g-label">Corriente Inyectada DER (mA)</div>
-        <div class="g-value" id="ma-val" style="color:#f59e0b;">270,000 mA</div>
-        <div style="font-size:0.75rem; color:#64748b;">Límite Térmico Bus: 900,000 mA | Punto Fijo 100%</div>
-        <canvas id="chart-ma" width="280" height="70"></canvas>
+        <div class="g-label">Fondo Recalificación Laboral (25%)</div>
+        <div class="g-value" style="color:#38bdf8;">$4,681.80 USD</div>
+        <div style="font-size:0.75rem; color:#9ca3af;">468,180 Centavos | 6/6 Vectores Aprobados</div>
+        <canvas id="chart-reskill" width="280" height="68"></canvas>
       </div>
     </div>
 
     <div class="worm-box">
-      <strong style="color:#10b981;">[WORM STORAGE SEAL — WRITE-ONCE-READ-MANY POSTGRESQL LEDGER]</strong><br>
-      PREV_HASH: 0000000000000000000000000000000000000000000000000000000000000000<br>
-      CURR_HASH: <span id="worm-hash">15cfeda08a37085a515d710979a6355e811ff9d4dd9db226ae99a39569bbf0a2</span><br>
-      SQL_POLICY: BEGIN ISOLATION LEVEL SERIALIZABLE; SET LOCAL app.current_domain_id = '877771073297'; INSERT INTO aaufsa_vpp_operational_ledger ... COMMIT; (UPDATE/DELETE REJECTED BY WORM TRIGGER)
+      <strong style="color:#10b981;">[WORM FORENSIC MANIFEST — CRYPTOGRAPHIC_COMPLIANCE_MANIFEST.sha256]</strong><br>
+      6491ec0d16446cc7045cdb885a978f8ce28e5ecc5f51f8fe336c5a0b5a302558  AAUFSA_STATUTE_MASTER.md<br>
+      9b6cce58c1ee453dd038509f8a2c2c9f0455bae75bfd8d7f459909417dac5328  src/main.rs<br>
+      e256d54fa2762605d9e362f0a50245b617f7ed1310d00bae376671d82c5c49e5  deny.toml (POL-SEC-OSS-001 VERIFIED)
     </div>
 
-    <!-- CATALOGO DE 5 NIVELES DE AURAINTELCORE.COM -->
-    <div class="grid">
-      <div class="card">
-        <div>
-          <h3>1. AuraIntel VPP Pro — Suscripción Mensual (SaaS)</h3>
-          <div class="price">$49.99 USD <span>/ mes</span></div>
-          <ul>
-            <li>Despacho VPP en tiempo real y monitoreo Grafana (60.00 Hz)</li>
-            <li>Evaluación de exención PyME Sec. 5000G(b) (&le; $5M USD)</li>
-            <li>Telemetría JSON dinámica y sellado WORM SHA-256 por ciclo</li>
-          </ul>
-        </div>
-        <a class="btn" href="https://auraintelcore.com" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener">Suscribirse — $49.99 / mes</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <h3>2. Expansión Nodo DER Adicional (+25,000 mW)</h3>
-          <div class="price">$99.00 USD <span>/ mes</span></div>
-          <ul>
-            <li>Capacidad adicional de inyección (+25,000 mW / +50,000 mA)</li>
-            <li>Guardas automáticas de sobrecarga y Frequency Droop</li>
-            <li>Registro contable WORM PostgreSQL ACID encadenado</li>
-          </ul>
-        </div>
-        <a class="btn" href="https://auraintelcore.com" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener">Añadir Nodo DER — $99.00 / mes</a>
-      </div>
-
-      <div class="card featured">
-        <div>
-          <h3>3. AuraIntel Enterprise Core — Licencia B2B Multi-Dominio</h3>
-          <div class="price">$499.00 USD <span>/ mes</span></div>
-          <ul>
-            <li>Aislamiento RLS completo para los 6 Dominios Corporativos</li>
-            <li>Liquidación fiscal exacta 15.30% Sec. 5000F + Clawback 2.00%</li>
-            <li>Bifurcación fiduciaria (75% OASI / 25% Recalificación)</li>
-          </ul>
-        </div>
-        <a class="btn" href="https://auraintelcore.com" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener">Suscribirse — $499.00 / mes</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <h3>4. Despliegue Cloud Dedicado Multi-Región (OpenTofu IaC)</h3>
-          <div class="price">$2,500.00 USD <span>/ implementación</span></div>
-          <ul>
-            <li>Aprovisionamiento automatizado de infraestructura dedicada</li>
-            <li>Clúster PostgreSQL WORM SERIALIZABLE con políticas RLS</li>
-            <li>Paneles Grafana dedicados para los 6 dominios corporativos</li>
-          </ul>
-        </div>
-        <a class="btn" href="https://auraintelcore.com" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener">Contratar Despliegue — $2,500.00</a>
-      </div>
-
-      <div class="card omni">
-        <div>
-          <h3>5. AuraIntel Omni — Licencia Grupo Controlado (IRC 414/1563)</h3>
-          <div class="price">$10,000.00 USD <span>/ licencia corporativa</span></div>
-          <ul>
-            <li>Consolidación ilimitada de ingresos brutos (IRC Sec. 414/1563)</li>
-            <li>Binarios nativos optimizados y bus VPP hasta 250,000 mW</li>
-            <li>Soporte prioritario 24/7 y exención Cloud SaaS Sec. 5000H(d)</li>
-          </ul>
-        </div>
-        <a class="btn" href="https://auraintelcore.com" target="_blank" rel="noopener">Adquirir Licencia Omni — $10,000.00</a>
-      </div>
+    <div class="audit-box">
+      <h2 style="margin-top:0; color:#fff;">Certificación de Auditoría Criptográfica AAUFSA &amp; Dictamen Clawback (Sec. 5000G(c))</h2>
+      <div class="price">$1,500.00 USD <span>/ certificación oficial</span></div>
+      <ul>
+        <li><strong>Auditoría Estatutaria WORM de 6 Vectores:</strong> Verificación formal de ausencia de secretos, atribución Cláusula 3 y aislamiento RLS de los 6 dominios corporativos.</li>
+        <li><strong>Dictamen de Recaptura Clawback (Sec. 5000G(c)):</strong> Certificación en punto fijo del impuesto base (15.30% Sec. 5000F), recargo del 2.00% por ruptura de Safe Harbor (&lt; 36 meses) y bifurcación fiduciaria (75% OASI / 25% Recalificación).</li>
+        <li><strong>Gatekeeper Legal SBOM CycloneDX (POL-SEC-OSS-001):</strong> Escaneo de licencias con 24 pruebas aprobadas y cero contaminación Copyleft.</li>
+        <li><strong>Sello Criptográfico Inmutable:</strong> Emisión de manifiesto <code>SHA-256</code> y validación de cadena PostgreSQL <code>SERIALIZABLE</code>.</li>
+      </ul>
+      <a class="btn" href="https://auraintelcore.com" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener">Contratar Auditoría Oficial Standard 1979 — $1,500.00 USD</a>
     </div>
 
-    <div class="audit-banner">
-      <div>
-        <strong style="color: #fff; font-size: 1.05rem;">¿Requiere Certificación Forense WORM, Telemetría Grafana de Auditoría &amp; Dictamen Clawback Sec. 5000G(c)?</strong>
-        <div style="color: #94a3b8; font-size: 0.9rem;">Acceda al portal oficial de nuestra autoridad auditora Standard 1979 (Domain ID: 282230018778) con gráficas de liquidación fiduciaria en vivo ($1,500.00 USD).</div>
-      </div>
-      <a href="https://auraintelcore.com" style="background: #f59e0b; color: #000; padding: 0.75rem 1.3rem; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.92rem;">Abrir Portal Standard1979.com &rarr;</a>
-    </div>
+    <a class="back-link" href="https://auraintelcore.com">&larr; Volver al Portal de Energía e Infraestructura AuraIntelCore.com (Domain ID: 188680247367)</a>
 
     <div class="footer">
-      Autor Exclusivo (Cláusula 3): Jose Emanuel Guadalupe Lopez | Org ID: 320717657398 | AuraIntelCore.com (ID: 188680247367).
+      Autor Exclusivo (Cláusula 3): Jose Emanuel Guadalupe Lopez | Organización ID: 320717657398 | Standard1979.com (Domain ID: 282230018778).
     </div>
   </div>
 
   <script>
-    function startGrafanaChart(canvasId, color, baseVal, variance) {
+    function startAuditChart(canvasId, color, baseVal, variance) {
       const canvas = document.getElementById(canvasId);
       const ctx = canvas.getContext('2d');
       const data = Array.from({length: 36}, () => baseVal + (Math.random() - 0.5) * variance);
@@ -170,8 +131,8 @@
         ctx.beginPath();
         ctx.strokeStyle = color;
         ctx.lineWidth = 2;
-        const min = baseVal - variance * 1.4;
-        const max = baseVal + variance * 1.4;
+        const min = baseVal - variance * 1.5;
+        const max = baseVal + variance * 1.5;
         data.forEach((v, i) => {
           const x = (i / (data.length - 1)) * canvas.width;
           const y = canvas.height - ((v - min) / (max - min)) * (canvas.height - 12) - 6;
@@ -180,11 +141,11 @@
         ctx.stroke();
       }
       draw();
-      setInterval(draw, 1200);
+      setInterval(draw, 1400);
     }
-    startGrafanaChart('chart-mw', '#10b981', 120000, 3500);
-    startGrafanaChart('chart-hz', '#38bdf8', 6000, 6);
-    startGrafanaChart('chart-ma', '#f59e0b', 270000, 5000);
+    startAuditChart('chart-tax', '#f59e0b', 1872720, 12000);
+    startAuditChart('chart-oasi', '#10b981', 1404540, 9000);
+    startAuditChart('chart-reskill', '#38bdf8', 468180, 3000);
   </script>
 <!-- STRIPE_LIVE_B2B_CHECKOUT -->
 <section style="max-width:1150px;margin:32px auto;padding:24px;border:1px solid #10b981;border-radius:12px;background:#090d16;color:#f8fafc;font-family:monospace;">
@@ -231,7 +192,7 @@
   </div>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:16px;margin-bottom:28px;">
-    <!-- Plan 1 -->
+  <!-- Plan 1 -->
 <a href="https://buy.stripe.com/eVqeVdelY8ekbeD46ScjS0h" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:22px 16px;background:#1e293b;color:#f8fafc;border-radius:8px;border:1px solid #334155;text-align:center;">
   <span style="font-size:0.95rem;color:#cbd5e1;font-weight:600;margin-bottom:8px;">1. Startup &amp; PyME</span>
   <span style="font-size:1.3rem;font-weight:bold;color:#38bdf8;">USD 299.00 <span style="font-size:0.85rem;color:#94a3b8;font-weight:normal;">/ mes</span></span>
@@ -257,7 +218,7 @@
   <span style="font-size:0.95rem;color:#ccfbf1;font-weight:600;margin-bottom:8px;">4. Mayorista VPP / Holding</span>
   <span style="font-size:1.3rem;font-weight:bold;color:#2dd4bf;">USD 29,250.00 <span style="font-size:0.85rem;color:#99f6e4;font-weight:normal;">/ mes</span></span>
   <span style="font-size:0.72rem;color:#5eead4;margin-top:6px;">App Grafana Marca Blanca + Telemetría Multi-Tenant</span>
-  <span style="font-size:0.68rem;color:#99f6e4;margin-top:3px;">Licencia Corporativa Multi-Nodo de Uso Final (Sin Reventa)</span>
+  <span style="font-size:0.68rem;color:#99f6e4;margin-top:3px;">Derecho de Reventa / Sublicenciamiento B2B Autorizado</span>
 </a>
 </div>
 
@@ -282,7 +243,7 @@
         <option value="299|https://buy.stripe.com/eVqeVdelY8ekbeD46ScjS0h|1.5|Uso Final (Prohibida su Reventa)|Startup & PyME">1. Startup & PyME — USD 299.00/mes (Base 1.5 MW DER)</option>
         <option value="1499|https://buy.stripe.com/7sYaEX6Twams1E31YKcjS0i|8.0|Uso Final (Prohibida su Reventa)|Mid-Market B2B" selected>2. Mid-Market B2B — USD 1,499.00/mes (8.0 MW DER + Peak Shaving)</option>
         <option value="4875|https://buy.stripe.com/28E4gzcdQ66cbeD7j4cjS0j|28.0|Uso Final (Prohibida su Reventa)|Enterprise 5000H">3. Enterprise 5000H — USD 4,875.00/mes (28.0 MW DER + Inmunidad 5000H)</option>
-        <option value="29250|https://buy.stripe.com/00wfZh5PseCI6Yn1YKcjS0k|180.0|Licencia Corporativa Multi-Nodo de Uso Final (Sin Reventa)|Mayorista VPP / Holding">4. Mayorista VPP / Holding — USD 29,250.00/mes (Multi-Cluster Enterprise Telemetry SaaS)</option>
+        <option value="29250|https://buy.stripe.com/00wfZh5PseCI6Yn1YKcjS0k|180.0|Derecho de Reventa / Sublicenciamiento B2B Autorizado|Mayorista VPP / Holding">4. Mayorista VPP / Holding — USD 29,250.00/mes (180 MW Multi-Tenant Reseller)</option>
         <option value="49.99|https://buy.stripe.com/eVq6oHelY1PW0zZ8n8cjS0l|0.35|Uso Final (Prohibida su Reventa)|AuraIntel VPP Pro SaaS">5. AuraIntel VPP Pro (Piloto SaaS) — USD 49.99/mes (350 kW DER)</option>
         <option value="99|https://buy.stripe.com/cNi5kD7XAbqwdmL6f0cjS0m|0.50|Add-On Escalable Multi-Nodo|Expansión Nodo DER (+25,000 mW)">6. Expansión Nodo DER Adicional (+25,000 mW) — USD 99.00/mes</option>
         <option value="499|https://buy.stripe.com/aFaeVdfq29iofuT8n8cjS0n|3.2|Uso Final (Prohibida su Reventa)|AuraIntel Enterprise Core Multi-Nodo">7. AuraIntel Enterprise Core Multi-Nodo — USD 499.00/mes (3.2 MW DER)</option>
@@ -526,6 +487,122 @@ setInterval(function() {
     </a>
   </div>
 </div>
+
+
+<!-- AURAINTELCORE LIVE TELEMETRY STREAMING ENGINE v10.4 (FERC 2222 / WORM RFC 3161) -->
+<script id="auraintel-live-grafana-engine">
+(function(){
+  const svgSavings = document.getElementById('grafana-svg-savings');
+  const svgDispatch = document.getElementById('grafana-svg-dispatch');
+  const areaSavings = document.getElementById('gf-area-savings');
+  const lineBaseline = document.getElementById('gf-line-baseline');
+  const lineSavings = document.getElementById('gf-line-savings');
+  const areaDispatch = document.getElementById('gf-area-dispatch');
+  let lineDispatch = document.getElementById('gf-line-dispatch');
+
+  if (!svgSavings || !svgDispatch || !areaSavings || !lineSavings || !areaDispatch) return;
+
+  if (!lineDispatch) {
+    lineDispatch = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    lineDispatch.setAttribute('id', 'gf-line-dispatch');
+    lineDispatch.setAttribute('fill', 'none');
+    lineDispatch.setAttribute('stroke', '#38bdf8');
+    lineDispatch.setAttribute('stroke-width', '2.8');
+    svgDispatch.appendChild(lineDispatch);
+  }
+
+  function createHudOverlay(svg, colorHex, initialText) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    dot.setAttribute('cx', '14');
+    dot.setAttribute('cy', '16');
+    dot.setAttribute('r', '4');
+    dot.setAttribute('fill', colorHex);
+
+    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    label.setAttribute('x', '24');
+    label.setAttribute('y', '20');
+    label.setAttribute('fill', '#e2e8f0');
+    label.setAttribute('font-family', 'monospace');
+    label.setAttribute('font-size', '10.5');
+    label.setAttribute('font-weight', '600');
+    label.textContent = initialText;
+
+    const pulseDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    pulseDot.setAttribute('r', '4.5');
+    pulseDot.setAttribute('fill', colorHex);
+    pulseDot.setAttribute('stroke', '#060a12');
+    pulseDot.setAttribute('stroke-width', '1.5');
+
+    g.appendChild(dot);
+    g.appendChild(label);
+    svg.appendChild(g);
+    svg.appendChild(pulseDot);
+    return { dot, label, pulseDot };
+  }
+
+  const hud1 = createHudOverlay(svgSavings, '#10b981', 'LIVE STREAM | BESS: 354.2 kW | ROI SYNC 60.00 Hz');
+  const hud2 = createHudOverlay(svgDispatch, '#38bdf8', 'LIVE IED_01 | ACTIVA: 528.4 kW | SOLAR: 356.1 kW | XCBR1: CLOSED');
+
+  const xs1 = [0, 60, 120, 180, 240, 300, 360, 420, 500];
+  const xs2 = [0, 55, 110, 165, 220, 275, 330, 385, 440, 500];
+
+  let ySav = [115, 102, 88, 74, 60, 48, 35, 25, 16];
+  let yBase = [125, 118, 110, 104, 96, 89, 82, 76, 68];
+  let yDisp = [95, 60, 82, 42, 70, 30, 58, 24, 48, 22];
+
+  let tick = 0;
+  let blink = true;
+
+  function stepTelemetry() {
+    tick += 1;
+    blink = !blink;
+    const t = Date.now() / 1000;
+
+    const irradiance = 845.0 + 60.0 * Math.sin(t / 25.0) + (Math.sin(t * 1.7) * 4.5);
+    const solarKw = irradiance * 0.42;
+    const bessDis = 140.0 + 35.0 * Math.cos(t / 20.0) + (Math.cos(t * 1.3) * 2.5);
+    const headroomKw = 500.0 - bessDis;
+    const activeKw = solarKw + bessDis;
+    const lmp = 42.8 + 8.4 * Math.sin(t / 15.0);
+
+    ySav.shift();
+    const nextSavY = Math.max(12, Math.min(125, Math.round(42 - 26 * Math.sin(t / 6.0) - (tick % 5) * 1.8)));
+    ySav.push(nextSavY);
+
+    yBase.shift();
+    const nextBaseY = Math.max(62, Math.min(132, Math.round(96 + 18 * Math.cos(t / 8.0))));
+    yBase.push(nextBaseY);
+
+    const ptsSav = xs1.map((x, i) => `${x},${ySav[i]}`).join(' ');
+    const ptsBase = xs1.map((x, i) => `${x},${yBase[i]}`).join(' ');
+    lineSavings.setAttribute('points', ptsSav);
+    lineBaseline.setAttribute('points', ptsBase);
+    areaSavings.setAttribute('points', `0,145 ${ptsSav} 500,145`);
+
+    hud1.pulseDot.setAttribute('cx', '500');
+    hud1.pulseDot.setAttribute('cy', String(ySav[ySav.length - 1]));
+    hud1.dot.setAttribute('opacity', blink ? '1' : '0.35');
+    hud1.label.textContent = `LIVE 60.00Hz | BESS Headroom: ${headroomKw.toFixed(2)} kW | LMP: $${lmp.toFixed(2)}/MWh`;
+
+    yDisp.shift();
+    const nextDispY = Math.max(16, Math.min(120, Math.round(58 - 32 * Math.sin(t / 3.5) + 12 * Math.cos(t * 0.9))));
+    yDisp.push(nextDispY);
+
+    const ptsDisp = xs2.map((x, i) => `${x},${yDisp[i]}`).join(' ');
+    lineDispatch.setAttribute('points', ptsDisp);
+    areaDispatch.setAttribute('points', `0,145 ${ptsDisp} 500,145`);
+
+    hud2.pulseDot.setAttribute('cx', '500');
+    hud2.pulseDot.setAttribute('cy', String(yDisp[yDisp.length - 1]));
+    hud2.dot.setAttribute('opacity', blink ? '1' : '0.35');
+    hud2.label.textContent = `IED_01 SYNC | Activa: ${activeKw.toFixed(2)} kW | Solar IA: ${solarKw.toFixed(2)} kW | Irr: ${irradiance.toFixed(0)} W/m2`;
+  }
+
+  stepTelemetry();
+  setInterval(stepTelemetry, 1500);
+})();
+</script>
 
 </body>
 </html>
