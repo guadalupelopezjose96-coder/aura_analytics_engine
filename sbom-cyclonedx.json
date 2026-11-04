@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:8cedf83c-acda-416a-b375-3199566a328b",
+  "serialNumber": "urn:uuid:5075bf0d-769d-45ba-be44-0502f1f3419e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-04T16:26:47+00:00",
+    "timestamp": "2026-11-04T16:29:30+00:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,7 @@
       ]
     },
     "component": {
-      "bom-ref": "09c2816d-5376-49c2-b4af-33c61ae5ef2f",
+      "bom-ref": "f581442f-829e-49f0-b61a-a61eb49a63cb",
       "type": "application",
       "name": ".",
       "properties": [
@@ -33,30 +33,15 @@
   },
   "components": [
     {
-      "bom-ref": "09d9b1df-e5a2-4588-a5e7-59e9b42b6ecb",
-      "type": "application",
-      "name": "aura_web_engine/Cargo.lock",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:Class",
-          "value": "lang-pkgs"
-        },
-        {
-          "name": "aquasecurity:trivy:Type",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "0d05918e-0695-4472-bb5a-d63558b24fa0",
+      "bom-ref": "0098c6ae-74d2-41ab-9f2e-c9046d513a06",
       "type": "library",
-      "name": "version_check",
-      "version": "0.9.5",
-      "purl": "pkg:cargo/version_check@0.9.5",
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "purl": "pkg:cargo/proc-macro2@1.0.107",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "version_check@0.9.5"
+          "value": "proc-macro2@1.0.107"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -65,92 +50,7 @@
       ]
     },
     {
-      "bom-ref": "106d79fc-631f-4578-92b1-c6080c149e5f",
-      "type": "library",
-      "name": "cfg-if",
-      "version": "1.0.5",
-      "purl": "pkg:cargo/cfg-if@1.0.5",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "cfg-if@1.0.5"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "15f8913b-b580-4efe-bf33-b604e5dc86ea",
-      "type": "library",
-      "name": "unicode-ident",
-      "version": "1.0.27",
-      "purl": "pkg:cargo/unicode-ident@1.0.27",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "unicode-ident@1.0.27"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "16bf4760-e59a-426e-9935-41d09e6a0683",
-      "type": "library",
-      "name": "quote",
-      "version": "1.0.47",
-      "purl": "pkg:cargo/quote@1.0.47",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "quote@1.0.47"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "21779356-6523-471b-8b61-f4ed7233dd04",
-      "type": "library",
-      "name": "crypto-common",
-      "version": "0.1.7",
-      "purl": "pkg:cargo/crypto-common@0.1.7",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "crypto-common@0.1.7"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "2635f35f-cc0d-4d49-bf25-cc1175233dd7",
-      "type": "library",
-      "name": "serde_json",
-      "version": "1.0.154",
-      "purl": "pkg:cargo/serde_json@1.0.154",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "serde_json@1.0.154"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "28403272-709d-47ed-8e4a-3b50613424a6",
+      "bom-ref": "07abaab8-e693-445e-97e4-1bfee3c41144",
       "type": "library",
       "name": "cpufeatures",
       "version": "0.2.17",
@@ -167,15 +67,15 @@
       ]
     },
     {
-      "bom-ref": "29d74572-1584-4c62-9da0-bb88632444b6",
+      "bom-ref": "10a8e543-8bfc-46a2-a577-9f15a76ec7e2",
       "type": "library",
-      "name": "serde_json",
-      "version": "1.0.154",
-      "purl": "pkg:cargo/serde_json@1.0.154",
+      "name": "zmij",
+      "version": "1.0.23",
+      "purl": "pkg:cargo/zmij@1.0.23",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "serde_json@1.0.154"
+          "value": "zmij@1.0.23"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -184,15 +84,15 @@
       ]
     },
     {
-      "bom-ref": "2ab09c67-ebb9-4ba4-83b2-5b34880c80fa",
+      "bom-ref": "1210d132-7e57-4d05-9121-fa7acbe75eec",
       "type": "library",
-      "name": "libc",
-      "version": "0.2.191",
-      "purl": "pkg:cargo/libc@0.2.191",
+      "name": "hex",
+      "version": "0.4.3",
+      "purl": "pkg:cargo/hex@0.4.3",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "libc@0.2.191"
+          "value": "hex@0.4.3"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -201,24 +101,7 @@
       ]
     },
     {
-      "bom-ref": "2c45c76b-adbb-4a39-aef7-4915c5a96e0b",
-      "type": "library",
-      "name": "crypto-common",
-      "version": "0.1.7",
-      "purl": "pkg:cargo/crypto-common@0.1.7",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "crypto-common@0.1.7"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "2d111a94-3bf1-4ce9-a4f7-fa9b6b21a719",
+      "bom-ref": "1b75e806-680b-4899-b7de-16c50b1d6b4d",
       "type": "library",
       "name": "memchr",
       "version": "2.8.3",
@@ -235,15 +118,15 @@
       ]
     },
     {
-      "bom-ref": "35d3e5cc-7573-44aa-bd10-723edbe4c777",
+      "bom-ref": "1c11c1df-ce3c-4f79-8b5f-f0636e78c235",
       "type": "library",
-      "name": "cpufeatures",
-      "version": "0.2.17",
-      "purl": "pkg:cargo/cpufeatures@0.2.17",
+      "name": "version_check",
+      "version": "0.9.5",
+      "purl": "pkg:cargo/version_check@0.9.5",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "cpufeatures@0.2.17"
+          "value": "version_check@0.9.5"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -252,7 +135,126 @@
       ]
     },
     {
-      "bom-ref": "3903f28f-7733-4d12-9f29-6bcc0f67db02",
+      "bom-ref": "1cfb99b1-191b-4ce5-8192-505e39af4c9c",
+      "type": "library",
+      "name": "typenum",
+      "version": "1.20.1",
+      "purl": "pkg:cargo/typenum@1.20.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "typenum@1.20.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "20702046-8a2f-4671-8799-dc41d2a3e98a",
+      "type": "library",
+      "name": "serde",
+      "version": "1.0.229",
+      "purl": "pkg:cargo/serde@1.0.229",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "serde@1.0.229"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "22874ea8-8b2f-497c-8875-a5d320d6f124",
+      "type": "library",
+      "name": "sha2",
+      "version": "0.10.9",
+      "purl": "pkg:cargo/sha2@0.10.9",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "sha2@0.10.9"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "28da84ce-c8c6-4cb7-bdad-120ae12b2994",
+      "type": "library",
+      "name": "zmij",
+      "version": "1.0.23",
+      "purl": "pkg:cargo/zmij@1.0.23",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "zmij@1.0.23"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "28f88f77-4e4d-4ae8-a7c2-051637b674fc",
+      "type": "library",
+      "name": "syn",
+      "version": "3.0.9",
+      "purl": "pkg:cargo/syn@3.0.9",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "syn@3.0.9"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "2b4d7765-1850-41a1-a0ce-c20b8da1367c",
+      "type": "library",
+      "name": "digest",
+      "version": "0.10.7",
+      "purl": "pkg:cargo/digest@0.10.7",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "digest@0.10.7"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "2ba46ae9-5571-4863-bc71-742273961bdb",
+      "type": "library",
+      "name": "libc",
+      "version": "0.2.191",
+      "purl": "pkg:cargo/libc@0.2.191",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "libc@0.2.191"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "34b14c28-96e6-41a2-a044-9d5e3c6aa555",
       "type": "library",
       "name": "itoa",
       "version": "1.0.18",
@@ -269,7 +271,109 @@
       ]
     },
     {
-      "bom-ref": "40fb4da5-b648-48ef-82f0-c78abd674e00",
+      "bom-ref": "39bb3fbb-503b-40a7-9e56-f7dedcc03a20",
+      "type": "library",
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "purl": "pkg:cargo/cfg-if@1.0.5",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "cfg-if@1.0.5"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "4037a344-4380-4f25-b935-21039d4f0383",
+      "type": "library",
+      "name": "unicode-ident",
+      "version": "1.0.27",
+      "purl": "pkg:cargo/unicode-ident@1.0.27",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "unicode-ident@1.0.27"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "4092c985-7c7d-4623-b8ef-9c427e599f69",
+      "type": "library",
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "purl": "pkg:cargo/cfg-if@1.0.5",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "cfg-if@1.0.5"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "4242c3e5-6d56-4dd0-9145-eaaaa116d212",
+      "type": "library",
+      "name": "unicode-ident",
+      "version": "1.0.27",
+      "purl": "pkg:cargo/unicode-ident@1.0.27",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "unicode-ident@1.0.27"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "46e143ab-aec6-4c43-90ce-ca8b9e6a17bc",
+      "type": "library",
+      "name": "cpufeatures",
+      "version": "0.2.17",
+      "purl": "pkg:cargo/cpufeatures@0.2.17",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "cpufeatures@0.2.17"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "486b6569-a649-4056-8f2b-9972604aba6c",
+      "type": "library",
+      "name": "serde_derive",
+      "version": "1.0.229",
+      "purl": "pkg:cargo/serde_derive@1.0.229",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "serde_derive@1.0.229"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "4a0e4ff5-f126-474a-bc40-d76f83c37405",
       "type": "application",
       "name": "Cargo.lock",
       "properties": [
@@ -284,15 +388,15 @@
       ]
     },
     {
-      "bom-ref": "488cf2ca-0727-442c-940d-0e7da89c4488",
+      "bom-ref": "5ce2aff9-2493-40f1-b45f-de7abdc8bfaf",
       "type": "library",
-      "name": "zmij",
-      "version": "1.0.23",
-      "purl": "pkg:cargo/zmij@1.0.23",
+      "name": "serde_json",
+      "version": "1.0.154",
+      "purl": "pkg:cargo/serde_json@1.0.154",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "zmij@1.0.23"
+          "value": "serde_json@1.0.154"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -301,15 +405,15 @@
       ]
     },
     {
-      "bom-ref": "4cda0d5b-2fbd-457d-8dce-39dc965af7de",
+      "bom-ref": "64151d19-3432-40c1-91b5-90fe0f5b5ce1",
       "type": "library",
-      "name": "serde_derive",
-      "version": "1.0.229",
-      "purl": "pkg:cargo/serde_derive@1.0.229",
+      "name": "crypto-common",
+      "version": "0.1.7",
+      "purl": "pkg:cargo/crypto-common@0.1.7",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "serde_derive@1.0.229"
+          "value": "crypto-common@0.1.7"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -318,92 +422,7 @@
       ]
     },
     {
-      "bom-ref": "5051551e-9111-4d52-b06f-848b7c1df850",
-      "type": "library",
-      "name": "syn",
-      "version": "3.0.9",
-      "purl": "pkg:cargo/syn@3.0.9",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "syn@3.0.9"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "50d99361-12c1-4af7-aced-5bfcffd10304",
-      "type": "library",
-      "name": "libc",
-      "version": "0.2.191",
-      "purl": "pkg:cargo/libc@0.2.191",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "libc@0.2.191"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "55bfa6d4-5e85-467f-a65e-598aa8c16ce5",
-      "type": "library",
-      "name": "block-buffer",
-      "version": "0.10.4",
-      "purl": "pkg:cargo/block-buffer@0.10.4",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "block-buffer@0.10.4"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "5ee67c14-e526-493a-8c76-72523e3fa246",
-      "type": "library",
-      "name": "quote",
-      "version": "1.0.47",
-      "purl": "pkg:cargo/quote@1.0.47",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "quote@1.0.47"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "669df555-cd04-4839-8d56-c8d2ad5980ac",
-      "type": "library",
-      "name": "version_check",
-      "version": "0.9.5",
-      "purl": "pkg:cargo/version_check@0.9.5",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "version_check@0.9.5"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "6cc7039d-d236-4585-bf97-7cd36c0f7c1d",
+      "bom-ref": "66abd53a-e36a-41e1-9591-b4bc5dd4fb45",
       "type": "library",
       "name": "generic-array",
       "version": "0.14.7",
@@ -420,7 +439,24 @@
       ]
     },
     {
-      "bom-ref": "74f68b7b-2326-45ea-b1c0-da620fbb5a76",
+      "bom-ref": "671cd080-ece4-41c5-aa3f-2ed5f3368343",
+      "type": "library",
+      "name": "crypto-common",
+      "version": "0.1.7",
+      "purl": "pkg:cargo/crypto-common@0.1.7",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "crypto-common@0.1.7"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "6798ce4c-1b50-4486-a354-c9fbcccc9489",
       "type": "library",
       "name": "serde_core",
       "version": "1.0.229",
@@ -437,15 +473,15 @@
       ]
     },
     {
-      "bom-ref": "777df276-ba14-4322-a258-6159f66df9ae",
+      "bom-ref": "6c1410d1-c65b-4898-954d-11c211fbf64f",
       "type": "library",
-      "name": "serde",
-      "version": "1.0.229",
-      "purl": "pkg:cargo/serde@1.0.229",
+      "name": "typenum",
+      "version": "1.20.1",
+      "purl": "pkg:cargo/typenum@1.20.1",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "serde@1.0.229"
+          "value": "typenum@1.20.1"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -454,7 +490,24 @@
       ]
     },
     {
-      "bom-ref": "876e66ef-bec1-4097-9485-4efcfac4fb1c",
+      "bom-ref": "73df11c0-a5c3-4594-ab59-696acef091a1",
+      "type": "library",
+      "name": "block-buffer",
+      "version": "0.10.4",
+      "purl": "pkg:cargo/block-buffer@0.10.4",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "block-buffer@0.10.4"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "76343580-4a40-497f-99e2-765924b5def7",
       "type": "library",
       "name": "syn",
       "version": "3.0.9",
@@ -471,15 +524,15 @@
       ]
     },
     {
-      "bom-ref": "927180f6-1d3b-4279-9913-76236fcdde78",
+      "bom-ref": "7f5a39d8-1576-4424-a9c3-62e3dd960c9b",
       "type": "library",
-      "name": "digest",
-      "version": "0.10.7",
-      "purl": "pkg:cargo/digest@0.10.7",
+      "name": "generic-array",
+      "version": "0.14.7",
+      "purl": "pkg:cargo/generic-array@0.14.7",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "digest@0.10.7"
+          "value": "generic-array@0.14.7"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -488,7 +541,7 @@
       ]
     },
     {
-      "bom-ref": "99b373bd-b388-4354-9a9d-61f47d45459b",
+      "bom-ref": "86debef6-0196-4d63-98ce-0f347e0bd1af",
       "type": "library",
       "name": "serde_derive",
       "version": "1.0.229",
@@ -505,24 +558,7 @@
       ]
     },
     {
-      "bom-ref": "9d672ac5-9bc5-4ea4-a3e0-0f722a28763f",
-      "type": "library",
-      "name": "sha2",
-      "version": "0.10.9",
-      "purl": "pkg:cargo/sha2@0.10.9",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "sha2@0.10.9"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "a7f1d07c-1859-4fd1-b509-571ad1bb4b37",
+      "bom-ref": "8b74dcc9-ccee-4c4a-9c1f-37e207c61b25",
       "type": "library",
       "name": "memchr",
       "version": "2.8.3",
@@ -539,126 +575,7 @@
       ]
     },
     {
-      "bom-ref": "b237132c-0228-4ac4-a330-3bd25fa07376",
-      "type": "library",
-      "name": "typenum",
-      "version": "1.20.1",
-      "purl": "pkg:cargo/typenum@1.20.1",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "typenum@1.20.1"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "b5ed8141-212e-4bcf-a52d-dbc073a4849d",
-      "type": "library",
-      "name": "sha2",
-      "version": "0.10.9",
-      "purl": "pkg:cargo/sha2@0.10.9",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "sha2@0.10.9"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "b8d5c6f2-d48e-4c71-89e1-13622a45fa95",
-      "type": "library",
-      "name": "hex",
-      "version": "0.4.3",
-      "purl": "pkg:cargo/hex@0.4.3",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "hex@0.4.3"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "bc48d7c3-8d7b-4d68-820c-e06d138c288c",
-      "type": "library",
-      "name": "itoa",
-      "version": "1.0.18",
-      "purl": "pkg:cargo/itoa@1.0.18",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "itoa@1.0.18"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "c3afdd89-38d4-4112-bf31-8fa87046e2d8",
-      "type": "library",
-      "name": "serde_core",
-      "version": "1.0.229",
-      "purl": "pkg:cargo/serde_core@1.0.229",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "serde_core@1.0.229"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "cdb3d710-df3f-40d7-8a82-cab94858661f",
-      "type": "library",
-      "name": "proc-macro2",
-      "version": "1.0.107",
-      "purl": "pkg:cargo/proc-macro2@1.0.107",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "proc-macro2@1.0.107"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "d6691275-4e24-435e-b678-6d08e35c6544",
-      "type": "library",
-      "name": "unicode-ident",
-      "version": "1.0.27",
-      "purl": "pkg:cargo/unicode-ident@1.0.27",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "unicode-ident@1.0.27"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "d841ce8e-b356-4c5a-aff1-989d8041bc2e",
+      "bom-ref": "8e414d0c-5cf4-462e-b423-79c4c1fff425",
       "type": "library",
       "name": "block-buffer",
       "version": "0.10.4",
@@ -675,15 +592,15 @@
       ]
     },
     {
-      "bom-ref": "ddc57e3a-5203-430c-908e-8124d8fe09c3",
+      "bom-ref": "8eb646c7-a9a7-4c84-9434-62f7c685c73b",
       "type": "library",
-      "name": "hex",
-      "version": "0.4.3",
-      "purl": "pkg:cargo/hex@0.4.3",
+      "name": "serde_core",
+      "version": "1.0.229",
+      "purl": "pkg:cargo/serde_core@1.0.229",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "hex@0.4.3"
+          "value": "serde_core@1.0.229"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -692,7 +609,58 @@
       ]
     },
     {
-      "bom-ref": "e1f68483-4572-43f3-a594-5c39aaf3c0f2",
+      "bom-ref": "8fc74124-b3b9-4729-b8b2-c204da093f66",
+      "type": "library",
+      "name": "version_check",
+      "version": "0.9.5",
+      "purl": "pkg:cargo/version_check@0.9.5",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "version_check@0.9.5"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+      "type": "library",
+      "name": "quote",
+      "version": "1.0.47",
+      "purl": "pkg:cargo/quote@1.0.47",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "quote@1.0.47"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "ac6ee335-72ca-4247-8d0d-9323f66f6461",
+      "type": "library",
+      "name": "libc",
+      "version": "0.2.191",
+      "purl": "pkg:cargo/libc@0.2.191",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "libc@0.2.191"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e",
       "type": "library",
       "name": "proc-macro2",
       "version": "1.0.107",
@@ -709,41 +677,7 @@
       ]
     },
     {
-      "bom-ref": "e21d2fae-c452-4998-8711-8d08a05e2327",
-      "type": "library",
-      "name": "cfg-if",
-      "version": "1.0.5",
-      "purl": "pkg:cargo/cfg-if@1.0.5",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "cfg-if@1.0.5"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "e4251c7e-9b3f-4816-b246-d61a2d367531",
-      "type": "library",
-      "name": "typenum",
-      "version": "1.20.1",
-      "purl": "pkg:cargo/typenum@1.20.1",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "typenum@1.20.1"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "cargo"
-        }
-      ]
-    },
-    {
-      "bom-ref": "f3c90d42-30f3-45c1-b89c-13a2c5ae0c07",
+      "bom-ref": "b40c1af3-92b7-4718-9953-2d0e34a4a50a",
       "type": "library",
       "name": "serde",
       "version": "1.0.229",
@@ -760,15 +694,15 @@
       ]
     },
     {
-      "bom-ref": "f578c984-c288-4679-8876-a1541e7e7890",
+      "bom-ref": "b9ea109b-65d4-4c70-8065-6f55ff042602",
       "type": "library",
-      "name": "zmij",
-      "version": "1.0.23",
-      "purl": "pkg:cargo/zmij@1.0.23",
+      "name": "serde_json",
+      "version": "1.0.154",
+      "purl": "pkg:cargo/serde_json@1.0.154",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "zmij@1.0.23"
+          "value": "serde_json@1.0.154"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -777,7 +711,22 @@
       ]
     },
     {
-      "bom-ref": "f5ca0715-5caf-4593-aeb3-163aaeabba46",
+      "bom-ref": "be6f841f-9a6d-4dc5-bdbf-6540edca6dea",
+      "type": "application",
+      "name": "aura_web_engine/Cargo.lock",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "c5a741c2-f10b-40cf-8c0c-f83da93dbeba",
       "type": "library",
       "name": "digest",
       "version": "0.10.7",
@@ -794,15 +743,66 @@
       ]
     },
     {
-      "bom-ref": "fc6347d7-b686-4271-b8b7-b364fa6b2cee",
+      "bom-ref": "d30df8a4-660c-472a-b0e4-2ca960f53f65",
       "type": "library",
-      "name": "generic-array",
-      "version": "0.14.7",
-      "purl": "pkg:cargo/generic-array@0.14.7",
+      "name": "quote",
+      "version": "1.0.47",
+      "purl": "pkg:cargo/quote@1.0.47",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "generic-array@0.14.7"
+          "value": "quote@1.0.47"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "d44d8e7a-cadc-4ccd-96ec-a1544a21e272",
+      "type": "library",
+      "name": "itoa",
+      "version": "1.0.18",
+      "purl": "pkg:cargo/itoa@1.0.18",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "itoa@1.0.18"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "df9dedbe-4f17-4b4a-a6c7-482eefdd0e39",
+      "type": "library",
+      "name": "hex",
+      "version": "0.4.3",
+      "purl": "pkg:cargo/hex@0.4.3",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "hex@0.4.3"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "cargo"
+        }
+      ]
+    },
+    {
+      "bom-ref": "f2893263-9a17-473b-b68e-e0fa04964c2f",
+      "type": "library",
+      "name": "sha2",
+      "version": "0.10.9",
+      "purl": "pkg:cargo/sha2@0.10.9",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "sha2@0.10.9"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -4128,286 +4128,286 @@
   ],
   "dependencies": [
     {
-      "ref": "09c2816d-5376-49c2-b4af-33c61ae5ef2f",
+      "ref": "0098c6ae-74d2-41ab-9f2e-c9046d513a06",
       "dependsOn": [
-        "09d9b1df-e5a2-4588-a5e7-59e9b42b6ecb",
-        "40fb4da5-b648-48ef-82f0-c78abd674e00"
+        "4242c3e5-6d56-4dd0-9145-eaaaa116d212"
       ]
     },
     {
-      "ref": "09d9b1df-e5a2-4588-a5e7-59e9b42b6ecb",
+      "ref": "07abaab8-e693-445e-97e4-1bfee3c41144",
       "dependsOn": [
-        "pkg:cargo/aura_web_engine@2026.1.0"
+        "2ba46ae9-5571-4863-bc71-742273961bdb"
       ]
     },
     {
-      "ref": "0d05918e-0695-4472-bb5a-d63558b24fa0",
+      "ref": "10a8e543-8bfc-46a2-a577-9f15a76ec7e2",
       "dependsOn": []
     },
     {
-      "ref": "106d79fc-631f-4578-92b1-c6080c149e5f",
+      "ref": "1210d132-7e57-4d05-9121-fa7acbe75eec",
       "dependsOn": []
     },
     {
-      "ref": "15f8913b-b580-4efe-bf33-b604e5dc86ea",
+      "ref": "1b75e806-680b-4899-b7de-16c50b1d6b4d",
       "dependsOn": []
     },
     {
-      "ref": "16bf4760-e59a-426e-9935-41d09e6a0683",
-      "dependsOn": [
-        "e1f68483-4572-43f3-a594-5c39aaf3c0f2"
-      ]
-    },
-    {
-      "ref": "21779356-6523-471b-8b61-f4ed7233dd04",
-      "dependsOn": [
-        "6cc7039d-d236-4585-bf97-7cd36c0f7c1d",
-        "b237132c-0228-4ac4-a330-3bd25fa07376"
-      ]
-    },
-    {
-      "ref": "2635f35f-cc0d-4d49-bf25-cc1175233dd7",
-      "dependsOn": [
-        "3903f28f-7733-4d12-9f29-6bcc0f67db02",
-        "777df276-ba14-4322-a258-6159f66df9ae",
-        "a7f1d07c-1859-4fd1-b509-571ad1bb4b37",
-        "c3afdd89-38d4-4112-bf31-8fa87046e2d8",
-        "f578c984-c288-4679-8876-a1541e7e7890"
-      ]
-    },
-    {
-      "ref": "28403272-709d-47ed-8e4a-3b50613424a6",
-      "dependsOn": [
-        "50d99361-12c1-4af7-aced-5bfcffd10304"
-      ]
-    },
-    {
-      "ref": "29d74572-1584-4c62-9da0-bb88632444b6",
-      "dependsOn": [
-        "2d111a94-3bf1-4ce9-a4f7-fa9b6b21a719",
-        "488cf2ca-0727-442c-940d-0e7da89c4488",
-        "74f68b7b-2326-45ea-b1c0-da620fbb5a76",
-        "bc48d7c3-8d7b-4d68-820c-e06d138c288c",
-        "f3c90d42-30f3-45c1-b89c-13a2c5ae0c07"
-      ]
-    },
-    {
-      "ref": "2ab09c67-ebb9-4ba4-83b2-5b34880c80fa",
+      "ref": "1c11c1df-ce3c-4f79-8b5f-f0636e78c235",
       "dependsOn": []
     },
     {
-      "ref": "2c45c76b-adbb-4a39-aef7-4915c5a96e0b",
-      "dependsOn": [
-        "e4251c7e-9b3f-4816-b246-d61a2d367531",
-        "fc6347d7-b686-4271-b8b7-b364fa6b2cee"
-      ]
-    },
-    {
-      "ref": "2d111a94-3bf1-4ce9-a4f7-fa9b6b21a719",
+      "ref": "1cfb99b1-191b-4ce5-8192-505e39af4c9c",
       "dependsOn": []
     },
     {
-      "ref": "35d3e5cc-7573-44aa-bd10-723edbe4c777",
+      "ref": "20702046-8a2f-4671-8799-dc41d2a3e98a",
       "dependsOn": [
-        "2ab09c67-ebb9-4ba4-83b2-5b34880c80fa"
+        "486b6569-a649-4056-8f2b-9972604aba6c",
+        "8eb646c7-a9a7-4c84-9434-62f7c685c73b"
       ]
     },
     {
-      "ref": "3903f28f-7733-4d12-9f29-6bcc0f67db02",
+      "ref": "22874ea8-8b2f-497c-8875-a5d320d6f124",
+      "dependsOn": [
+        "07abaab8-e693-445e-97e4-1bfee3c41144",
+        "4092c985-7c7d-4623-b8ef-9c427e599f69",
+        "c5a741c2-f10b-40cf-8c0c-f83da93dbeba"
+      ]
+    },
+    {
+      "ref": "28da84ce-c8c6-4cb7-bdad-120ae12b2994",
       "dependsOn": []
     },
     {
-      "ref": "40fb4da5-b648-48ef-82f0-c78abd674e00",
+      "ref": "28f88f77-4e4d-4ae8-a7c2-051637b674fc",
+      "dependsOn": [
+        "0098c6ae-74d2-41ab-9f2e-c9046d513a06",
+        "4242c3e5-6d56-4dd0-9145-eaaaa116d212",
+        "d30df8a4-660c-472a-b0e4-2ca960f53f65"
+      ]
+    },
+    {
+      "ref": "2b4d7765-1850-41a1-a0ce-c20b8da1367c",
+      "dependsOn": [
+        "64151d19-3432-40c1-91b5-90fe0f5b5ce1",
+        "73df11c0-a5c3-4594-ab59-696acef091a1"
+      ]
+    },
+    {
+      "ref": "2ba46ae9-5571-4863-bc71-742273961bdb",
+      "dependsOn": []
+    },
+    {
+      "ref": "34b14c28-96e6-41a2-a044-9d5e3c6aa555",
+      "dependsOn": []
+    },
+    {
+      "ref": "39bb3fbb-503b-40a7-9e56-f7dedcc03a20",
+      "dependsOn": []
+    },
+    {
+      "ref": "4037a344-4380-4f25-b935-21039d4f0383",
+      "dependsOn": []
+    },
+    {
+      "ref": "4092c985-7c7d-4623-b8ef-9c427e599f69",
+      "dependsOn": []
+    },
+    {
+      "ref": "4242c3e5-6d56-4dd0-9145-eaaaa116d212",
+      "dependsOn": []
+    },
+    {
+      "ref": "46e143ab-aec6-4c43-90ce-ca8b9e6a17bc",
+      "dependsOn": [
+        "ac6ee335-72ca-4247-8d0d-9323f66f6461"
+      ]
+    },
+    {
+      "ref": "486b6569-a649-4056-8f2b-9972604aba6c",
+      "dependsOn": [
+        "76343580-4a40-497f-99e2-765924b5def7",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e"
+      ]
+    },
+    {
+      "ref": "4a0e4ff5-f126-474a-bc40-d76f83c37405",
       "dependsOn": [
         "pkg:cargo/aura_analytics_engine@2026.1.0"
       ]
     },
     {
-      "ref": "488cf2ca-0727-442c-940d-0e7da89c4488",
+      "ref": "5ce2aff9-2493-40f1-b45f-de7abdc8bfaf",
+      "dependsOn": [
+        "10a8e543-8bfc-46a2-a577-9f15a76ec7e2",
+        "1b75e806-680b-4899-b7de-16c50b1d6b4d",
+        "34b14c28-96e6-41a2-a044-9d5e3c6aa555",
+        "6798ce4c-1b50-4486-a354-c9fbcccc9489",
+        "b40c1af3-92b7-4718-9953-2d0e34a4a50a"
+      ]
+    },
+    {
+      "ref": "64151d19-3432-40c1-91b5-90fe0f5b5ce1",
+      "dependsOn": [
+        "6c1410d1-c65b-4898-954d-11c211fbf64f",
+        "7f5a39d8-1576-4424-a9c3-62e3dd960c9b"
+      ]
+    },
+    {
+      "ref": "66abd53a-e36a-41e1-9591-b4bc5dd4fb45",
+      "dependsOn": [
+        "1cfb99b1-191b-4ce5-8192-505e39af4c9c",
+        "8fc74124-b3b9-4729-b8b2-c204da093f66"
+      ]
+    },
+    {
+      "ref": "671cd080-ece4-41c5-aa3f-2ed5f3368343",
+      "dependsOn": [
+        "1cfb99b1-191b-4ce5-8192-505e39af4c9c",
+        "66abd53a-e36a-41e1-9591-b4bc5dd4fb45"
+      ]
+    },
+    {
+      "ref": "6798ce4c-1b50-4486-a354-c9fbcccc9489",
+      "dependsOn": [
+        "86debef6-0196-4d63-98ce-0f347e0bd1af"
+      ]
+    },
+    {
+      "ref": "6c1410d1-c65b-4898-954d-11c211fbf64f",
       "dependsOn": []
     },
     {
-      "ref": "4cda0d5b-2fbd-457d-8dce-39dc965af7de",
+      "ref": "73df11c0-a5c3-4594-ab59-696acef091a1",
       "dependsOn": [
-        "16bf4760-e59a-426e-9935-41d09e6a0683",
-        "876e66ef-bec1-4097-9485-4efcfac4fb1c",
-        "e1f68483-4572-43f3-a594-5c39aaf3c0f2"
+        "7f5a39d8-1576-4424-a9c3-62e3dd960c9b"
       ]
     },
     {
-      "ref": "5051551e-9111-4d52-b06f-848b7c1df850",
+      "ref": "76343580-4a40-497f-99e2-765924b5def7",
       "dependsOn": [
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f",
-        "d6691275-4e24-435e-b678-6d08e35c6544"
+        "4037a344-4380-4f25-b935-21039d4f0383",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e"
       ]
     },
     {
-      "ref": "50d99361-12c1-4af7-aced-5bfcffd10304",
+      "ref": "7f5a39d8-1576-4424-a9c3-62e3dd960c9b",
+      "dependsOn": [
+        "1c11c1df-ce3c-4f79-8b5f-f0636e78c235",
+        "6c1410d1-c65b-4898-954d-11c211fbf64f"
+      ]
+    },
+    {
+      "ref": "86debef6-0196-4d63-98ce-0f347e0bd1af",
+      "dependsOn": [
+        "0098c6ae-74d2-41ab-9f2e-c9046d513a06",
+        "28f88f77-4e4d-4ae8-a7c2-051637b674fc",
+        "d30df8a4-660c-472a-b0e4-2ca960f53f65"
+      ]
+    },
+    {
+      "ref": "8b74dcc9-ccee-4c4a-9c1f-37e207c61b25",
       "dependsOn": []
     },
     {
-      "ref": "55bfa6d4-5e85-467f-a65e-598aa8c16ce5",
+      "ref": "8e414d0c-5cf4-462e-b423-79c4c1fff425",
       "dependsOn": [
-        "6cc7039d-d236-4585-bf97-7cd36c0f7c1d"
+        "66abd53a-e36a-41e1-9591-b4bc5dd4fb45"
       ]
     },
     {
-      "ref": "5ee67c14-e526-493a-8c76-72523e3fa246",
+      "ref": "8eb646c7-a9a7-4c84-9434-62f7c685c73b",
       "dependsOn": [
-        "cdb3d710-df3f-40d7-8a82-cab94858661f"
+        "486b6569-a649-4056-8f2b-9972604aba6c"
       ]
     },
     {
-      "ref": "669df555-cd04-4839-8d56-c8d2ad5980ac",
+      "ref": "8fc74124-b3b9-4729-b8b2-c204da093f66",
       "dependsOn": []
     },
     {
-      "ref": "6cc7039d-d236-4585-bf97-7cd36c0f7c1d",
+      "ref": "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
       "dependsOn": [
-        "669df555-cd04-4839-8d56-c8d2ad5980ac",
-        "b237132c-0228-4ac4-a330-3bd25fa07376"
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e"
       ]
     },
     {
-      "ref": "74f68b7b-2326-45ea-b1c0-da620fbb5a76",
-      "dependsOn": [
-        "4cda0d5b-2fbd-457d-8dce-39dc965af7de"
-      ]
-    },
-    {
-      "ref": "777df276-ba14-4322-a258-6159f66df9ae",
-      "dependsOn": [
-        "99b373bd-b388-4354-9a9d-61f47d45459b",
-        "c3afdd89-38d4-4112-bf31-8fa87046e2d8"
-      ]
-    },
-    {
-      "ref": "876e66ef-bec1-4097-9485-4efcfac4fb1c",
-      "dependsOn": [
-        "15f8913b-b580-4efe-bf33-b604e5dc86ea",
-        "16bf4760-e59a-426e-9935-41d09e6a0683",
-        "e1f68483-4572-43f3-a594-5c39aaf3c0f2"
-      ]
-    },
-    {
-      "ref": "927180f6-1d3b-4279-9913-76236fcdde78",
-      "dependsOn": [
-        "2c45c76b-adbb-4a39-aef7-4915c5a96e0b",
-        "d841ce8e-b356-4c5a-aff1-989d8041bc2e"
-      ]
-    },
-    {
-      "ref": "99b373bd-b388-4354-9a9d-61f47d45459b",
-      "dependsOn": [
-        "5051551e-9111-4d52-b06f-848b7c1df850",
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f"
-      ]
-    },
-    {
-      "ref": "9d672ac5-9bc5-4ea4-a3e0-0f722a28763f",
-      "dependsOn": [
-        "106d79fc-631f-4578-92b1-c6080c149e5f",
-        "28403272-709d-47ed-8e4a-3b50613424a6",
-        "f5ca0715-5caf-4593-aeb3-163aaeabba46"
-      ]
-    },
-    {
-      "ref": "a7f1d07c-1859-4fd1-b509-571ad1bb4b37",
+      "ref": "ac6ee335-72ca-4247-8d0d-9323f66f6461",
       "dependsOn": []
     },
     {
-      "ref": "b237132c-0228-4ac4-a330-3bd25fa07376",
-      "dependsOn": []
-    },
-    {
-      "ref": "b5ed8141-212e-4bcf-a52d-dbc073a4849d",
+      "ref": "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e",
       "dependsOn": [
-        "35d3e5cc-7573-44aa-bd10-723edbe4c777",
-        "927180f6-1d3b-4279-9913-76236fcdde78",
-        "e21d2fae-c452-4998-8711-8d08a05e2327"
+        "4037a344-4380-4f25-b935-21039d4f0383"
       ]
     },
     {
-      "ref": "b8d5c6f2-d48e-4c71-89e1-13622a45fa95",
-      "dependsOn": []
-    },
-    {
-      "ref": "bc48d7c3-8d7b-4d68-820c-e06d138c288c",
-      "dependsOn": []
-    },
-    {
-      "ref": "c3afdd89-38d4-4112-bf31-8fa87046e2d8",
+      "ref": "b40c1af3-92b7-4718-9953-2d0e34a4a50a",
       "dependsOn": [
-        "99b373bd-b388-4354-9a9d-61f47d45459b"
+        "6798ce4c-1b50-4486-a354-c9fbcccc9489",
+        "86debef6-0196-4d63-98ce-0f347e0bd1af"
       ]
     },
     {
-      "ref": "cdb3d710-df3f-40d7-8a82-cab94858661f",
+      "ref": "b9ea109b-65d4-4c70-8065-6f55ff042602",
       "dependsOn": [
-        "d6691275-4e24-435e-b678-6d08e35c6544"
+        "20702046-8a2f-4671-8799-dc41d2a3e98a",
+        "28da84ce-c8c6-4cb7-bdad-120ae12b2994",
+        "8b74dcc9-ccee-4c4a-9c1f-37e207c61b25",
+        "8eb646c7-a9a7-4c84-9434-62f7c685c73b",
+        "d44d8e7a-cadc-4ccd-96ec-a1544a21e272"
       ]
     },
     {
-      "ref": "d6691275-4e24-435e-b678-6d08e35c6544",
-      "dependsOn": []
-    },
-    {
-      "ref": "d841ce8e-b356-4c5a-aff1-989d8041bc2e",
+      "ref": "be6f841f-9a6d-4dc5-bdbf-6540edca6dea",
       "dependsOn": [
-        "fc6347d7-b686-4271-b8b7-b364fa6b2cee"
+        "pkg:cargo/aura_web_engine@2026.1.0"
       ]
     },
     {
-      "ref": "ddc57e3a-5203-430c-908e-8124d8fe09c3",
-      "dependsOn": []
-    },
-    {
-      "ref": "e1f68483-4572-43f3-a594-5c39aaf3c0f2",
+      "ref": "c5a741c2-f10b-40cf-8c0c-f83da93dbeba",
       "dependsOn": [
-        "15f8913b-b580-4efe-bf33-b604e5dc86ea"
-      ]
-    },
-    {
-      "ref": "e21d2fae-c452-4998-8711-8d08a05e2327",
-      "dependsOn": []
-    },
-    {
-      "ref": "e4251c7e-9b3f-4816-b246-d61a2d367531",
-      "dependsOn": []
-    },
-    {
-      "ref": "f3c90d42-30f3-45c1-b89c-13a2c5ae0c07",
-      "dependsOn": [
-        "4cda0d5b-2fbd-457d-8dce-39dc965af7de",
-        "74f68b7b-2326-45ea-b1c0-da620fbb5a76"
-      ]
-    },
-    {
-      "ref": "f578c984-c288-4679-8876-a1541e7e7890",
-      "dependsOn": []
-    },
-    {
-      "ref": "f5ca0715-5caf-4593-aeb3-163aaeabba46",
-      "dependsOn": [
-        "21779356-6523-471b-8b61-f4ed7233dd04",
-        "55bfa6d4-5e85-467f-a65e-598aa8c16ce5",
+        "671cd080-ece4-41c5-aa3f-2ed5f3368343",
+        "8e414d0c-5cf4-462e-b423-79c4c1fff425",
         "pkg:cargo/subtle@2.6.1"
       ]
     },
     {
-      "ref": "fc6347d7-b686-4271-b8b7-b364fa6b2cee",
+      "ref": "d30df8a4-660c-472a-b0e4-2ca960f53f65",
       "dependsOn": [
-        "0d05918e-0695-4472-bb5a-d63558b24fa0",
-        "e4251c7e-9b3f-4816-b246-d61a2d367531"
+        "0098c6ae-74d2-41ab-9f2e-c9046d513a06"
+      ]
+    },
+    {
+      "ref": "d44d8e7a-cadc-4ccd-96ec-a1544a21e272",
+      "dependsOn": []
+    },
+    {
+      "ref": "df9dedbe-4f17-4b4a-a6c7-482eefdd0e39",
+      "dependsOn": []
+    },
+    {
+      "ref": "f2893263-9a17-473b-b68e-e0fa04964c2f",
+      "dependsOn": [
+        "2b4d7765-1850-41a1-a0ce-c20b8da1367c",
+        "39bb3fbb-503b-40a7-9e56-f7dedcc03a20",
+        "46e143ab-aec6-4c43-90ce-ca8b9e6a17bc"
+      ]
+    },
+    {
+      "ref": "f581442f-829e-49f0-b61a-a61eb49a63cb",
+      "dependsOn": [
+        "4a0e4ff5-f126-474a-bc40-d76f83c37405",
+        "be6f841f-9a6d-4dc5-bdbf-6540edca6dea"
       ]
     },
     {
       "ref": "pkg:cargo/ahash@0.8.12",
       "dependsOn": [
-        "106d79fc-631f-4578-92b1-c6080c149e5f",
-        "669df555-cd04-4839-8d56-c8d2ad5980ac",
+        "4092c985-7c7d-4623-b8ef-9c427e599f69",
+        "8fc74124-b3b9-4729-b8b2-c204da093f66",
         "pkg:cargo/getrandom@0.3.4",
         "pkg:cargo/once_cell@1.21.4",
         "pkg:cargo/zerocopy@0.8.63"
@@ -4420,9 +4420,9 @@
     {
       "ref": "pkg:cargo/async-trait@0.1.92",
       "dependsOn": [
-        "5051551e-9111-4d52-b06f-848b7c1df850",
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f"
+        "76343580-4a40-497f-99e2-765924b5def7",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e"
       ]
     },
     {
@@ -4438,18 +4438,18 @@
     {
       "ref": "pkg:cargo/aura_analytics_engine@2026.1.0",
       "dependsOn": [
-        "29d74572-1584-4c62-9da0-bb88632444b6",
-        "b5ed8141-212e-4bcf-a52d-dbc073a4849d",
-        "b8d5c6f2-d48e-4c71-89e1-13622a45fa95",
-        "f3c90d42-30f3-45c1-b89c-13a2c5ae0c07"
+        "1210d132-7e57-4d05-9121-fa7acbe75eec",
+        "5ce2aff9-2493-40f1-b45f-de7abdc8bfaf",
+        "b40c1af3-92b7-4718-9953-2d0e34a4a50a",
+        "f2893263-9a17-473b-b68e-e0fa04964c2f"
       ]
     },
     {
       "ref": "pkg:cargo/aura_web_engine@2026.1.0",
       "dependsOn": [
-        "2635f35f-cc0d-4d49-bf25-cc1175233dd7",
-        "777df276-ba14-4322-a258-6159f66df9ae",
-        "ddc57e3a-5203-430c-908e-8124d8fe09c3",
+        "20702046-8a2f-4671-8799-dc41d2a3e98a",
+        "b9ea109b-65d4-4c70-8065-6f55ff042602",
+        "df9dedbe-4f17-4b4a-a6c7-482eefdd0e39",
         "pkg:cargo/axum@0.7.9",
         "pkg:cargo/base64@0.22.1",
         "pkg:cargo/hmac@0.13.0",
@@ -4485,10 +4485,10 @@
     {
       "ref": "pkg:cargo/axum@0.7.9",
       "dependsOn": [
-        "2635f35f-cc0d-4d49-bf25-cc1175233dd7",
-        "3903f28f-7733-4d12-9f29-6bcc0f67db02",
-        "777df276-ba14-4322-a258-6159f66df9ae",
-        "a7f1d07c-1859-4fd1-b509-571ad1bb4b37",
+        "20702046-8a2f-4671-8799-dc41d2a3e98a",
+        "8b74dcc9-ccee-4c4a-9c1f-37e207c61b25",
+        "b9ea109b-65d4-4c70-8065-6f55ff042602",
+        "d44d8e7a-cadc-4ccd-96ec-a1544a21e272",
         "pkg:cargo/async-trait@0.1.92",
         "pkg:cargo/axum-core@0.4.5",
         "pkg:cargo/bytes@1.12.1",
@@ -4555,7 +4555,7 @@
     {
       "ref": "pkg:cargo/cpufeatures@0.3.1",
       "dependsOn": [
-        "50d99361-12c1-4af7-aced-5bfcffd10304"
+        "2ba46ae9-5571-4863-bc71-742273961bdb"
       ]
     },
     {
@@ -4602,9 +4602,9 @@
     {
       "ref": "pkg:cargo/displaydoc@0.2.7",
       "dependsOn": [
-        "5051551e-9111-4d52-b06f-848b7c1df850",
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f"
+        "76343580-4a40-497f-99e2-765924b5def7",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e"
       ]
     },
     {
@@ -4614,7 +4614,7 @@
     {
       "ref": "pkg:cargo/either@1.19.0",
       "dependsOn": [
-        "777df276-ba14-4322-a258-6159f66df9ae"
+        "20702046-8a2f-4671-8799-dc41d2a3e98a"
       ]
     },
     {
@@ -4624,14 +4624,14 @@
     {
       "ref": "pkg:cargo/errno@0.3.14",
       "dependsOn": [
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
         "pkg:cargo/windows-sys@0.61.2"
       ]
     },
     {
       "ref": "pkg:cargo/etcetera@0.8.0",
       "dependsOn": [
-        "106d79fc-631f-4578-92b1-c6080c149e5f",
+        "4092c985-7c7d-4623-b8ef-9c427e599f69",
         "pkg:cargo/home@0.5.12",
         "pkg:cargo/windows-sys@0.48.0"
       ]
@@ -4692,7 +4692,7 @@
     {
       "ref": "pkg:cargo/futures-util@0.3.34",
       "dependsOn": [
-        "a7f1d07c-1859-4fd1-b509-571ad1bb4b37",
+        "8b74dcc9-ccee-4c4a-9c1f-37e207c61b25",
         "pkg:cargo/futures-core@0.3.34",
         "pkg:cargo/futures-io@0.3.34",
         "pkg:cargo/futures-sink@0.3.34",
@@ -4704,16 +4704,16 @@
     {
       "ref": "pkg:cargo/getrandom@0.2.17",
       "dependsOn": [
-        "106d79fc-631f-4578-92b1-c6080c149e5f",
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
+        "4092c985-7c7d-4623-b8ef-9c427e599f69",
         "pkg:cargo/wasi@0.11.1%2Bwasi-snapshot-preview1"
       ]
     },
     {
       "ref": "pkg:cargo/getrandom@0.3.4",
       "dependsOn": [
-        "106d79fc-631f-4578-92b1-c6080c149e5f",
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
+        "4092c985-7c7d-4623-b8ef-9c427e599f69",
         "pkg:cargo/r-efi@5.3.0",
         "pkg:cargo/wasip2@1.0.4%2Bwasi-0.2.12"
       ]
@@ -4721,8 +4721,8 @@
     {
       "ref": "pkg:cargo/getrandom@0.4.3",
       "dependsOn": [
-        "106d79fc-631f-4578-92b1-c6080c149e5f",
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
+        "4092c985-7c7d-4623-b8ef-9c427e599f69",
         "pkg:cargo/r-efi@6.0.0"
       ]
     },
@@ -4774,7 +4774,7 @@
     {
       "ref": "pkg:cargo/hmac@0.12.1",
       "dependsOn": [
-        "f5ca0715-5caf-4593-aeb3-163aaeabba46"
+        "c5a741c2-f10b-40cf-8c0c-f83da93dbeba"
       ]
     },
     {
@@ -4809,7 +4809,7 @@
     {
       "ref": "pkg:cargo/http@1.5.0",
       "dependsOn": [
-        "3903f28f-7733-4d12-9f29-6bcc0f67db02",
+        "d44d8e7a-cadc-4ccd-96ec-a1544a21e272",
         "pkg:cargo/bytes@1.12.1"
       ]
     },
@@ -4824,7 +4824,7 @@
     {
       "ref": "pkg:cargo/hybrid-array@0.4.15",
       "dependsOn": [
-        "b237132c-0228-4ac4-a330-3bd25fa07376"
+        "1cfb99b1-191b-4ce5-8192-505e39af4c9c"
       ]
     },
     {
@@ -4842,7 +4842,7 @@
     {
       "ref": "pkg:cargo/hyper@1.12.0",
       "dependsOn": [
-        "3903f28f-7733-4d12-9f29-6bcc0f67db02",
+        "d44d8e7a-cadc-4ccd-96ec-a1544a21e272",
         "pkg:cargo/atomic-waker@1.1.2",
         "pkg:cargo/bytes@1.12.1",
         "pkg:cargo/futures-channel@0.3.34",
@@ -4946,7 +4946,7 @@
     {
       "ref": "pkg:cargo/libredox@0.1.25",
       "dependsOn": [
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
         "pkg:cargo/bitflags@2.13.2",
         "pkg:cargo/plain@0.2.3",
         "pkg:cargo/redox_syscall@0.9.5"
@@ -4977,8 +4977,8 @@
     {
       "ref": "pkg:cargo/md-5@0.10.6",
       "dependsOn": [
-        "106d79fc-631f-4578-92b1-c6080c149e5f",
-        "f5ca0715-5caf-4593-aeb3-163aaeabba46"
+        "4092c985-7c7d-4623-b8ef-9c427e599f69",
+        "c5a741c2-f10b-40cf-8c0c-f83da93dbeba"
       ]
     },
     {
@@ -4992,7 +4992,7 @@
     {
       "ref": "pkg:cargo/mio@1.2.4",
       "dependsOn": [
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
         "pkg:cargo/wasi@0.11.1%2Bwasi-snapshot-preview1",
         "pkg:cargo/windows-sys@0.61.2"
       ]
@@ -5000,7 +5000,7 @@
     {
       "ref": "pkg:cargo/nom@7.1.3",
       "dependsOn": [
-        "a7f1d07c-1859-4fd1-b509-571ad1bb4b37",
+        "8b74dcc9-ccee-4c4a-9c1f-37e207c61b25",
         "pkg:cargo/minimal-lexical@0.2.1"
       ]
     },
@@ -5024,8 +5024,8 @@
     {
       "ref": "pkg:cargo/parking_lot_core@0.9.12",
       "dependsOn": [
-        "106d79fc-631f-4578-92b1-c6080c149e5f",
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
+        "4092c985-7c7d-4623-b8ef-9c427e599f69",
         "pkg:cargo/redox_syscall@0.5.18",
         "pkg:cargo/smallvec@1.16.4",
         "pkg:cargo/windows-link@0.2.1"
@@ -5042,8 +5042,8 @@
     {
       "ref": "pkg:cargo/pin-project-internal@1.1.13",
       "dependsOn": [
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e",
         "pkg:cargo/syn@2.0.119"
       ]
     },
@@ -5084,7 +5084,7 @@
     {
       "ref": "pkg:cargo/rand@0.8.8",
       "dependsOn": [
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
         "pkg:cargo/rand_chacha@0.3.1",
         "pkg:cargo/rand_core@0.6.4"
       ]
@@ -5117,8 +5117,8 @@
     {
       "ref": "pkg:cargo/ring@0.17.14",
       "dependsOn": [
-        "106d79fc-631f-4578-92b1-c6080c149e5f",
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
+        "4092c985-7c7d-4623-b8ef-9c427e599f69",
         "pkg:cargo/cc@1.10.0",
         "pkg:cargo/getrandom@0.2.17",
         "pkg:cargo/untrusted@0.9.0",
@@ -5128,7 +5128,7 @@
     {
       "ref": "pkg:cargo/rustix@1.1.6",
       "dependsOn": [
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
         "pkg:cargo/bitflags@2.13.2",
         "pkg:cargo/errno@0.3.14",
         "pkg:cargo/linux-raw-sys@0.12.1",
@@ -5174,15 +5174,15 @@
     {
       "ref": "pkg:cargo/serde_path_to_error@0.1.20",
       "dependsOn": [
-        "3903f28f-7733-4d12-9f29-6bcc0f67db02",
-        "777df276-ba14-4322-a258-6159f66df9ae",
-        "c3afdd89-38d4-4112-bf31-8fa87046e2d8"
+        "20702046-8a2f-4671-8799-dc41d2a3e98a",
+        "8eb646c7-a9a7-4c84-9434-62f7c685c73b",
+        "d44d8e7a-cadc-4ccd-96ec-a1544a21e272"
       ]
     },
     {
       "ref": "pkg:cargo/sha2@0.11.1",
       "dependsOn": [
-        "106d79fc-631f-4578-92b1-c6080c149e5f",
+        "4092c985-7c7d-4623-b8ef-9c427e599f69",
         "pkg:cargo/cpufeatures@0.3.1",
         "pkg:cargo/digest@0.11.3"
       ]
@@ -5202,7 +5202,7 @@
     {
       "ref": "pkg:cargo/socket2@0.6.5",
       "dependsOn": [
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
         "pkg:cargo/windows-sys@0.61.2"
       ]
     },
@@ -5216,11 +5216,11 @@
     {
       "ref": "pkg:cargo/sqlx-core@0.7.4",
       "dependsOn": [
-        "2635f35f-cc0d-4d49-bf25-cc1175233dd7",
-        "777df276-ba14-4322-a258-6159f66df9ae",
-        "9d672ac5-9bc5-4ea4-a3e0-0f722a28763f",
-        "a7f1d07c-1859-4fd1-b509-571ad1bb4b37",
-        "ddc57e3a-5203-430c-908e-8124d8fe09c3",
+        "20702046-8a2f-4671-8799-dc41d2a3e98a",
+        "22874ea8-8b2f-497c-8875-a5d320d6f124",
+        "8b74dcc9-ccee-4c4a-9c1f-37e207c61b25",
+        "b9ea109b-65d4-4c70-8065-6f55ff042602",
+        "df9dedbe-4f17-4b4a-a6c7-482eefdd0e39",
         "pkg:cargo/ahash@0.8.12",
         "pkg:cargo/atoi@2.0.0",
         "pkg:cargo/byteorder@1.5.0",
@@ -5255,12 +5255,12 @@
     {
       "ref": "pkg:cargo/sqlx-macros-core@0.7.4",
       "dependsOn": [
-        "2635f35f-cc0d-4d49-bf25-cc1175233dd7",
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "777df276-ba14-4322-a258-6159f66df9ae",
-        "9d672ac5-9bc5-4ea4-a3e0-0f722a28763f",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f",
-        "ddc57e3a-5203-430c-908e-8124d8fe09c3",
+        "20702046-8a2f-4671-8799-dc41d2a3e98a",
+        "22874ea8-8b2f-497c-8875-a5d320d6f124",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e",
+        "b9ea109b-65d4-4c70-8065-6f55ff042602",
+        "df9dedbe-4f17-4b4a-a6c7-482eefdd0e39",
         "pkg:cargo/dotenvy@0.15.7",
         "pkg:cargo/either@1.19.0",
         "pkg:cargo/heck@0.4.1",
@@ -5276,8 +5276,8 @@
     {
       "ref": "pkg:cargo/sqlx-macros@0.7.4",
       "dependsOn": [
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e",
         "pkg:cargo/sqlx-core@0.7.4",
         "pkg:cargo/sqlx-macros-core@0.7.4",
         "pkg:cargo/syn@1.0.109"
@@ -5286,12 +5286,12 @@
     {
       "ref": "pkg:cargo/sqlx-postgres@0.7.4",
       "dependsOn": [
-        "2635f35f-cc0d-4d49-bf25-cc1175233dd7",
-        "3903f28f-7733-4d12-9f29-6bcc0f67db02",
-        "777df276-ba14-4322-a258-6159f66df9ae",
-        "9d672ac5-9bc5-4ea4-a3e0-0f722a28763f",
-        "a7f1d07c-1859-4fd1-b509-571ad1bb4b37",
-        "ddc57e3a-5203-430c-908e-8124d8fe09c3",
+        "20702046-8a2f-4671-8799-dc41d2a3e98a",
+        "22874ea8-8b2f-497c-8875-a5d320d6f124",
+        "8b74dcc9-ccee-4c4a-9c1f-37e207c61b25",
+        "b9ea109b-65d4-4c70-8065-6f55ff042602",
+        "d44d8e7a-cadc-4ccd-96ec-a1544a21e272",
+        "df9dedbe-4f17-4b4a-a6c7-482eefdd0e39",
         "pkg:cargo/atoi@2.0.0",
         "pkg:cargo/base64@0.21.7",
         "pkg:cargo/bitflags@2.13.2",
@@ -5345,17 +5345,17 @@
     {
       "ref": "pkg:cargo/syn@1.0.109",
       "dependsOn": [
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f",
-        "d6691275-4e24-435e-b678-6d08e35c6544"
+        "4037a344-4380-4f25-b935-21039d4f0383",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e"
       ]
     },
     {
       "ref": "pkg:cargo/syn@2.0.119",
       "dependsOn": [
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f",
-        "d6691275-4e24-435e-b678-6d08e35c6544"
+        "4037a344-4380-4f25-b935-21039d4f0383",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e"
       ]
     },
     {
@@ -5365,9 +5365,9 @@
     {
       "ref": "pkg:cargo/synstructure@0.14.0",
       "dependsOn": [
-        "5051551e-9111-4d52-b06f-848b7c1df850",
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f"
+        "76343580-4a40-497f-99e2-765924b5def7",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e"
       ]
     },
     {
@@ -5383,8 +5383,8 @@
     {
       "ref": "pkg:cargo/thiserror-impl@1.0.69",
       "dependsOn": [
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e",
         "pkg:cargo/syn@2.0.119"
       ]
     },
@@ -5408,9 +5408,9 @@
     {
       "ref": "pkg:cargo/tokio-macros@2.7.2",
       "dependsOn": [
-        "5051551e-9111-4d52-b06f-848b7c1df850",
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f"
+        "76343580-4a40-497f-99e2-765924b5def7",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e"
       ]
     },
     {
@@ -5424,7 +5424,7 @@
     {
       "ref": "pkg:cargo/tokio-util@0.7.20",
       "dependsOn": [
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
         "pkg:cargo/bytes@1.12.1",
         "pkg:cargo/futures-core@0.3.34",
         "pkg:cargo/futures-sink@0.3.34",
@@ -5435,7 +5435,7 @@
     {
       "ref": "pkg:cargo/tokio@1.54.1",
       "dependsOn": [
-        "50d99361-12c1-4af7-aced-5bfcffd10304",
+        "2ba46ae9-5571-4863-bc71-742273961bdb",
         "pkg:cargo/bytes@1.12.1",
         "pkg:cargo/mio@1.2.4",
         "pkg:cargo/pin-project-lite@0.2.17",
@@ -5493,8 +5493,8 @@
     {
       "ref": "pkg:cargo/tracing-attributes@0.1.31",
       "dependsOn": [
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e",
         "pkg:cargo/syn@2.0.119"
       ]
     },
@@ -5700,9 +5700,9 @@
     {
       "ref": "pkg:cargo/yoke-derive@0.8.4",
       "dependsOn": [
-        "5051551e-9111-4d52-b06f-848b7c1df850",
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f",
+        "76343580-4a40-497f-99e2-765924b5def7",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e",
         "pkg:cargo/synstructure@0.14.0"
       ]
     },
@@ -5717,8 +5717,8 @@
     {
       "ref": "pkg:cargo/zerocopy-derive@0.8.63",
       "dependsOn": [
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e",
         "pkg:cargo/syn@2.0.119"
       ]
     },
@@ -5731,9 +5731,9 @@
     {
       "ref": "pkg:cargo/zerofrom-derive@0.1.8",
       "dependsOn": [
-        "5051551e-9111-4d52-b06f-848b7c1df850",
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f",
+        "76343580-4a40-497f-99e2-765924b5def7",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e",
         "pkg:cargo/synstructure@0.14.0"
       ]
     },
@@ -5754,9 +5754,9 @@
     {
       "ref": "pkg:cargo/zerovec-derive@0.11.7",
       "dependsOn": [
-        "5051551e-9111-4d52-b06f-848b7c1df850",
-        "5ee67c14-e526-493a-8c76-72523e3fa246",
-        "cdb3d710-df3f-40d7-8a82-cab94858661f"
+        "76343580-4a40-497f-99e2-765924b5def7",
+        "9077c253-608d-4f2b-99bc-a4dbbfa2d017",
+        "adcfb6a1-1b7e-41cc-ac4c-c15d6d83670e"
       ]
     },
     {
