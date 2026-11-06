@@ -1,535 +1,578 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraIntelCore.com | Planta Virtual de Energía (VPP) & Telemetría OT/IT</title>
-    <style>
-        :root {
-            --bg-deep: #050811;
-            --bg-panel: #0b1120;
-            --bg-card: #111827;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --emerald: #10b981;
-            --cyan: #06b6d4;
-            --indigo: #6366f1;
-            --amber: #f59e0b;
-            --border: #1e293b;
-            --mono: 'Courier New', Courier, monospace;
-            --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--bg-deep); color: var(--text-main); font-family: var(--sans); line-height: 1.6; }
-        .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
-        header { background: rgba(11, 17, 32, 0.96); border-bottom: 1px solid var(--border); padding: 14px 0; position: sticky; top: 0; z-index: 1000; }
-        .nav-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-        .pill-top { background: var(--emerald); color: #042f2e; font-family: var(--mono); font-size: 0.72rem; font-weight: 800; padding: 4px 12px; border-radius: 99px; display: inline-block; margin-bottom: 12px; }
-        .nav-links { display: flex; gap: 16px; font-family: var(--mono); font-size: 0.82rem; flex-wrap: wrap; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; }
-        .nav-links a:hover { color: var(--emerald); }
-        .hero { padding: 40px 0 32px; border-bottom: 1px solid var(--border); }
-        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 10px; }
-        .hero p { color: var(--text-muted); max-width: 900px; margin-bottom: 22px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 20px; }
-        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 20px; }
-        .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-bottom: 20px; }
-        .card { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
-        .card-header { font-family: var(--mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
-        .val-large { font-family: var(--mono); font-size: 1.75rem; font-weight: 800; }
-        .val-emerald { color: var(--emerald); }
-        .val-cyan { color: var(--cyan); }
-        .val-amber { color: var(--amber); }
-        .sub-text { font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; font-family: var(--mono); }
-        .section { padding: 40px 0; border-bottom: 1px solid var(--border); }
-        .section-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; }
-        .section-sub { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 22px; }
-        .btn { display: inline-block; padding: 11px 20px; border-radius: 6px; font-weight: 700; font-size: 0.88rem; text-decoration: none; text-align: center; cursor: pointer; border: 1px solid transparent; }
-        .btn-indigo { background: var(--indigo); color: #fff; width: 100%; }
-        .btn-emerald { background: var(--emerald); color: #052e16; }
-        .btn-amber { background: var(--amber); color: #1e1b4b; }
-        .btn-cyan { background: var(--cyan); color: #083344; }
-        .btn-outline { background: transparent; border-color: var(--border); color: var(--text-main); font-family: var(--mono); }
-        .price-card { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; }
-        .price-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
-        .price-amount { font-size: 1.8rem; font-weight: 800; margin-bottom: 14px; font-family: var(--mono); }
-        .feature-list { list-style: none; font-size: 0.84rem; color: var(--text-muted); margin-bottom: 20px; }
-        .feature-list li { margin-bottom: 8px; padding-left: 14px; position: relative; }
-        .feature-list li::before { content: "•"; color: var(--cyan); position: absolute; left: 0; }
-        .svc-table { width: 100%; border-collapse: collapse; background: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 20px; font-size: 0.85rem; }
-        .svc-table th, .svc-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
-        .svc-table th { background: var(--bg-card); color: var(--cyan); font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase; }
-        .svc-table td code { color: var(--cyan); font-family: var(--mono); }
-        .hash-box { background: #000; border: 1px solid var(--border); padding: 9px 12px; border-radius: 4px; font-family: var(--mono); font-size: 0.8rem; color: var(--emerald); display: block; margin-top: 4px; word-break: break-all; }
-        footer { padding: 30px 0; font-family: var(--mono); font-size: 0.78rem; color: var(--text-muted); }
-    </style>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/png" sizes="512x512" href="/assets/brand/icon-512x512.png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuraIntelCore | Enterprise OIDC vLLM Gateway, OpenTofu Multi-Region & +25,000 mW VPP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --core-bg: #030711;
+      --core-dock: #081021;
+      --core-card: #0b152b;
+      --electric-cyan: #00f0ff;
+      --cobalt: #3b82f6;
+      --vpp-emerald: #00ff9d;
+      --peppol-amber: #fbbf24;
+      --border-core: #172a4a;
+      --text-main: #f8fafc;
+      --text-dim: #8da2c0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--core-bg);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.12) 0%, rgba(59, 130, 246, 0.08) 42%, transparent 72%),
+        linear-gradient(to right, rgba(23, 42, 74, 0.25) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(23, 42, 74, 0.25) 1px, transparent 1px);
+      background-size: 100% 100%, 36px 36px, 36px 36px;
+      overflow-x: hidden;
+    }
+
+    /* Barra Unificada de los 6 Portales */
+    .omni-bar {
+      background: #010409;
+      border-bottom: 1px solid var(--border-core);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.55rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .omni-bar a {
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      border: 1px solid var(--border-core);
+      margin-left: 0.3rem;
+    }
+
+    .omni-bar a.active {
+      background: var(--electric-cyan);
+      color: #020617;
+      border-color: var(--electric-cyan);
+      font-weight: 700;
+    }
+
+    /* Workstation de 3 Columnas Superiores */
+    .core-workspace {
+      max-width: 1420px;
+      margin: 1.4rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 310px 1fr 310px;
+      gap: 1.2rem;
+    }
+
+    .dock-panel {
+      background: var(--core-dock);
+      border: 1px solid var(--border-core);
+      border-radius: 14px;
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .stage-panel {
+      background: #040917;
+      border: 1px solid rgba(0, 240, 255, 0.42);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      min-height: 485px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 0 45px rgba(0, 240, 255, 0.1);
+    }
+
+    #core-topology-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hud-bar-top, .hud-bar-bottom {
+      position: relative;
+      z-index: 2;
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.73rem;
+      background: linear-gradient(180deg, rgba(3, 7, 17, 0.9) 0%, transparent 100%);
+    }
+
+    .hud-bar-bottom {
+      background: linear-gradient(0deg, rgba(3, 7, 17, 0.94) 0%, transparent 100%);
+    }
+
+    .stage-overlay {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 1.5rem 2rem;
+      pointer-events: none;
+    }
+
+    .stage-overlay h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 3.4vw, 3.05rem);
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 0.7rem;
+      text-shadow: 0 6px 28px rgba(0,0,0,0.95);
+    }
+
+    .cyan-grad {
+      background: linear-gradient(90deg, #ffffff, var(--electric-cyan), var(--vpp-emerald));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .mode-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-core);
+      color: var(--text-main);
+      padding: 0.38rem 0.7rem;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      cursor: pointer;
+    }
+
+    .mode-btn.active {
+      background: var(--electric-cyan);
+      border-color: var(--electric-cyan);
+      color: #020617;
+      font-weight: 700;
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      padding: 0.52rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Cuadrícula de 4 Columnas para los SKUs Oficiales de AuraIntel en Stripe */
+    .catalog-wrap {
+      max-width: 1420px;
+      margin: 2.8rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    .sku-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.6rem;
+    }
+
+    .sku-card {
+      background: var(--core-card);
+      border: 1px solid var(--border-core);
+      border-top: 3px solid var(--electric-cyan);
+      border-radius: 14px;
+      padding: 1.65rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .sku-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--electric-cyan);
+    }
+
+    .sku-card.flagship {
+      border-top-color: var(--vpp-emerald);
+      box-shadow: 0 0 30px rgba(0, 255, 157, 0.1);
+    }
+
+    .sku-card.whale {
+      border-top-color: var(--peppol-amber);
+      box-shadow: 0 0 30px rgba(251, 191, 36, 0.1);
+    }
+
+    .sku-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--electric-cyan);
+      margin-bottom: 0.4rem;
+    }
+
+    .sku-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(1.55rem, 2vw, 1.9rem);
+      font-weight: 700;
+      color: var(--vpp-emerald);
+      white-space: nowrap;
+      margin: 0.8rem 0;
+    }
+
+    .sku-price span {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+
+    .btn-core {
+      display: block;
+      text-align: center;
+      background: linear-gradient(135deg, var(--electric-cyan), var(--cobalt));
+      color: #020617;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      text-transform: uppercase;
+      margin-top: 1.1rem;
+    }
+
+    @media (max-width: 1100px) {
+      .core-workspace { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <div class="container nav-bar">
-        <div style="font-family: var(--mono); font-weight: 800; font-size: 1rem;">
-            AURAINTELCORE.COM <span style="color: var(--emerald); font-size: 0.75rem; margin-left: 8px;">[100% VPP + TELEMETRÍA OT/IT | DOMAIN ID: 188680247367]</span>
+  <div class="omni-bar">
+    <div>
+      <strong>AURAINTEL CORE WORKSTATION</strong> • OIDC SSO + vLLM GATEWAY • OPENTOFU MULTI-REGION • VPP +25,000 mW DER
+    </div>
+    <div>
+      <a href="https://standard1979.com">8091: Standard1979</a>
+      <a href="https://auraintelcore.com" class="active">8090: AuraIntelCore</a>
+      <a href="https://auratetrax.com">8092: AuraTetrax</a>
+      <a href="https://auraintelstudios3d.com">8093: Studios3D</a>
+      <a href="https://fourphonix.com">8094: FourPhonix</a>
+      <a href="https://prophonix.com">8095: ProPhonix</a>
+    </div>
+  </div>
+
+  <!-- Estación de Trabajo en 3 Paneles Superiores -->
+  <div class="core-workspace">
+    <!-- Panel Izquierdo: Inspector de Pasarela vLLM & OpenTofu -->
+    <aside class="dock-panel">
+      <div>
+        <div style="font-family:'Space Grotesk', sans-serif; font-size:1.3rem; font-weight:700; margin-bottom:0.2rem;">
+          AURAINTEL <span style="color:var(--electric-cyan);">CORE</span>
         </div>
-        <nav class="nav-links">
-            
+        <div style="font-family:'JetBrains Mono', monospace; font-size:0.7rem; color:var(--vpp-emerald); margin-bottom:1.1rem;">
+          vLLM INFERENCE & VPP DER ENGINE
+        </div>
+
+        <div class="spec-row"><span>GATEWAY PROTOCOL:</span><strong style="color:var(--electric-cyan);">OIDC SSO + mTLS 1.3</strong></div>
+        <div class="spec-row"><span>INFERENCE ENGINE:</span><strong>vLLM PagedAttention</strong></div>
+        <div class="spec-row"><span>DATA RETENTION:</span><strong style="color:var(--vpp-emerald);">0% (Strict ZDR)</strong></div>
+        <div class="spec-row"><span>IAC ORCHESTRATOR:</span><strong>OpenTofu Multi-Region</strong></div>
+        <div class="spec-row"><span>VPP DER CAPACITY:</span><strong style="color:var(--peppol-amber);">+25,000 mW Modular</strong></div>
+        <div class="spec-row"><span>WHOLESALE CLEARING:</span><strong>PEPPOL UBL 3.0</strong></div>
+      </div>
+
+      <div style="background:#040914; padding:0.95rem; border-radius:10px; border:1px solid var(--border-core);">
+        <div style="display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace; font-size:0.72rem; margin-bottom:0.4rem;">
+          <span style="color:var(--electric-cyan);">CAUDAL TOKENS / VPP:</span>
+          <strong id="throughput-lbl">18,400 tok/s</strong>
+        </div>
+        <input type="range" id="flux-slider" min="1" max="10" value="6" style="width:100%; accent-color:var(--electric-cyan);" />
+      </div>
+    </aside>
+
+    <!-- Panel Central: Topología Dirigida OIDC -> vLLM -> VPP Grid en Tiempo Real -->
+    <section class="stage-panel">
+      <canvas id="core-topology-canvas"></canvas>
+
+      <div class="hud-bar-top">
+        <div>TOPOLOGY [OIDC SSO ➔ vLLM TENSOR RING ➔ +25,000 mW DER VPP] // <span style="color:var(--vpp-emerald);">0.42ms RTT</span></div>
+        <div style="display:flex; gap:0.4rem;">
+          <button class="mode-btn active" onclick="setTopology('vllm', this)">vLLM MESH</button>
+          <button class="mode-btn" onclick="setTopology('vpp', this)">VPP +25,000 mW</button>
+          <button class="mode-btn" onclick="setTopology('peppol', this)">PEPPOL UBL 3.0</button>
+        </div>
+      </div>
+
+      <div class="stage-overlay">
+        <h1>Pasarela Empresarial <span class="cyan-grad">OIDC + vLLM</span> & Despacho VPP Multi-Región</h1>
+        <p style="color:#cbd5e1; max-width:640px; margin:0 auto; font-size:0.95rem;">
+          Enrutamiento soberano de modelos LLM con retención cero de datos, aprovisionamiento declarativo OpenTofu IaC y liquidación energética mayorista auditada en libro mayor WORM.
+        </p>
+      </div>
+
+      <div class="hud-bar-bottom">
+        <div>WORM LEDGER: <span style="color:var(--vpp-emerald);">HMAC-SHA256 SYNCED</span></div>
+        <div>HOLDING ROYALTY: <strong>15.0% IRC § 482</strong> • STRIPE TAX: <code>txcd_10103001</code> (FL EXEMPT)</div>
+      </div>
+    </section>
+
+    <!-- Panel Derecho: Simulador Financiero VPP Performance Share (21%) & SLA -->
+    <aside class="dock-panel">
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:0.74rem; color:var(--peppol-amber); margin-bottom:0.75rem;">
+          ⚡ TELEMETRÍA WORM & PERFORMANCE SHARE
+        </div>
+        <p style="font-size:0.83rem; color:var(--text-dim); margin-bottom:1rem;">
+          Monitoreo inmutable para planes SaaS recurrentes (IRC 5000H), expansión de nodos DER (+25,000 mW) y liquidación del 21% de ahorro energético generado.
+        </p>
+        <div class="spec-row"><span>ENTIDAD LICENCIANTE:</span><strong>Standard 1979 LLC</strong></div>
+        <div class="spec-row"><span>EXENCIÓN FLORIDA:</span><strong style="color:var(--vpp-emerald);">R. 12A-1.032 SaaS</strong></div>
+        <div class="spec-row"><span>GRUPO CONTROLADO:</span><strong>IRC § 414 / § 1563</strong></div>
+        <div class="spec-row"><span>UPTIME SLA:</span><strong style="color:var(--electric-cyan);">99.999% Multi-Zona</strong></div>
+      </div>
+
+      <a href="#catalogo-core" class="btn-core">Ver los 10 SKUs Oficiales ↓</a>
+    </aside>
   </div>
-</section>
 
-
-
-
-
-<!-- SECCION PRINCIPAL DE PLANES B2B Y PORTAL FISCAL STRIPE -->
-<div id="sovereign-pricing-container" style="position:relative;z-index:9999;max-width:1150px;margin:50px auto 40px auto;padding:30px 24px;background:#0b1329;border:1px solid #1e293b;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.5);font-family:system-ui,-apple-system,sans-serif;">
-  <div style="margin-bottom:24px;border-bottom:1px solid #1e293b;padding-bottom:16px;">
-    <h2 style="color:#10b981;margin:0 0 8px 0;font-size:1.4rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;">
-      AuraIntelCore.com | Planta Virtual de Energía (VPP) y Microservicios OT/IT
-    </h2>
-    <p style="color:#94a3b8;margin:0;font-size:0.95rem;line-height:1.5;">
-      Planes 100% mensuales escalados para cualquier empresa del mundo con Tax ID (EIN / VAT / RFC / CNPJ) e inmunidad IRC Sec. 5000H(d).
-    </p>
-  </div>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:16px;margin-bottom:28px;">
-  <!-- Plan 1 -->
-<a href="https://buy.stripe.com/eVqeVdelY8ekbeD46ScjS0h" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:22px 16px;background:#1e293b;color:#f8fafc;border-radius:8px;border:1px solid #334155;text-align:center;">
-  <span style="font-size:0.95rem;color:#cbd5e1;font-weight:600;margin-bottom:8px;">1. Startup &amp; PyME</span>
-  <span style="font-size:1.3rem;font-weight:bold;color:#38bdf8;">USD 299.00 <span style="font-size:0.85rem;color:#94a3b8;font-weight:normal;">/ mes</span></span>
-  <span style="font-size:0.72rem;color:#38bdf8;margin-top:6px;">Incluye App Telemetría Grafana (Ahorro DER)</span>
-  <span style="font-size:0.68rem;color:#94a3b8;margin-top:3px;">Licencia de Uso Final (Prohibida su Reventa)</span>
-</a>
-<!-- Plan 2 -->
-<a href="https://buy.stripe.com/7sYaEX6Twams1E31YKcjS0i" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:22px 16px;background:#1d4ed8;color:#f8fafc;border-radius:8px;border:1px solid #2563eb;text-align:center;">
-  <span style="font-size:0.95rem;color:#eff6ff;font-weight:600;margin-bottom:8px;">2. Mid-Market B2B</span>
-  <span style="font-size:1.3rem;font-weight:bold;color:#ffffff;">USD 1,499.00 <span style="font-size:0.85rem;color:#bfdbfe;font-weight:normal;">/ mes</span></span>
-  <span style="font-size:0.72rem;color:#93c5fd;margin-top:6px;">Incluye App Grafana Multi-Planta + Peak Shaving</span>
-  <span style="font-size:0.68rem;color:#dbeafe;margin-top:3px;">Licencia de Uso Final (Prohibida su Reventa)</span>
-</a>
-<!-- Plan 3 -->
-<a href="https://buy.stripe.com/28E4gzcdQ66cbeD7j4cjS0j" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:22px 16px;background:#065f46;color:#f8fafc;border-radius:8px;border:1px solid #059669;text-align:center;">
-  <span style="font-size:0.95rem;color:#d1fae5;font-weight:600;margin-bottom:8px;">3. Enterprise 5000H</span>
-  <span style="font-size:1.3rem;font-weight:bold;color:#34d399;">USD 4,875.00 <span style="font-size:0.85rem;color:#a7f3d0;font-weight:normal;">/ mes</span></span>
-  <span style="font-size:0.72rem;color:#6ee7b7;margin-top:6px;">Incluye Suite Grafana OT/IT + Auditoría WORM</span>
-  <span style="font-size:0.68rem;color:#a7f3d0;margin-top:3px;">Licencia de Uso Final (Prohibida su Reventa)</span>
-</a>
-<!-- Plan 4 -->
-<a href="https://buy.stripe.com/00wfZh5PseCI6Yn1YKcjS0k" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:22px 16px;background:#0f766e;color:#f8fafc;border-radius:8px;border:1px solid #0d9488;text-align:center;">
-  <span style="font-size:0.95rem;color:#ccfbf1;font-weight:600;margin-bottom:8px;">4. Mayorista VPP / Holding</span>
-  <span style="font-size:1.3rem;font-weight:bold;color:#2dd4bf;">USD 29,250.00 <span style="font-size:0.85rem;color:#99f6e4;font-weight:normal;">/ mes</span></span>
-  <span style="font-size:0.72rem;color:#5eead4;margin-top:6px;">App Grafana Marca Blanca + Telemetría Multi-Tenant</span>
-  <span style="font-size:0.68rem;color:#99f6e4;margin-top:3px;">Licencia Corporativa Multi-Nodo de Uso Final (Sin Reventa)</span>
-</a>
-</div>
-
-<!-- GRAFANA LIVE SAVINGS TELEMETRY & UNIFIED PLAN PROVISIONING APP -->
-<div id="grafana-vpp-telemetry-app" onclick="event.stopPropagation();" style="margin-top:24px;margin-bottom:28px;padding:22px;background:#090d16;border:1px solid #1e293b;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.45);">
-  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #1e293b;padding-bottom:14px;margin-bottom:18px;">
-    <div>
-      <span style="background:#065f46;color:#34d399;font-size:0.72rem;font-weight:700;padding:4px 8px;border-radius:4px;letter-spacing:0.5px;">GRAFANA OT/IT TELEMETRY ENGINE v10.4 — LIVE</span>
-      <h3 style="margin:8px 0 4px 0;color:#f8fafc;font-size:1.15rem;">App Interactiva de Telemetría Grafana: Medición de Ahorro Energético, Peak Shaving y Arbitraje LMP</h3>
-      <p style="margin:0;color:#94a3b8;font-size:0.83rem;">100% conectada al provisionamiento automático de todos los planes de servicio SaaS, Nodos DER (+25,000 mW) y Licencias Mayoristas VPP.</p>
-    </div>
-    <div style="display:flex;gap:8px;align-items:center;">
-      <span style="display:inline-block;width:10px;height:10px;background:#10b981;border-radius:50%;box-shadow:0 0 8px #10b981;"></span>
-      <span style="color:#10b981;font-size:0.8rem;font-family:monospace;font-weight:bold;">FERC 2222 / NERC CIP SYNC: 60.00 Hz | WORM RFC 3161</span>
-    </div>
-  </div>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:18px;background:#0f172a;padding:16px;border-radius:8px;border:1px solid #1e293b;">
-    <div>
-      <label style="display:block;font-size:0.78rem;color:#94a3b8;margin-bottom:6px;font-weight:600;">1. SELECCIONAR PLAN CONECTADO A LA APP GRAFANA:</label>
-      <select id="vpp-plan-selector" onchange="window.updateGrafanaVppApp()" style="width:100%;padding:10px;background:#1e293b;color:#f8fafc;border:1px solid #38bdf8;border-radius:6px;font-size:0.85rem;font-weight:600;">
-        <option value="299|https://buy.stripe.com/eVqeVdelY8ekbeD46ScjS0h|1.5|Uso Final (Prohibida su Reventa)|Startup & PyME">1. Startup & PyME — USD 299.00/mes (Base 1.5 MW DER)</option>
-        <option value="1499|https://buy.stripe.com/7sYaEX6Twams1E31YKcjS0i|8.0|Uso Final (Prohibida su Reventa)|Mid-Market B2B" selected>2. Mid-Market B2B — USD 1,499.00/mes (8.0 MW DER + Peak Shaving)</option>
-        <option value="4875|https://buy.stripe.com/28E4gzcdQ66cbeD7j4cjS0j|28.0|Uso Final (Prohibida su Reventa)|Enterprise 5000H">3. Enterprise 5000H — USD 4,875.00/mes (28.0 MW DER + Inmunidad 5000H)</option>
-        <option value="29250|https://buy.stripe.com/00wfZh5PseCI6Yn1YKcjS0k|180.0|Licencia Corporativa Multi-Nodo de Uso Final (Sin Reventa)|Mayorista VPP / Holding">4. Mayorista VPP / Holding — USD 29,250.00/mes (Multi-Cluster Enterprise Telemetry SaaS)</option>
-        <option value="49.99|https://buy.stripe.com/eVq6oHelY1PW0zZ8n8cjS0l|0.35|Uso Final (Prohibida su Reventa)|AuraIntel VPP Pro SaaS">5. AuraIntel VPP Pro (Piloto SaaS) — USD 49.99/mes (350 kW DER)</option>
-        <option value="99|https://buy.stripe.com/cNi5kD7XAbqwdmL6f0cjS0m|0.50|Add-On Escalable Multi-Nodo|Expansión Nodo DER (+25,000 mW)">6. Expansión Nodo DER Adicional (+25,000 mW) — USD 99.00/mes</option>
-        <option value="499|https://buy.stripe.com/aFaeVdfq29iofuT8n8cjS0n|3.2|Uso Final (Prohibida su Reventa)|AuraIntel Enterprise Core Multi-Nodo">7. AuraIntel Enterprise Core Multi-Nodo — USD 499.00/mes (3.2 MW DER)</option>
-        <option value="15|https://buy.stripe.com/14A9AT7XAamsciH7j4cjS0o|1.5|Uso Final (Prohibida su Reventa)|Pase Despacho Peak Shaving (Acceso)">8. Aura-Tetrax Pase Despacho Peak Shaving — USD 15.00/mes</option>
-        <option value="19|https://buy.stripe.com/14A28rgu6eCI1E346ScjS0p|1.5|Uso Final (Prohibida su Reventa)|Arbitraje Mayorista LMP & Reserva Rodante (Acceso)">9. Aura-Tetrax Arbitraje LMP & Reserva Rodante — USD 19.00/mes</option>
-        <option value="299|https://buy.stripe.com/4gM00jfq266c82rbzkcjS0q|2.0|Uso Final (Prohibida su Reventa)|Pase Despacho B2B Peak Shaving (Nodo 1.5 MW)">10. Aura-Tetrax Despacho B2B Peak Shaving (Nodo 1.5 MW) — USD 299.00/mes</option>
-        <option value="399|https://buy.stripe.com/bJe8wP4LocuA2I7cDocjS0r|2.8|Uso Final (Prohibida su Reventa)|Arbitraje Mayorista LMP & Reserva Rodante (Nodo 1.5 MW)">11. Aura-Tetrax Arbitraje Mayorista LMP (Nodo 1.5 MW) — USD 399.00/mes</option>
-        <option value="1500|https://buy.stripe.com/6oU3cv2Dg7agbeDgTEcjS0s|10.0|Uso Final (Prohibida su Reventa)|Standard 1979 Auditoría AAUFSA & Sec. 5000G(c)">12. Standard 1979 Auditoría Criptográfica AAUFSA — USD 1,500.00/mes</option>
-        <option value="2500|https://buy.stripe.com/4gM14n4LoeCI96v5aWcjS0t|16.0|Uso Final (Prohibida su Reventa)|Despliegue Cloud Dedicado Multi-Región OpenTofu IaC">13. Despliegue Cloud Dedicado Multi-Región OpenTofu IaC — USD 2,500.00/mes</option>
-        <option value="10000|https://buy.stripe.com/8x2bJ1a5IgKQ2I75aWcjS0u|65.0|Habilitado Grupo Controlado Multi-Filial (IRC 414/1563)|AuraIntel Omni Grupo Controlado (Mensual)">14. AuraIntel Omni Grupo Controlado IRC 414/1563 — USD 10,000.00/mes</option>
-        <option value="10000|https://buy.stripe.com/3cI7sL91EamsgyX0UGcjS0v|65.0|Habilitado Grupo Controlado Multi-Filial (IRC 414/1563)|AuraIntel Omni Grupo Controlado (Pago Único CAPEX)">15. AuraIntel Omni Grupo Controlado IRC 414/1563 — USD 10,000.00 (Pago Único)</option>
-        <option value="29250|https://buy.stripe.com/4gM5kD0v8bqwfuT0UGcjS0w|180.0|Derecho de Reventa / Liquidación Mayorista PEPPOL UBL 3.0|Liquidación Mayorista VPP PEPPOL UBL 3.0">16. Liquidación Mayorista VPP / PEPPOL UBL 3.0 — USD 29,250.00 (Pago Único)</option>
-              <option value="199|https://buy.stripe.com/7sYfZhfq2gKQ96vcDocjS0x|12.0|Contrato ESCO 21% del Ahorro Auditado WORM (Uso Final)|Plan Performance Share 21% Ahorro VPP">17. Plan Performance Share (21% del Ahorro Generado + Base USD 199/mes)</option>
-      </select>
-    </div>
-    <div>
-      <label style="display:block;font-size:0.78rem;color:#94a3b8;margin-bottom:6px;font-weight:600;">2. NODOS DER ADICIONALES CONECTADOS (<span id="der-nodes-label" style="color:#38bdf8;">4 Nodos</span>):</label>
-      <input id="der-nodes-slider" type="range" min="1" max="50" value="4" oninput="window.updateGrafanaVppApp()" style="width:100%;accent-color:#10b981;cursor:pointer;margin-top:8px;">
-      <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:#64748b;margin-top:4px;">
-        <span>1 Nodo (+25k mW)</span>
-        <span id="license-regime-badge" style="color:#fbbf24;font-weight:600;">Uso Final (Prohibida su Reventa)</span>
-        <span>50 Nodos Holding</span>
+  <!-- Catálogo Completo de los 10 SKUs de AuraIntel en Stripe -->
+  <section id="catalogo-core" class="catalog-wrap">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid var(--border-core); padding-bottom:0.8rem;">
+      <div>
+        <h2 style="font-family:'Space Grotesk', sans-serif; font-size:1.85rem;">
+          Catálogo Oficial AuraIntelCore (10 SKUs Activos en Stripe)
+        </h2>
+        <p style="color:var(--text-dim); font-size:0.88rem;">
+          Todos los productos cuentan con código fiscal <code>txcd_10103001</code> (100% Exentos de Sales Tax en Florida bajo Fla. Admin. Code R. 12A-1.032).
+        </p>
+      </div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:0.75rem; color:var(--vpp-emerald);">
+        CUENTA STRIPE: acct_1UYSNeAMVKJK8xcd
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;justify-content:center;align-items:stretch;">
-      <a id="grafana-activate-plan-btn" href="https://buy.stripe.com/7sYaEX6Twams1E31YKcjS0i" target="_blank" rel="noopener noreferrer" style="text-decoration:none;background:linear-gradient(90deg,#059669,#2563eb);color:#ffffff;font-weight:700;font-size:0.88rem;padding:12px 14px;border-radius:8px;text-align:center;border:1px solid #34d399;box-shadow:0 4px 14px rgba(16,185,129,0.3);">
-        Activar Plan + Abrir App Grafana en Vivo &rarr;
-      </a>
-      <span id="grafana-selected-summary" style="font-size:0.72rem;color:#94a3b8;text-align:center;margin-top:5px;">Provisión instantánea de Dashboard Grafana y API Key OT/IT</span>
-    </div>
-  </div>
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:18px;">
-    <div style="background:#111827;border-left:4px solid #10b981;padding:12px 14px;border-radius:6px;">
-      <div style="font-size:0.73rem;color:#94a3b8;text-transform:uppercase;">Ahorro Energético Bruto / Mes</div>
-      <div id="gf-kpi-savings" style="font-size:1.45rem;font-weight:800;color:#10b981;font-family:monospace;margin-top:4px;">USD 6,840.00</div>
-      <div style="font-size:0.7rem;color:#6ee7b7;">Peak Shaving + Arbitraje LMP (FERC 2222)</div>
-    </div>
-    <div style="background:#111827;border-left:4px solid #38bdf8;padding:12px 14px;border-radius:6px;">
-      <div style="font-size:0.73rem;color:#94a3b8;text-transform:uppercase;">Beneficio Neto (Descontando Plan)</div>
-      <div id="gf-kpi-net" style="font-size:1.45rem;font-weight:800;color:#38bdf8;font-family:monospace;margin-top:4px;">+USD 5,341.00</div>
-      <div id="gf-kpi-roi" style="font-size:0.7rem;color:#93c5fd;">ROI Mensual Verificado: 356.3%</div>
-    </div>
-    <div style="background:#111827;border-left:4px solid #f59e0b;padding:12px 14px;border-radius:6px;">
-      <div style="font-size:0.73rem;color:#94a3b8;text-transform:uppercase;">Capacidad VPP Despachada</div>
-      <div id="gf-kpi-mw" style="font-size:1.45rem;font-weight:800;color:#fbbf24;font-family:monospace;margin-top:4px;">8.10 MW</div>
-      <div style="font-size:0.7rem;color:#fde68a;">Reducción Demanda Punta: -34.8%</div>
-    </div>
-    <div style="background:#111827;border-left:4px solid #a855f7;padding:12px 14px;border-radius:6px;">
-      <div style="font-size:0.73rem;color:#94a3b8;text-transform:uppercase;">CO₂ Evitado &amp; Créditos REC</div>
-      <div id="gf-kpi-co2" style="font-size:1.45rem;font-weight:800;color:#c084fc;font-family:monospace;margin-top:4px;">42.6 Ton</div>
-      <div style="font-size:0.7rem;color:#e9d5ff;">Telemetría Auditada WORM SHA-256</div>
-    </div>
-    <div style="background:#111827;border-left:4px solid #ec4899;padding:12px 14px;border-radius:6px;">
-      <div style="font-size:0.73rem;color:#94a3b8;text-transform:uppercase;">Modelo 21% Ahorro Compartido</div>
-      <div id="gf-kpi-21pct" style="font-size:1.35rem;font-weight:800;color:#f472b6;font-family:monospace;margin-top:4px;">USD 1,436.40</div>
-      <div id="gf-kpi-79pct" style="font-size:0.7rem;color:#fbcfe8;">79% Neto Cliente: +USD 5,403.60/mes</div>
-    </div>
-  </div>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;">
-    <div style="background:#0b1120;border:1px solid #1e293b;border-radius:8px;padding:14px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <span style="font-size:0.8rem;color:#e2e8f0;font-weight:600;">Panel Grafana #1 — Curva de Ahorro Acumulado vs. Costo Operativo (USD)</span>
-        <span style="font-size:0.7rem;color:#10b981;font-family:monospace;">● Ahorro Real | ● Costo Sin VPP</span>
+    <div class="sku-grid">
+      <div class="sku-card">
+        <div>
+          <div class="sku-code">SKU: AURAINTEL-VPP-PRO • txcd_10103001</div>
+          <h3>AuraIntel VPP Pro — Suscripción Mensual (SaaS)</h3>
+          <div class="sku-price">$49.99 <span>USD / mes</span></div>
+          <p style="font-size:0.84rem; color:var(--text-dim);">
+            Acceso al panel de telemetría energética VPP Pro, pronóstico algorítmico de carga y alertas de despacho en tiempo real.
+          </p>
+        </div>
+        <a href="https://buy.stripe.com/5kQ28rgu62U04Qf46ScjS1s" target="_blank" rel="noopener noreferrer" class="btn-core">Activar VPP Pro</a>
       </div>
-      <svg id="grafana-svg-savings" viewBox="0 0 500 150" style="width:100%;height:145px;background:#060a12;border-radius:6px;border:1px solid #1e293b;">
-        <line x1="0" y1="35" x2="500" y2="35" stroke="#1e293b" stroke-dasharray="3,3"/>
-        <line x1="0" y1="75" x2="500" y2="75" stroke="#1e293b" stroke-dasharray="3,3"/>
-        <line x1="0" y1="115" x2="500" y2="115" stroke="#1e293b" stroke-dasharray="3,3"/>
-        <polygon id="gf-area-savings" points="0,145 0,115 60,102 120,88 180,74 240,60 300,48 360,35 420,25 500,14 500,145" fill="rgba(16,185,129,0.18)"/>
-        <polyline id="gf-line-baseline" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4" points="0,125 60,118 120,110 180,104 240,96 300,89 360,82 420,76 500,68"/>
-        <polyline id="gf-line-savings" fill="none" stroke="#10b981" stroke-width="2.8" points="0,115 60,102 120,88 180,74 240,60 300,48 360,35 420,25 500,14"/>
-      </svg>
-    </div>
 
-    <div style="background:#0b1120;border:1px solid #1e293b;border-radius:8px;padding:14px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-        <span style="font-size:0.8rem;color:#e2e8f0;font-weight:600;">Panel Grafana #2 — Recorte de Picos (Peak Shaving mW) &amp; Despacho LMP</span>
-        <span style="font-size:0.7rem;color:#38bdf8;font-family:monospace;">● Despacho DER Activo (25ms)</span>
+      <div class="sku-card">
+        <div>
+          <div class="sku-code">SKU: AURAINTEL-DER-25MW • txcd_10103001</div>
+          <h3>AuraIntel VPP — Expansión Nodo DER Adicional (+25,000 mW)</h3>
+          <div class="sku-price">$99.99 <span>USD / mes</span></div>
+          <p style="font-size:0.84rem; color:var(--text-dim);">
+            Módulo de expansión de capacidad para recursos energéticos distribuidos (+25,000 mW) sincronizado con telemetría WORM.
+          </p>
+        </div>
+        <a href="https://buy.stripe.com/28E4gzelYeCI96v9rccjS1q" target="_blank" rel="noopener noreferrer" class="btn-core">Añadir Nodo +25,000 mW</a>
       </div>
-      <svg id="grafana-svg-dispatch" viewBox="0 0 500 150" style="width:100%;height:145px;background:#060a12;border-radius:6px;border:1px solid #1e293b;">
-        <line x1="0" y1="35" x2="500" y2="35" stroke="#1e293b" stroke-dasharray="3,3"/>
-        <line x1="0" y1="75" x2="500" y2="75" stroke="#1e293b" stroke-dasharray="3,3"/>
-        <line x1="0" y1="115" x2="500" y2="115" stroke="#1e293b" stroke-dasharray="3,3"/>
-        <polygon id="gf-area-dispatch" points="0,145 0,95 55,60 110,82 165,42 220,70 275,30 330,58 385,24 440,48 500,20 500,145" fill="rgba(56,189,248,0.18)"/>
-        <polyline id="gf-line-dispatch" fill="none" stroke="#38bdf8" stroke-width="2.6" points="0,95 55,60 110,82 165,42 220,70 275,30 330,58 385,24 440,48 500,20"/>
-      </svg>
+
+      <div class="sku-card">
+        <div>
+          <div class="sku-code">SKU: AURAINTEL-PERF-21 • txcd_10103001</div>
+          <h3>AuraIntel VPP Performance Share — 21% del Ahorro Generado (Telemetría WORM)</h3>
+          <div class="sku-price">$199.00 <span>USD / mes base</span></div>
+          <p style="font-size:0.84rem; color:var(--text-dim);">
+            Esquema auditado de participación en el ahorro energético (21% Performance Share) con medición certificada en libro WORM.
+          </p>
+        </div>
+        <a href="https://buy.stripe.com/00waEX2Dg9io1E3dHscjS1d" target="_blank" rel="noopener noreferrer" class="btn-core">Suscribir Performance Share</a>
+      </div>
+
+      <div class="sku-card">
+        <div>
+          <div class="sku-code">SKU: AURAINTEL-STARTUP • txcd_10103001</div>
+          <h3>AuraIntel SaaS — Plan Startup & PyME (Mensual)</h3>
+          <div class="sku-price">$299.00 <span>USD / mes</span></div>
+          <p style="font-size:0.84rem; color:var(--text-dim);">
+            Instancia empresarial SaaS para equipos ágiles con inferencia privada Zero Data Retention y observabilidad JSON.
+          </p>
+        </div>
+        <a href="https://buy.stripe.com/28EbJ1b9MeCI0zZ46ScjS1h" target="_blank" rel="noopener noreferrer" class="btn-core">Activar Plan Startup</a>
+      </div>
+
+      <div class="sku-card flagship">
+        <div>
+          <div class="sku-code" style="color:var(--vpp-emerald);">SKU: AIC-LLM-GW • DESTACADO</div>
+          <h3>Enterprise OIDC SSO + vLLM Gateway & Core Multi-Nodo</h3>
+          <div class="sku-price">$499.00 <span>USD / mes</span></div>
+          <p style="font-size:0.84rem; color:var(--text-dim);">
+            Pasarela de inferencia dedicada vLLM con autenticación federada OIDC SSO, mTLS estricto y licencia B2B Multi-Nodo.
+          </p>
+        </div>
+        <a href="https://buy.stripe.com/5kQ14n4Lo7agbeD46ScjS14" target="_blank" rel="noopener noreferrer" class="btn-core" style="background:var(--vpp-emerald);">Contratar vLLM Gateway</a>
+      </div>
+
+      <div class="sku-card">
+        <div>
+          <div class="sku-code">SKU: AURAINTEL-MIDMARKET • txcd_10103001</div>
+          <h3>AuraIntel SaaS — Plan Mid-Market B2B (Mensual)</h3>
+          <div class="sku-price">$1,499.00 <span>USD / mes</span></div>
+          <p style="font-size:0.84rem; color:var(--text-dim);">
+            Capacidad dedicada para medianas empresas con aislamiento eBPF, pipelines automatizados y soporte de ingeniería 24/7.
+          </p>
+        </div>
+        <a href="https://buy.stripe.com/8x26oHfq23Y45UjgTEcjS1g" target="_blank" rel="noopener noreferrer" class="btn-core">Escalar a Mid-Market</a>
+      </div>
+
+      <div class="sku-card flagship">
+        <div>
+          <div class="sku-code" style="color:var(--vpp-emerald);">SKU: AURAINTEL-OPENTOFU-IAC • CLOUD</div>
+          <h3>AuraIntel — Despliegue Cloud Dedicado Multi-Región (OpenTofu IaC)</h3>
+          <div class="sku-price">$2,500.00 <span>USD / mes</span></div>
+          <p style="font-size:0.84rem; color:var(--text-dim);">
+            Infraestructura dedicada multi-región aprovisionada con OpenTofu IaC, conmutación automática y cumplimiento HIPAA/SOC 2.
+          </p>
+        </div>
+        <a href="https://buy.stripe.com/aFabJ16Tw9ioaazeLwcjS1p" target="_blank" rel="noopener noreferrer" class="btn-core" style="background:var(--vpp-emerald);">Aprovisionar Cloud IaC</a>
+      </div>
+
+      <div class="sku-card">
+        <div>
+          <div class="sku-code">SKU: AURAINTEL-IRC5000H • txcd_10103001</div>
+          <h3>AuraIntel B2B SaaS — Suscripción Mensual Recurrente (IRC 5000H)</h3>
+          <div class="sku-price">$4,875.00 <span>USD / mes</span></div>
+          <p style="font-size:0.84rem; color:var(--text-dim);">
+            Licencia corporativa de alto caudal con trazabilidad normativa IRC 5000H, nodos de telemetría dedicados y SLA 99.999%.
+          </p>
+        </div>
+        <a href="https://buy.stripe.com/6oU7sL1zc9io5UjavgcjS1k" target="_blank" rel="noopener noreferrer" class="btn-core">Activar Plan Enterprise</a>
+      </div>
+
+      <div class="sku-card whale">
+        <div>
+          <div class="sku-code" style="color:var(--peppol-amber);">SKU: AURAINTEL-OMNI-414 • GRUPO CONTROLADO</div>
+          <h3>AuraIntel Omni — Licencia Corporativa Grupo Controlado (IRC 414/1563)</h3>
+          <div class="sku-price" style="color:var(--peppol-amber);">$10,000.00 <span>USD / mes o año</span></div>
+          <p style="font-size:0.84rem; color:var(--text-dim);">
+            Licencia corporativa integral para todas las filiales de un Grupo Controlado bajo IRC § 414/1563 (Modalidad Mensual o Anual).
+          </p>
+        </div>
+        <a href="https://buy.stripe.com/fZuaEX2Dg8ek4QfavgcjS1o" target="_blank" rel="noopener noreferrer" class="btn-core" style="background:var(--peppol-amber);">Contratar Licencia Omni</a>
+      </div>
+
+      <div class="sku-card whale">
+        <div>
+          <div class="sku-code" style="color:var(--peppol-amber);">SKU: AURAINTEL-PEPPOL-VPP • WHOLESALE</div>
+          <h3>AuraIntel SaaS — Plan Mayorista VPP & Liquidación PEPPOL UBL 3.0</h3>
+          <div class="sku-price" style="color:var(--peppol-amber);">$29,250.00 <span>USD / mes</span></div>
+          <p style="font-size:0.84rem; color:var(--text-dim);">
+            Plataforma mayorista completa para holdings energéticos y liquidación electrónica internacional PEPPOL UBL 3.0.
+          </p>
+        </div>
+        <a href="https://buy.stripe.com/bJe14nfq2fGM6Yn7j4cjS1f" target="_blank" rel="noopener noreferrer" class="btn-core" style="background:var(--peppol-amber);">Activar Liquidación Mayorista</a>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <details open style="margin-top:16px;background:#0f172a;border:1px solid #1e293b;border-radius:8px;padding:12px 16px;">
-    <summary onclick="event.stopPropagation();" style="cursor:pointer;color:#38bdf8;font-weight:700;font-size:0.86rem;">
-      Catálogo Completo Conectado a la App Grafana (12 Planes Modulares, Nodos DER +25,000 mW, Arbitraje LMP, Cloud IaC y Licencias Omni IRC 414/1563)
-    </summary>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:14px;">
-      <a href="https://buy.stripe.com/eVq6oHelY1PW0zZ8n8cjS0l" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#1e293b;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#38bdf8;">AuraIntel VPP Pro (SaaS)</strong><br>USD 49.99 / mes — App Grafana Base (Uso Final)
-      </a>
-      <a href="https://buy.stripe.com/cNi5kD7XAbqwdmL6f0cjS0m" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#1e293b;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#34d399;">Expansión Nodo DER (+25,000 mW)</strong><br>USD 99.00 / mes — Telemetría por Nodo Extra
-      </a>
-      <a href="https://buy.stripe.com/aFaeVdfq29iofuT8n8cjS0n" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#1e293b;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#60a5fa;">AuraIntel Enterprise Core</strong><br>USD 499.00 / mes — Licencia B2B Multi-Nodo
-      </a>
-      <a href="https://buy.stripe.com/14A9AT7XAamsciH7j4cjS0o" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#1e293b;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#fbbf24;">Pase Despacho Peak Shaving</strong><br>USD 15.00 / mes — Telemetría Nodo 1.5 MW
-      </a>
-      <a href="https://buy.stripe.com/14A28rgu6eCI1E346ScjS0p" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#1e293b;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#fbbf24;">Arbitraje LMP &amp; Reserva Rodante</strong><br>USD 19.00 / mes — Monitor Grafana LMP
-      </a>
-      <a href="https://buy.stripe.com/4gM00jfq266c82rbzkcjS0q" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#1e293b;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#38bdf8;">Despacho B2B Peak Shaving Pro</strong><br>USD 299.00 / mes — Nodo Dedicado 1.5 MW
-      </a>
-      <a href="https://buy.stripe.com/bJe8wP4LocuA2I7cDocjS0r" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#1e293b;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#34d399;">Arbitraje Mayorista LMP Pro</strong><br>USD 399.00 / mes — Reserva Rodante 1.5 MW
-      </a>
-      <a href="https://buy.stripe.com/6oU3cv2Dg7agbeDgTEcjS0s" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#1e293b;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#c084fc;">Standard 1979 Auditoría AAUFSA</strong><br>USD 1,500.00 / mes — Sec. 5000G(c) + Grafana
-      </a>
-      <a href="https://buy.stripe.com/4gM14n4LoeCI96v5aWcjS0t" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#1e293b;border:1px solid #334155;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#38bdf8;">Cloud Dedicado Multi-Región IaC</strong><br>USD 2,500.00 / mes — Cluster Grafana Propio
-      </a>
-      <a href="https://buy.stripe.com/8x2bJ1a5IgKQ2I75aWcjS0u" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#065f46;border:1px solid #10b981;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#6ee7b7;">AuraIntel Omni IRC 414/1563 (Mensual)</strong><br>USD 10,000.00 / mes — Grupo Controlado Multi-Filial
-      </a>
-      <a href="https://buy.stripe.com/3cI7sL91EamsgyX0UGcjS0v" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#065f46;border:1px solid #10b981;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#6ee7b7;">AuraIntel Omni IRC 414/1563 (CAPEX)</strong><br>USD 10,000.00 Pago Único — Grupo Controlado
-      </a>
-      <a href="https://buy.stripe.com/4gM5kD0v8bqwfuT0UGcjS0w" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:#0f766e;border:1px solid #2dd4bf;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#5eead4;">Liquidación Mayorista PEPPOL UBL 3.0</strong><br>USD 29,250.00 Pago Único — Liquidación Mayorista Uso Final (Sin Reventa)
-      </a>
-      <a href="https://buy.stripe.com/7sYfZhfq2gKQ96vcDocjS0x" target="_blank" rel="noopener noreferrer" style="text-decoration:none;padding:10px;background:linear-gradient(135deg,#064e3b,#0f172a);border:1px solid #10b981;border-radius:6px;color:#f8fafc;font-size:0.78rem;">
-        <strong style="color:#34d399;">Plan Performance Share (21% Ahorro VPP)</strong><br>21% del Ahorro Auditado en Grafana (Base USD 199/mes)
-      </a>
-    </div>
-  </details>
-</div>
+  <script>
+    // Motor Gráfico de Topología de Anillo Tensor vLLM y Enrutamiento de Paquetes
+    const canvas = document.getElementById('core-topology-canvas');
+    const ctx = canvas.getContext('2d');
+    let cw, ch, tick = 0, mode = 'vllm';
+    const fluxSlider = document.getElementById('flux-slider');
+    const throughputLbl = document.getElementById('throughput-lbl');
 
-<script>
-// WORM READ-ONLY CONTRACT CONSTANTS (IMMUTABLE 2100 / 7900 BPS)
-const WORM_CONTRACT_21_79 = Object.freeze({
-  AURAINTEL_FEE_BPS: 2100,
-  CLIENT_NET_BPS: 7900,
-  BPS_DENOM: 10000,
-  READ_ONLY_MODE: true,
-  STANDARD: "FERC-2222-IPMVP-ASC606-WORM"
-});
-window.updateGrafanaVppApp = function() {
-  var sel = document.getElementById('vpp-plan-selector');
-  var slider = document.getElementById('der-nodes-slider');
-  if (!sel || !slider) return;
-  var parts = sel.value.split('|');
-  var price = parseFloat(parts[0]);
-  var url = parts[1];
-  var baseMw = parseFloat(parts[2]);
-  var regime = parts[3];
-  var planName = parts[4];
-  var nodes = parseInt(slider.value, 10);
+    function setTopology(m, btn) {
+      mode = m;
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
 
-  document.getElementById('der-nodes-label').textContent = nodes + (nodes === 1 ? ' Nodo (+25k mW)' : ' Nodos (+' + (nodes * 25) + 'k mW)');
-  document.getElementById('license-regime-badge').textContent = regime;
+    function resize() {
+      cw = canvas.width = canvas.clientWidth;
+      ch = canvas.height = canvas.clientHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
 
-  var totalMw = baseMw + (nodes * 0.025);
-  var grossSavings = Math.round((price * 3.85) + (nodes * 285));
-  var netSavings = Math.round(grossSavings - price);
-  var roi = ((netSavings / price) * 100).toFixed(1);
-  var co2 = (totalMw * 5.25).toFixed(1);
+    fluxSlider.addEventListener('input', () => {
+      const v = parseInt(fluxSlider.value, 10);
+      throughputLbl.textContent = `${(v * 3100).toLocaleString('en-US')} tok/s`;
+    });
 
-  document.getElementById('gf-kpi-savings').textContent = 'USD ' + grossSavings.toLocaleString('en-US') + '.00';
-  document.getElementById('gf-kpi-net').textContent = '+USD ' + netSavings.toLocaleString('en-US') + '.00';
-  document.getElementById('gf-kpi-roi').textContent = 'ROI Mensual Verificado: ' + roi + '%';
-  document.getElementById('gf-kpi-mw').textContent = totalMw.toFixed(2) + ' MW';
-  document.getElementById('gf-kpi-co2').textContent = co2 + ' Ton';
-  var grossCents = grossSavings * 100;
-  var fee21Cents = Math.floor((grossCents * 2100) / 10000);
-  var net79Cents = grossCents - fee21Cents;
-  var el21 = document.getElementById('gf-kpi-21pct');
-  var el79 = document.getElementById('gf-kpi-79pct');
-  if (el21 && el79) {
-    el21.textContent = '21%: USD ' + (fee21Cents / 100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-    el79.textContent = '79% Neto Cliente: +USD ' + (net79Cents / 100).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-  }
-  var share21 = (grossSavings * 0.21);
-  var client79 = (grossSavings * 0.79);
-  var el21 = document.getElementById('gf-kpi-21pct');
-  var el79 = document.getElementById('gf-kpi-79pct');
-  if (el21 && el79) {
-    el21.textContent = '21%: USD ' + share21.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-    el79.textContent = '79% Neto Cliente: +USD ' + client79.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-  }
+    function drawTopology() {
+      ctx.fillStyle = '#040917';
+      ctx.fillRect(0, 0, cw, ch);
 
-  var btn = document.getElementById('grafana-activate-plan-btn');
-  btn.href = url;
-  btn.innerHTML = 'Activar ' + planName + ' (USD ' + price.toLocaleString('en-US') + ') + Abrir App Grafana &rarr;';
-  document.getElementById('grafana-selected-summary').textContent = regime + ' | Telemetría conectada al motor VPP';
+      const cx = cw / 2, cy = ch / 2;
+      const spd = parseInt(fluxSlider.value, 10) * 0.008;
+      tick += spd;
 
-  var boost = Math.min(28, Math.floor(nodes * 0.55));
-  var pts = [
-    '0,' + (115 - Math.floor(boost*0.3)),
-    '60,' + (102 - Math.floor(boost*0.4)),
-    '120,' + (88 - Math.floor(boost*0.5)),
-    '180,' + (74 - Math.floor(boost*0.6)),
-    '240,' + (60 - Math.floor(boost*0.7)),
-    '300,' + (48 - Math.floor(boost*0.8)),
-    '360,' + (35 - Math.floor(boost*0.85)),
-    '420,' + (25 - Math.floor(boost*0.4)),
-    '500,' + Math.max(6, 14 - Math.floor(boost*0.25))
-  ].join(' ');
-  document.getElementById('gf-line-savings').setAttribute('points', pts);
-  document.getElementById('gf-area-savings').setAttribute('points', '0,145 ' + pts + ' 500,145');
-};
-setInterval(function() {
-  var disp = document.getElementById('gf-line-dispatch');
-  var area = document.getElementById('gf-area-dispatch');
-  if (!disp || !area) return;
-  var jitter = Math.floor(Math.random() * 7) - 3;
-  var dpts = [
-    '0,95',
-    '55,' + (60 + jitter),
-    '110,' + (82 - jitter),
-    '165,' + (42 + jitter),
-    '220,' + (70 - jitter),
-    '275,' + (30 + jitter),
-    '330,' + (58 - jitter),
-    '385,' + (24 + jitter),
-    '440,' + (48 - jitter),
-    '500,' + (20 + jitter)
-  ].join(' ');
-  disp.setAttribute('points', dpts);
-  area.setAttribute('points', '0,145 ' + dpts + ' 500,145');
-}, 1800);
-</script>
+      const ringColor = mode === 'vllm' ? '#00f0ff' : (mode === 'vpp' ? '#00ff9d' : '#fbbf24');
+      const nodeCount = mode === 'vllm' ? 8 : (mode === 'vpp' ? 12 : 6);
+      const radius = Math.min(cw, ch) * 0.31;
 
+      const ringNodes = [];
+      for (let i = 0; i < nodeCount; i++) {
+        const ang = (i / nodeCount) * Math.PI * 2 + tick * 0.35;
+        ringNodes.push({
+          x: cx + Math.cos(ang) * radius,
+          y: cy + Math.sin(ang) * (radius * 0.62)
+        });
+      }
 
+      // Conexiones de malla completa entre nodos del anillo
+      for (let i = 0; i < ringNodes.length; i++) {
+        for (let j = i + 1; j < ringNodes.length; j++) {
+          ctx.beginPath();
+          ctx.moveTo(ringNodes[i].x, ringNodes[i].y);
+          ctx.lineTo(ringNodes[j].x, ringNodes[j].y);
+          ctx.strokeStyle = mode === 'vllm' ? 'rgba(0, 240, 255, 0.16)' : (mode === 'vpp' ? 'rgba(0, 255, 157, 0.16)' : 'rgba(251, 191, 36, 0.2)');
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
 
-  <div style="padding-top:16px;border-top:1px solid #1e293b;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:0.85rem;color:#94a3b8;">
-    <span>Impuestos indirectos globales (Stripe Tax: US-FL / VAT / IVA), Tax ID corporativo e inmunidad IRC Sec. 5000H(d) activos.</span>
-    <a href="https://buy.stripe.com/eVqeVdelY8ekbeD46ScjS0h" target="_blank" rel="noopener noreferrer" style="padding:10px 16px;background:#0f172a;border:1px solid #10b981;color:#10b981;text-decoration:none;border-radius:6px;font-weight:bold;font-size:0.85rem;display:inline-block;">
-      Portal Fiscal B2B / Click-to-Cancel (ID: bpc_1UWn0zFE1PknNS53wBZioc6n)
-    </a>
-  </div>
-</div>
+      // Nodos y pulsos de inferencia hacia el núcleo central
+      ringNodes.forEach((n, idx) => {
+        const t = (tick * 1.4 + idx * 0.15) % 1;
+        const px = n.x + (cx - n.x) * t;
+        const py = n.y + (cy - n.y) * t;
 
+        ctx.beginPath();
+        ctx.arc(px, py, 2.8, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
 
-<!-- AURAINTELCORE LIVE TELEMETRY STREAMING ENGINE v10.4 (FERC 2222 / WORM RFC 3161) -->
-<script id="auraintel-live-grafana-engine">
-(function(){
-  const svgSavings = document.getElementById('grafana-svg-savings');
-  const svgDispatch = document.getElementById('grafana-svg-dispatch');
-  const areaSavings = document.getElementById('gf-area-savings');
-  const lineBaseline = document.getElementById('gf-line-baseline');
-  const lineSavings = document.getElementById('gf-line-savings');
-  const areaDispatch = document.getElementById('gf-area-dispatch');
-  let lineDispatch = document.getElementById('gf-line-dispatch');
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 6, 0, Math.PI * 2);
+        ctx.fillStyle = ringColor;
+        ctx.fill();
+      });
 
-  if (!svgSavings || !svgDispatch || !areaSavings || !lineSavings || !areaDispatch) return;
+      // Núcleo Central OIDC / WORM
+      ctx.beginPath();
+      ctx.arc(cx, cy, 24, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(8, 16, 33, 0.9)';
+      ctx.fill();
+      ctx.lineWidth = 2.2;
+      ctx.strokeStyle = ringColor;
+      ctx.stroke();
 
-  if (!lineDispatch) {
-    lineDispatch = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
-    lineDispatch.setAttribute('id', 'gf-line-dispatch');
-    lineDispatch.setAttribute('fill', 'none');
-    lineDispatch.setAttribute('stroke', '#38bdf8');
-    lineDispatch.setAttribute('stroke-width', '2.8');
-    svgDispatch.appendChild(lineDispatch);
-  }
-
-  function createHudOverlay(svg, colorHex, initialText) {
-    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    bg.setAttribute('x', '6');
-    bg.setAttribute('y', '5');
-    bg.setAttribute('width', '488');
-    bg.setAttribute('height', '20');
-    bg.setAttribute('rx', '4');
-    bg.setAttribute('fill', 'rgba(6, 10, 18, 0.85)');
-
-    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    dot.setAttribute('cx', '16');
-    dot.setAttribute('cy', '15');
-    dot.setAttribute('r', '4');
-    dot.setAttribute('fill', colorHex);
-
-    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    label.setAttribute('x', '26');
-    label.setAttribute('y', '19');
-    label.setAttribute('fill', '#e2e8f0');
-    label.setAttribute('font-family', 'monospace');
-    label.setAttribute('font-size', '10.5');
-    label.setAttribute('font-weight', '600');
-    label.textContent = initialText;
-
-    const pulseDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    pulseDot.setAttribute('r', '4.5');
-    pulseDot.setAttribute('fill', colorHex);
-    pulseDot.setAttribute('stroke', '#060a12');
-    pulseDot.setAttribute('stroke-width', '1.5');
-
-    g.appendChild(bg);
-    g.appendChild(dot);
-    g.appendChild(label);
-    svg.appendChild(g);
-    svg.appendChild(pulseDot);
-    return { dot, label, pulseDot };
-  }
-
-  const hud1 = createHudOverlay(svgSavings, '#10b981', 'LIVE 60.00Hz | BESS Headroom: 354.20 kW | LMP: $42.80/MWh');
-  const hud2 = createHudOverlay(svgDispatch, '#38bdf8', 'IED_01 SYNC | Activa: 528.40 kW | Solar IA: 356.10 kW | Irr: 848 W/m2');
-
-  const xs1 = [0, 60, 120, 180, 240, 300, 360, 420, 500];
-  const xs2 = [0, 55, 110, 165, 220, 275, 330, 385, 440, 500];
-
-  // Todos los valores de Y inician >= 38px para dejar despejada la barra superior (y=5..25)
-  let ySav = [118, 108, 96, 84, 72, 62, 52, 44, 38];
-  let yBase = [128, 122, 116, 110, 104, 98, 92, 86, 80];
-  let yDisp = [104, 76, 92, 62, 82, 52, 72, 46, 64, 40];
-
-  let tick = 0;
-  let blink = true;
-
-  function renderCurves() {
-    ySav = ySav.map(v => Math.max(38, Math.min(126, v)));
-    yBase = yBase.map(v => Math.max(72, Math.min(136, v)));
-    yDisp = yDisp.map(v => Math.max(38, Math.min(126, v)));
-
-    const ptsSav = xs1.map((x, i) => `${x},${ySav[i]}`).join(' ');
-    const ptsBase = xs1.map((x, i) => `${x},${yBase[i]}`).join(' ');
-    lineSavings.setAttribute('points', ptsSav);
-    lineBaseline.setAttribute('points', ptsBase);
-    areaSavings.setAttribute('points', `0,145 ${ptsSav} 500,145`);
-
-    hud1.pulseDot.setAttribute('cx', '500');
-    hud1.pulseDot.setAttribute('cy', String(ySav[ySav.length - 1]));
-
-    const ptsDisp = xs2.map((x, i) => `${x},${yDisp[i]}`).join(' ');
-    lineDispatch.setAttribute('points', ptsDisp);
-    areaDispatch.setAttribute('points', `0,145 ${ptsDisp} 500,145`);
-
-    hud2.pulseDot.setAttribute('cx', '500');
-    hud2.pulseDot.setAttribute('cy', String(yDisp[yDisp.length - 1]));
-  }
-
-  function stepTelemetry() {
-    tick += 1;
-    blink = !blink;
-    const t = Date.now() / 1000;
-
-    const irradiance = 845.0 + 60.0 * Math.sin(t / 25.0) + (Math.sin(t * 1.7) * 4.5);
-    const solarKw = irradiance * 0.42;
-    const bessDis = 140.0 + 35.0 * Math.cos(t / 20.0) + (Math.cos(t * 1.3) * 2.5);
-    const headroomKw = 500.0 - bessDis;
-    const activeKw = solarKw + bessDis;
-    const lmp = 42.8 + 8.4 * Math.sin(t / 15.0);
-
-    ySav.shift();
-    const nextSavY = Math.max(38, Math.min(118, Math.round(64 - 22 * Math.sin(t / 6.0) - (tick % 4) * 1.2)));
-    ySav.push(nextSavY);
-
-    yBase.shift();
-    const nextBaseY = Math.max(78, Math.min(134, Math.round(104 + 14 * Math.cos(t / 8.0))));
-    yBase.push(nextBaseY);
-
-    yDisp.shift();
-    const nextDispY = Math.max(38, Math.min(122, Math.round(74 - 28 * Math.sin(t / 3.5) + 9 * Math.cos(t * 0.9))));
-    yDisp.push(nextDispY);
-
-    renderCurves();
-
-    hud1.dot.setAttribute('opacity', blink ? '1' : '0.35');
-    hud1.label.textContent = `LIVE 60.00Hz | BESS Headroom: ${headroomKw.toFixed(2)} kW | LMP: $${lmp.toFixed(2)}/MWh`;
-
-    hud2.dot.setAttribute('opacity', blink ? '1' : '0.35');
-    hud2.label.textContent = `IED_01 SYNC | Activa: ${activeKw.toFixed(2)} kW | Solar IA: ${solarKw.toFixed(2)} kW | Irr: ${irradiance.toFixed(0)} W/m2`;
-  }
-
-  // Si el usuario cambia el plan o mueve el slider de nodos, re-aplicar inmediatamente el limite y>=38px
-  document.addEventListener('input', () => setTimeout(renderCurves, 10));
-  document.addEventListener('change', () => setTimeout(renderCurves, 10));
-
-  stepTelemetry();
-  setInterval(stepTelemetry, 1500);
-})();
-</script>
-
+      requestAnimationFrame(drawTopology);
+    }
+    drawTopology();
+  </script>
 </body>
 </html>
